@@ -4,35 +4,48 @@ import inquirer from "inquirer";
 import {Command, Option} from "commander";
 import fs from 'fs';
 
-
 const app = new Command();
-
-//variables
 const name = "cli"
+const questions = [{type: "input", name: 'name', message: 'project name:'}, {
+    type: "list",
+    name: 'frontend',
+    choices: ['react', 'vue', 'angular'],
+    message: 'selected frontend:'
+}, {type: "list", name: 'backend', choices: ['yes', 'no'], message: 'need a backend ?'}]
 
-const questions = [
-    {type: "input", name: 'name', message: 'project name:'},
-    {type: "list", name: 'frontend', choices: ['react', 'vue', 'angular'], message: 'selected frontend:'},
-    {type: "list", name: 'backend', choices: ['yes', 'no'], message: 'need a backend ?'}
-]
 
 const filename = () => {
     inquirer.prompt(questions).then(((answers) => {
-
         if (answers.name !== ' ' && answers['frontend'] === 'react' && answers['backend'] === 'no') {
+
+
             const path = './' + answers.name
-            fs.mkdir(path, (err) => {
-                if (err) {
-                    console.log("error occurred in creating new directory", err);
-                    return;
-                }
-                console.log("New directory created successfully");
-            })
-        } else {
-            console.log(answers)
+            const reactTemplate = './templates/react-frontend'
+
+
+
+                fs.mkdir(path, (err) => {
+                    if (err) {
+                        console.log("error occurred in creating new directory", err);
+                        return;
+                    }
+
+                    fs.copyFileSync(reactTemplate, path, function (err) {
+                        if (err) {
+                            console.log('An error occurred while copying the folder.')
+                            return console.error(err)
+                        }
+                        console.log('Copy completed!')
+                    });
+
+                    console.log("New directory created successfully" + fs.readFileSync(reactTemplate));
+                })
+            } else {
+                console.log(answers)
         }
     }))
 }
+
 app
     .name(name)
     .description('create' + name)
