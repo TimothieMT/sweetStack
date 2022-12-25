@@ -1,11 +1,11 @@
 {
-  "name": "cli",
+  "name": "sweetstack",
   "version": "1.0.0",
   "type": "module",
   "description": "",
   "main": "index.js",
   "bin": {
-    "cli": "bin/index.js"
+    "sweetstack": "bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

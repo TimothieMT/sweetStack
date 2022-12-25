@@ -3,45 +3,58 @@
 import inquirer from "inquirer";
 import {Command, Option} from "commander";
 import fs from 'fs';
+import {join} from 'path'
+import {copyFile} from 'fs/promises'
+
+const {COPYFILE_EXCL} = fs.constants;
 
 const app = new Command();
-const name = "cli"
-const questions = [{type: "input", name: 'name', message: 'project name:'}, {
-    type: "list",
-    name: 'frontend',
-    choices: ['react', 'vue', 'angular'],
-    message: 'selected frontend:'
-}, {type: "list", name: 'backend', choices: ['yes', 'no'], message: 'need a backend ?'}]
+const name = "sweetstack";
 
+const questions = [
+    {type: "input", name: 'name', message: 'project name:'},
+    {type: "list", name: 'frontend', choices: ['react', 'vue', 'angular'], message: 'selected frontend:'},
+    {type: "list", name: 'backend', choices: ['yes', 'no'], message: 'need a backend ?'}
+]
+
+
+async function copyAFile(from, to) {
+    try {
+        await copyFile(from, to);
+        console.log(`Copied ${from} to ${to}`);
+    } catch (err) {
+        console.error(`Got an error trying to copy the file: ${err.message}`);
+    }
+}
+
+async function copyAll(fromDir, toDir, filePaths) {
+    return Promise.all(filePaths.map(filePath => {
+        return copyAFile(join(fromDir, filePath), join(toDir, filePath));
+    }));
+}
 
 const filename = () => {
     inquirer.prompt(questions).then(((answers) => {
-        if (answers.name !== ' ' && answers['frontend'] === 'react' && answers['backend'] === 'no') {
 
+        const destFile = "./templates/react-frontend"
+        const srcFile = "./" + answers.name
 
-            const path = './' + answers.name
-            const reactTemplate = './templates/react-frontend'
+        if (answers.name !== '' && answers['frontend'] === 'react' && answers['backend'] === 'no') {
 
+            fs.mkdir(srcFile, (err) => {
+                if (err) {
+                    console.log("error occurred in creating new directory", err);
+                }
+                fs.mkdirSync("./" + answers.name + "/frontend")
+                fs.mkdirSync("./" + answers.name + "/src")
 
+                copyAll(destFile, "./" + answers.name + "/", ["package.json", ".gitignore", "index.html", "package-lock.json", "tsconfig.json", "tsconfig.node.json", "vite.config.ts"]).then(r => r)
+                copyAll("./templates/react-frontend/src", "./" + answers.name + "/src", ["App.scss", "App.tsx","index.css","main.tsx","vite-env.d.ts"]).then(r => r)
 
-                fs.mkdir(path, (err) => {
-                    if (err) {
-                        console.log("error occurred in creating new directory", err);
-                        return;
-                    }
-
-                    fs.copyFileSync(reactTemplate, path, function (err) {
-                        if (err) {
-                            console.log('An error occurred while copying the folder.')
-                            return console.error(err)
-                        }
-                        console.log('Copy completed!')
-                    });
-
-                    console.log("New directory created successfully" + fs.readFileSync(reactTemplate));
-                })
-            } else {
-                console.log(answers)
+                console.log("New directory created successfully");
+            });
+        } else {
+            console.log(answers)
         }
     }))
 }
@@ -54,62 +67,6 @@ app
 
 
 app.parse(process.argv);
-// program.command('create')
-//     .description('create new project')
-//     .argument('<project_name>', 'project name')
-// .action((project_name) => {
-//     const path = './' + project_name
-//     fs.mkdir(path, (err) => {
-//         if (err) {
-//             console.log("error occurred in creating new directory", err);
-//             return;
-//         }
-//         console.log("New directory created successfully");
-//     })
-// })
-//
-// program.command('react')
-//     .description('react frontend')
-//     .argument('-r, --react', 'react')
-//     .action((react) => {
-//         console.log(react)
-//     })
-//
-// program.command('vue')
-//     .description('vue frontend')
-//     .argument('-v, --vue', 'vue')
-//     .action((vue) => {
-//         console.log(vue)
-//     })
-//
-// program
-//     .name('angular')
-//     .command('angular')
-//     .description('angular frontend')
-//     .argument('-a, --angular', 'angular')
-//     .action((angular) => {
-//         console.log(angular)
-//     })
-// program.command('backend')
-//     .description('backend')
-//     .argument('-b, --backend', 'backend')
-//     .action((backend) => {
-//         console.log('backend')
-//     })
-
-// .option('-b, --backend', 'backend')
-// .argument('react , vue, angular','frontend')
-// .argument('-r, --react', 'react frontend')
-// .action((react) => {
-//     console.log('react')
-// })
-
-// .argument('-v, --vue', 'react frontend')
-// .action((vue) => {
-//     console.log('vue')
-// })
-
-// const options = program.opts()
 
 
 
