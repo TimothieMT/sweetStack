@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 
 import inquirer from "inquirer";
-import {Command, Option} from "commander";
+import {Command} from "commander";
 import fs from 'fs';
 import {join} from 'path'
 import {copyFile} from 'fs/promises'
-import * as path from "path";
-
-const {COPYFILE_EXCL} = fs.constants;
 
 const app = new Command();
 const name = "sweetstack";
@@ -34,7 +31,9 @@ async function copyAll(fromDir, toDir, filePaths) {
     }));
 }
 
-const filename = () => {
+const createProject = () => {
+
+    //CREATE REACT FRONTEND AND BACKEND
     inquirer.prompt(questions).then(((answers) => {
 
         const srcFile = process.cwd() + "/" + answers.name
@@ -42,7 +41,7 @@ const filename = () => {
 
         console.log("dest:" + destFile + " /src:" + srcFile)
 
-        if (answers.name !== '' && answers['frontend'] === 'react' && answers['backend'] === 'no') {
+        if (answers.name !== '' && answers['frontend'] === 'react') {
 
             fs.mkdir(srcFile, (err) => {
                 if (err) {
@@ -51,22 +50,35 @@ const filename = () => {
                 fs.mkdirSync(srcFile + "/frontend")
                 fs.mkdirSync(srcFile + "/frontend/src")
 
+
                 copyAll(process.cwd() + "/" + name + "/templates/react-frontend", process.cwd() + "/" + answers.name + "/frontend", ["package.json", ".gitignore", "index.html", "package-lock.json", "tsconfig.json", "tsconfig.node.json", "vite.config.ts"]).then(r => r)
                 copyAll(process.cwd() + "/" + name + "/templates/react-frontend/src", process.cwd() + "/" + answers.name + "/frontend/src", ["App.scss", "App.tsx", "index.css", "main.tsx", "vite-env.d.ts"]).then(r => r)
 
                 console.log("New directory created successfully");
+
+                if (answers['backend'] === 'yes') {
+                    fs.mkdirSync(srcFile + "/backend")
+                    fs.mkdirSync(srcFile + "/backend/dist")
+                    fs.mkdirSync(srcFile + "/backend/src")
+                    // fs.mkdirSync(srcFile + "/backend/dist/")
+                    copyAll(process.cwd() + "/" + name + "/templates/react-backend", process.cwd() + "/" + answers.name + "/backend", ["nodemon.json","package.json","package-lock.json","tsconfig.json"]).then(r => r)
+                    copyAll(process.cwd() + "/" + name + "/templates/react-backend/dist", process.cwd() + "/" + answers.name + "/backend/dist", ["server.js", "server.js.map"]).then(r => r)
+                    copyAll(process.cwd() + "/" + name + "/templates/react-backend/src", process.cwd() + "/" + answers.name + "/backend/src", ["server.ts"]).then(r => r)
+                }
+
             });
         } else {
             console.log(answers)
         }
     }))
+
 }
 
 app
     .name(name)
     .description('create' + name)
     .version('1.0.0')
-    .action(filename)
+    .action(createProject)
 
 
 app.parse(process.argv);
