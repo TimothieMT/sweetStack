@@ -5,6 +5,7 @@ import {Command, Option} from "commander";
 import fs from 'fs';
 import {join} from 'path'
 import {copyFile} from 'fs/promises'
+import * as path from "path";
 
 const {COPYFILE_EXCL} = fs.constants;
 
@@ -36,8 +37,10 @@ async function copyAll(fromDir, toDir, filePaths) {
 const filename = () => {
     inquirer.prompt(questions).then(((answers) => {
 
-        const destFile = "./templates/react-frontend"
-        const srcFile = "./" + answers.name
+        const srcFile = process.cwd() + "/" + answers.name
+        const destFile = process.cwd()
+
+        console.log("dest:" + destFile + " /src:" + srcFile)
 
         if (answers.name !== '' && answers['frontend'] === 'react' && answers['backend'] === 'no') {
 
@@ -45,11 +48,11 @@ const filename = () => {
                 if (err) {
                     console.log("error occurred in creating new directory", err);
                 }
-                fs.mkdirSync("./" + answers.name + "/frontend")
-                fs.mkdirSync("./" + answers.name + "/src")
+                fs.mkdirSync(srcFile + "/frontend")
+                fs.mkdirSync(srcFile + "/frontend/src")
 
-                copyAll(destFile, "./" + answers.name + "/", ["package.json", ".gitignore", "index.html", "package-lock.json", "tsconfig.json", "tsconfig.node.json", "vite.config.ts"]).then(r => r)
-                copyAll("./templates/react-frontend/src", "./" + answers.name + "/src", ["App.scss", "App.tsx","index.css","main.tsx","vite-env.d.ts"]).then(r => r)
+                copyAll(process.cwd() + "/" + name + "/templates/react-frontend", process.cwd() + "/" + answers.name + "/frontend", ["package.json", ".gitignore", "index.html", "package-lock.json", "tsconfig.json", "tsconfig.node.json", "vite.config.ts"]).then(r => r)
+                copyAll(process.cwd() + "/" + name + "/templates/react-frontend/src", process.cwd() + "/" + answers.name + "/frontend/src", ["App.scss", "App.tsx", "index.css", "main.tsx", "vite-env.d.ts"]).then(r => r)
 
                 console.log("New directory created successfully");
             });
