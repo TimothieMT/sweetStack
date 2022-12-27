@@ -7,18 +7,19 @@ import {join} from 'path'
 import {copyFile} from 'fs/promises'
 import * as path from "path";
 import {fileURLToPath} from 'url';
+import chalk from "chalk";
 
 const app = new Command();
 const name = "sweetstack";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const questions = [{type: "input", name: 'name', message: 'project name:'}, {
+const questions = [{type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')}, {
     type: "list",
     name: 'frontend',
-    choices: ['react', 'vue', 'angular'],
-    message: 'selected frontend:'
-}, {type: "list", name: 'backend', choices: ['yes', 'no'], message: 'need a backend ?'}]
+    choices: [chalk.blue('react'), chalk.green('vue'),chalk.red('angular')],
+    message: chalk.hex('#a08c95').bold('selected frontend: ')
+}, {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')}]
 
 
 async function copyAFile(from, to) {
@@ -43,7 +44,7 @@ const createProject = () => {
 
         const srcFile = `${process.cwd()}/${answers.name}`;
 
-        if (answers.name !== '' && answers['frontend'] === 'react') {
+        if (answers.name !== '' && answers['frontend'] === chalk.blue('react')) {
 
             fs.mkdir(srcFile, (err) => {
                 if (err) {
@@ -69,7 +70,6 @@ const createProject = () => {
                     fs.mkdirSync(srcFile + "/backend")
                     fs.mkdirSync(srcFile + "/backend/dist")
                     fs.mkdirSync(srcFile + "/backend/src")
-                    // fs.mkdirSync(srcFile + "/backend/dist/")
 
                     copyAll(
                         `${path.join(__dirname, "../")}/templates/react-backend`,
