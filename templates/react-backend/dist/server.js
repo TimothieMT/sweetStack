@@ -4,7 +4,8 @@ import cors from 'cors';
 const app = express();
 app.use(cors());
 const port = process.env.PORT || 3000;
-const url = '';
+//paste you own url ->
+const url = 'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/orders.json';
 const options = {
     method: 'GET',
     url: url,
@@ -12,22 +13,12 @@ const options = {
         'Accept-Encoding': 'application/json'
     }
 };
-const rawCoins = (await axios.request(options)).data;
-const coins = [];
-rawCoins.forEach((rawCoin) => {
-    const coin = {
-        image: '',
-        name: '',
-        current_price: 0,
-        price_change_percentage_24h: 0
-    };
-    coins.push(coin);
-});
+const response = (await axios.request(options)).data;
 app.get('/', (req, res) => {
     res.send('This is from express.js');
 });
-app.get('/crypto', (req, res) => {
-    res.json(rawCoins);
+app.get('/response', (req, res) => {
+    res.json(response);
 });
 app.listen(port, () => {
     console.log(`listening on http://localhost:${port}`);
