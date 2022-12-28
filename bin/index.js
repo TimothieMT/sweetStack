@@ -63,9 +63,7 @@ const createProject = () => {
                     ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
                 ).then(r => r);
             });
-
             console.log(chalk.green('react frontend successfully!'))
-
         }
 
         //CREATE REACT BACKEND
@@ -91,9 +89,6 @@ const createProject = () => {
             ).then(r => r);
             console.log(chalk.green('react backend successfully!'))
         }
-
-        console.log(chalk.red("ERROR"))
-
     }))
 }
 app
@@ -102,4 +97,4 @@ app
     .description('create' + name)
     .version('1.0.0')
     .action(createProject)
-app.parse(process.argv);cd
+app.parse(process.argv);
