@@ -5,7 +5,7 @@
   "description": "create application with sweetstack",
   "main": "index.js",
   "bin": {
-    "sweetstack": "bin/index.cjs"
+    "sweetstack": "bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
