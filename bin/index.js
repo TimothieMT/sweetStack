@@ -65,8 +65,11 @@ const createProject = () => {
                 `${srcFile}/frontend/src`,
                 ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
             ).then(r => r);
-
-            console.log(chalk.green('react frontend successfully!'))
+            console.log(chalk.green(`react frontend successfully!
+            
+            cd ${answers.name}
+            npm install
+            npm run dev`))
         }
 
         //CREATE VUE FRONTEND
@@ -114,8 +117,11 @@ const createProject = () => {
                 ['AboutView.vue', 'HomeView.vue'],
             ).then(r => r);
 
-
-            console.log(chalk.green('vue frontend successfully!'))
+            console.log(chalk.green(`vue backend successfully!
+            
+            cd ${answers.name}
+            npm install
+            npm run dev`))
         }
 
         //CREATE REACT BACKEND
@@ -140,7 +146,11 @@ const createProject = () => {
                 `${srcFile}/backend/src`,
                 ["server.ts"],
             ).then(r => r);
-            console.log(chalk.green('react backend successfully!'))
+            console.log(chalk.green(`react backend successfully!
+            
+            cd ${answers.name}
+            npm install
+            npm run dev`))
         }
     }))
 }
