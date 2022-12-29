@@ -14,12 +14,15 @@ const name = "sweetstack";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const questions = [{type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')}, {
-    type: "list",
-    name: 'frontend',
-    choices: [chalk.blue('react'), chalk.green('vue'), chalk.hex('#ff7247')('angular')],
-    message: chalk.hex('#a08c95').bold('selected frontend: ')
-}, {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')}]
+const questions = [
+    {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
+    {
+        type: "list",
+        name: 'frontend',
+        choices: [chalk.hex('#A7C7E7')('react'), chalk.green('vue'), chalk.hex('#ff7247')('angular')],
+        message: chalk.hex('#a08c95').bold('selected frontend: ')
+    },
+    {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')}]
 
 
 async function copyAFile(from, to) {
@@ -43,31 +46,29 @@ const createProject = () => {
 
         const srcFile = `${process.cwd()}/${answers.name}`;
 
-        if (answers.name !== '' && answers['frontend'] === chalk.blue('react')) {
+        if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react')) {
 
-            fs.mkdir(srcFile, (err) => {
-                if (err) {
-                    console.log("error occurred in creating new directory", chalk.red(err));
-                }
-                fs.mkdirSync(srcFile + "/frontend")
-                fs.mkdirSync(srcFile + "/frontend/src")
+            fs.mkdirSync(srcFile)
+            fs.mkdirSync(srcFile + "/frontend")
+            fs.mkdirSync(srcFile + "/frontend/src")
 
-                copyAll(
-                    `${path.join(__dirname, "../")}/templates/react-frontend`,
-                    `${srcFile}/frontend`,
-                    ['package.json', '.gitignore', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
-                ).then(r => r);
-                copyAll(
-                    `${path.join(__dirname, "../")}/templates/react-frontend/src`,
-                    `${srcFile}/frontend/src`,
-                    ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
-                ).then(r => r);
-            });
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/react-frontend`,
+                `${srcFile}/frontend`,
+                ['package.json', '.gitignore', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
+            ).then(r => r);
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/react-frontend/src`,
+                `${srcFile}/frontend/src`,
+                ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
+            ).then(r => r);
+
             console.log(chalk.green('react frontend successfully!'))
         }
 
         //CREATE REACT BACKEND
-        if (answers.name !== '' && answers['frontend'] === chalk.blue('react') && answers['backend'] === 'yes') {
+        if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'yes') {
+
             fs.mkdirSync(srcFile + "/backend")
             fs.mkdirSync(srcFile + "/backend/dist")
             fs.mkdirSync(srcFile + "/backend/src")
