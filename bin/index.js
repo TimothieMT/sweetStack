@@ -102,4 +102,4 @@ app
     .description('create' + name)
     .version('1.0.0')
     .action(createProject)
-app.parse(process.argv);cd
+app.parse(process.argv);
