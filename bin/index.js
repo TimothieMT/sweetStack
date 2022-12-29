@@ -41,16 +41,19 @@ async function copyAll(fromDir, toDir, filePaths) {
 
 const createProject = () => {
 
-    //CREATE REACT FRONTEND
+
     inquirer.prompt(questions).then(((answers) => {
 
         const srcFile = `${process.cwd()}/${answers.name}`;
 
+        fs.mkdirSync(srcFile)
+        fs.mkdirSync(srcFile + "/frontend")
+        fs.mkdirSync(srcFile + "/frontend/src")
+        fs.mkdirSync(srcFile + "/frontend/public")
+
+        //CREATE REACT FRONTEND
         if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react')) {
 
-            fs.mkdirSync(srcFile)
-            fs.mkdirSync(srcFile + "/frontend")
-            fs.mkdirSync(srcFile + "/frontend/src")
 
             copyAll(
                 `${path.join(__dirname, "../")}/templates/react-frontend`,
@@ -64,6 +67,55 @@ const createProject = () => {
             ).then(r => r);
 
             console.log(chalk.green('react frontend successfully!'))
+        }
+
+        //CREATE VUE FRONTEND
+        if (answers.name !== '' && answers['frontend'] === chalk.green('vue')) {
+
+            fs.mkdirSync(srcFile + "/frontend/src/assets")
+            fs.mkdirSync(srcFile + "/frontend/src/components")
+            fs.mkdirSync(srcFile + "/frontend/src/components/icons")
+            fs.mkdirSync(srcFile + "/frontend/src/router")
+            fs.mkdirSync(srcFile + "/frontend/src/views")
+
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/vue-frontend`,
+                `${srcFile}/frontend`,
+                ['env.d.ts','index.html','package.json', 'package-lock.json','README.md','tsconfig.config.json','tsconfig.json','vite.config.ts'],
+            ).then(r => r);
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/vue-frontend/src`,
+                `${srcFile}/frontend/src`,
+                ['App.vue','main.ts'],
+            ).then(r => r);
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/vue-frontend/src/assets`,
+                `${srcFile}/frontend/src/assets`,
+                ['base.css','logo.svg','main.css'],
+            ).then(r => r);
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/vue-frontend/src/components`,
+                `${srcFile}/frontend/src/components`,
+                ['HelloWorld.vue', 'TheWelcome.vue','WelcomeItem.vue'],
+            ).then(r => r);
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/vue-frontend/src/components/icons`,
+                `${srcFile}/frontend/src/components/icons`,
+                ['IconCommunity.vue','IconDocumentation.vue','IconEcosystem.vue','IconSupport.vue','IconTooling.vue'],
+            ).then(r => r);
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/vue-frontend/src/router`,
+                `${srcFile}/frontend/src/router`,
+                ['index.ts'],
+            ).then(r => r);
+            copyAll(
+                `${path.join(__dirname, "../")}/templates/vue-frontend/src/views`,
+                `${srcFile}/frontend/src/views`,
+                ['AboutView.vue', 'HomeView.vue'],
+            ).then(r => r);
+
+
+            console.log(chalk.green('vue frontend successfully!'))
         }
 
         //CREATE REACT BACKEND
