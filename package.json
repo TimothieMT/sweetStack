@@ -1,17 +1,17 @@
 {
   "name": "sweetstack",
-  "version": "1.0.1",
+  "version": "1.0.8",
   "type": "module",
   "description": "create application with sweetstack",
   "main": "index.js",
   "bin": {
-    "sweetstack": "bin/index.js"
+    "sweetstack": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "TimothieMT",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^5.2.0",
     "clear": "^0.1.0",
