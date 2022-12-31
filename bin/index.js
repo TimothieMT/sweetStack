@@ -8,12 +8,12 @@ import {copyFile} from 'fs/promises'
 import * as path from "path";
 import {fileURLToPath} from 'url';
 import chalk from "chalk";
-import os from 'os'
 
 
 const app = new Command();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const name = 'sweetstack'
 
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
@@ -46,10 +46,13 @@ function absPath() {
     let result = ''
 
     if (process.platform === 'linux') {
-        result = `${path.parse(process.cwd()).root}/lib/node_modules/sweetstack/`
+        result = `${path.parse(process.cwd()).root}/lib/node_modules/${name}/`
     }
     if (process.platform === 'darwin') {
-        result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/sweetstack/`
+        result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
+    }
+    if (process.platform === 'win32'){
+        result = `${path.parse(process.cwd()).root}/Users/${process.env.USERNAME}/AppData/Roaming/npm/node_modules/${name}/`
     }
 
     return result
@@ -169,7 +172,7 @@ const createProject = () => {
             console.log(chalk.green(`react backend successfully!
             
             cd ${answers.name}
-            cd backend
+            cd frontend
             npm install
             cd backend
             npm install
