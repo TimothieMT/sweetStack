@@ -8,6 +8,8 @@ import {copyFile} from 'fs/promises'
 import * as path from "path";
 import {fileURLToPath} from 'url';
 import chalk from "chalk";
+import os from 'os'
+
 
 const app = new Command();
 const __filename = fileURLToPath(import.meta.url);
@@ -39,13 +41,28 @@ async function copyAll(fromDir, toDir, filePaths) {
     }));
 }
 
+function absPath() {
+
+    let result = ''
+
+    if (process.platform === 'linux') {
+        result = `${path.parse(process.cwd()).root}/lib/node_modules/sweetstack/`
+    }
+    if (process.platform === 'darwin') {
+        result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/sweetstack/`
+    }
+
+    return result
+}
+
+
 const createProject = () => {
 
     inquirer.prompt(questions).then(((answers) => {
 
-        const srcPath = `${path.join(__dirname, "../../../")}node_modules/sweetstack`;
-        const destPath = ""
-        console.log(`destPath: ${path.join(__dirname, "../../")}${answers.name}`)
+        const absolutePath = absPath()
+
+        const destPath = `${path.resolve()}/${answers.name}`
 
         fs.mkdirSync(destPath)
         fs.mkdirSync(destPath + "/frontend")
@@ -56,15 +73,16 @@ const createProject = () => {
         if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react')) {
 
             copyAll(
-                `${srcPath}/templates/react-frontend`,
+                `${absolutePath}/templates/react-frontend`,
                 `${destPath}/frontend`,
                 ['package.json', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/react-frontend/src`,
+                `${absolutePath}/templates/react-frontend/src`,
                 `${destPath}/frontend/src`,
                 ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
             ).then(r => r);
+
             console.log(chalk.green(`react frontend successfully!
             
             cd ${answers.name}
@@ -83,37 +101,37 @@ const createProject = () => {
             fs.mkdirSync(destPath + "/frontend/src/views")
 
             copyAll(
-                `${srcPath}/templates/vue-frontend`,
+                `${absolutePath}/templates/vue-frontend`,
                 `${destPath}/frontend`,
                 ['env.d.ts', 'index.html', 'package.json', 'package-lock.json', 'README.md', 'tsconfig.config.json', 'tsconfig.json', 'vite.config.ts'],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/vue-frontend/src`,
+                `${absolutePath}/templates/vue-frontend/src`,
                 `${destPath}/frontend/src`,
                 ['App.vue', 'main.ts'],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/vue-frontend/src/assets`,
+                `${absolutePath}/templates/vue-frontend/src/assets`,
                 `${destPath}/frontend/src/assets`,
                 ['base.css', 'logo.svg', 'main.css'],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/vue-frontend/src/components`,
+                `${absolutePath}/templates/vue-frontend/src/components`,
                 `${destPath}/frontend/src/components`,
                 ['HelloWorld.vue', 'TheWelcome.vue', 'WelcomeItem.vue'],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/vue-frontend/src/components/icons`,
+                `${absolutePath}/templates/vue-frontend/src/components/icons`,
                 `${destPath}/frontend/src/components/icons`,
                 ['IconCommunity.vue', 'IconDocumentation.vue', 'IconEcosystem.vue', 'IconSupport.vue', 'IconTooling.vue'],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/vue-frontend/src/router`,
+                `${absolutePath}/templates/vue-frontend/src/router`,
                 `${destPath}/frontend/src/router`,
                 ['index.ts'],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/vue-frontend/src/views`,
+                `${absolutePath}/templates/vue-frontend/src/views`,
                 `${destPath}/frontend/src/views`,
                 ['AboutView.vue', 'HomeView.vue'],
             ).then(r => r);
@@ -134,17 +152,17 @@ const createProject = () => {
             fs.mkdirSync(destPath + "/backend/src")
 
             copyAll(
-                `${srcPath}/templates/react-backend`,
+                `${absolutePath}/templates/react-backend`,
                 `${destPath}/backend`,
                 ["nodemon.json", "package.json", "package-lock.json", "tsconfig.json"],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/react-backend/dist`,
+                `${absolutePath}/templates/react-backend/dist`,
                 `${destPath}/backend/dist`,
                 ["server.js", "server.js.map"],
             ).then(r => r);
             copyAll(
-                `${srcPath}/templates/react-backend/src`,
+                `${absolutePath}/templates/react-backend/src`,
                 `${destPath}/backend/src`,
                 ["server.ts"],
             ).then(r => r);
@@ -158,8 +176,8 @@ const createProject = () => {
             npm run dev`))
         }
     }))
+
 }
 app
     .action(createProject)
 app.parse(process.argv);
-
