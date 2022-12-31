@@ -15,22 +15,16 @@ Sweetstack is an application to quickly and easily create starter pages with or 
 - [@TimothieMT](https://github.com/TimothieMT)
 ## Run Locally
 
-Clone the project
-
-```bash
-  git clone https://github.com/TimothieMT/sweetStack.git
-```
-
 Go to the dektop and install globally
 
 ```bash
-  npm install sweetStack -g
+  npm install sweetstack -g
 ```
 
 start cli with command below, create directory and go to it
 
 ```bash
-  sweetStack
+  sweetstack
 ```
 
 change to project directory
