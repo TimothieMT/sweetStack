@@ -51,20 +51,25 @@ function absPath() {
     switch (process.platform) {
         case 'win32':
             if (process.platform === 'win32') {
-                return result = `${path.parse(process.cwd()).root}/Users/${process.env.USERNAME}/AppData/Roaming/npm/node_modules/${name}/`
+                result = `${path.parse(process.cwd()).root}/Users/${process.env.USERNAME}/AppData/Roaming/npm/node_modules/${name}/`
             } else {
-                return result = `${path.parse(process.cwd()).root}/Program Files/nodejs/node_modules/${name}/`
+                result = `${path.parse(process.cwd()).root}/Program Files/nodejs/node_modules/${name}/`
             }
-
+            break
         case 'linux':
             if (process.platform === 'linux') {
-                return result = `${path.parse(process.cwd()).root}/lib/node_modules/${name}/`
+                result = `${path.parse(process.cwd()).root}/lib/node_modules/${name}/`
+            } else if (process.platform === 'linux') {
+                result = `${path.parse(process.cwd()).root}/home/${process.env.USERNAME}/.nvm/versions/node/${process.version}/lib/node_modules/${name}/`
             } else {
-                return result = `${path.parse(process.cwd()).root}/home/${process.env.USERNAME}/.nvm/versions/node/${process.version}/lib/node_modules/${name}/`
+                result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
             }
+            break
         case 'darwin':
-            return result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
+            result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
+            break
     }
+    return result
 }
 
 function expressBackend(from, to, name) {
@@ -121,6 +126,8 @@ const createProject = () => {
                 `${destPath}/frontend/src`,
                 ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
             ).then(r => r);
+
+            console.log(absPath())
 
             console.log(chalk.green(`react frontend successfully!
             
