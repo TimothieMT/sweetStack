@@ -47,24 +47,37 @@ function absPath() {
 
     //check admin/root and path windows 11 / process.arch
     //switch case
+    const winPath1 = `${path.parse(process.cwd()).root}/Users/${process.env.USERNAME}/AppData/Roaming/npm/node_modules/${name}/`
+    const winPath2 = `${path.parse(process.cwd()).root}/Program Files/nodejs/node_modules/${name}/`
+
+    const linuxPath1 = `${path.parse(process.cwd()).root}/lib/node_modules/${name}/`
+    const linuxPath2 = `${path.parse(process.cwd()).root}/home/${process.env.USERNAME}/.nvm/versions/node/${process.version}/lib/node_modules/${name}/`
+
+    const macPath1 = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
 
     switch (process.platform) {
         case 'win32':
-            if (process.platform === 'win32') {
-                return result = `${path.parse(process.cwd()).root}/Users/${process.env.USERNAME}/AppData/Roaming/npm/node_modules/${name}/`
+            if (fs.existsSync(winPath1)) {
+                result = winPath1
             } else {
-                return result = `${path.parse(process.cwd()).root}/Program Files/nodejs/node_modules/${name}/`
+                result = winPath2
             }
-
+            break;
         case 'linux':
-            if (process.platform === 'linux') {
-                return result = `${path.parse(process.cwd()).root}/lib/node_modules/${name}/`
+            if (fs.existsSync(linuxPath1)) {
+                result = linuxPath1
             } else {
-                return result = `${path.parse(process.cwd()).root}/home/${process.env.USERNAME}/.nvm/versions/node/${process.version}/lib/node_modules/${name}/`
+                result = linuxPath2
             }
+            break
         case 'darwin':
-            return result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
+            return macPath1
+        default: {
+            console.log(chalk.red('your platform is not supported'))
+        }
     }
+
+    return result
 }
 
 function expressBackend(from, to, name) {
