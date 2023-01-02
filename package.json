@@ -1,9 +1,9 @@
 {
   "name": "sweetstack",
-  "version": "1.0.8",
+  "version": "1.0.31",
   "type": "module",
   "description": "create application with sweetstack",
-  "main": "index.js",
+  "main": "./bin/index.js",
   "bin": {
     "sweetstack": "./bin/index.js"
   },
