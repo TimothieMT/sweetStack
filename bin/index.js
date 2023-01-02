@@ -45,18 +45,26 @@ function absPath() {
 
     let result = ''
 
-    if (process.platform === 'linux') {
-       // result = `${path.parse(process.cwd()).root}/lib/node_modules/${name}/`
-        result = `${path.resolve()}`
-    }
-    if (process.platform === 'darwin') {
-        result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
-    }
-    if (process.platform === 'win32') {
-        result = `${path.parse(process.cwd()).root}/Users/${process.env.USERNAME}/AppData/Roaming/npm/node_modules/${name}/`
-    }
+    //check admin/root and path windows 11 / process.arch
+    //switch case
 
-    return result
+    switch (process.platform) {
+        case 'win32':
+            if (process.platform === 'win32') {
+                return result = `${path.parse(process.cwd()).root}/Users/${process.env.USERNAME}/AppData/Roaming/npm/node_modules/${name}/`
+            } else {
+                return result = `${path.parse(process.cwd()).root}/Program Files/nodejs/node_modules/${name}/`
+            }
+
+        case 'linux':
+            if (process.platform === 'linux') {
+                return result = `${path.parse(process.cwd()).root}/lib/node_modules/${name}/`
+            } else {
+                return result = `${path.parse(process.cwd()).root}/home/${process.env.USERNAME}/.nvm/versions/node/${process.version}/lib/node_modules/${name}/`
+            }
+        case 'darwin':
+            return result = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
+    }
 }
 
 function expressBackend(from, to, name) {
@@ -184,12 +192,12 @@ const createProject = () => {
             copyAll(
                 `${absolutePath}/templates/angular-frontend`,
                 `${destPath}/frontend`,
-                ['angular.json', 'package.json', 'package-lock.json', 'README.md', 'tsconfig.app.json','tsconfig.spec.json', 'tsconfig.json'],
+                ['angular.json', 'package.json', 'package-lock.json', 'README.md', 'tsconfig.app.json', 'tsconfig.spec.json', 'tsconfig.json'],
             ).then(r => r);
             copyAll(
                 `${absolutePath}/templates/angular-frontend/src`,
                 `${destPath}/frontend/src`,
-                ['styles.sass','index.html','favicon.ico', 'main.ts'],
+                ['styles.sass', 'index.html', 'favicon.ico', 'main.ts'],
             ).then(r => r);
             copyAll(
                 `${absolutePath}/templates/angular-frontend/src/assets`,
