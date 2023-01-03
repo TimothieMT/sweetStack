@@ -31,7 +31,7 @@ find the path to the node_modules folder and paste it. Then select the template 
 
 Example:
 ```bash
-  \Users\USERNAME\node_modules\
+  \Users\USERNAME\node_modules
 ```
 
 change to project directory
