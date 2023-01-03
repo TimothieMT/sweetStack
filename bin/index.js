@@ -20,7 +20,7 @@ const questions = [
     {
         type: "input",
         name: 'path',
-        message: chalk.hex('#a08c95').bold('please enter the path to ../node_modules/ folder: ')
+        message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: ')
     },
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
     {
@@ -69,7 +69,7 @@ function absPath() {
                 }
                 break;
             case 'linux':
-                if (fs.existsSync(linuxPath1)) {
+                if (process.platform === 'linux' && fs.existsSync(linuxPath1)) {
                     result = linuxPath1
                 } else {
                     result = linuxPath2
@@ -119,23 +119,22 @@ function expressBackend(from, to, name) {
             npm run start`))
 }
 
+
 //CREATE FUNCTION
 const createProject = () => {
 
     inquirer.prompt(questions).then(((answers) => {
 
-            let absolutePath = ''
+        let absolutePath = ''
 
-        function checkPath(dir) {
-            if (dir === null || dir === undefined || dir === '') {
+            if (answers['path'] === null || answers['path'] === undefined || answers['path'] === '' ) {
                 absolutePath = absPath()
             } else {
-                return absolutePath = `${answers.path}/${name}/`
+                absolutePath = `${answers.path}/${name}/`
             }
-        }
 
-        checkPath(absolutePath)
         const destPath = `${path.resolve()}/${answers.name}`
+
 
         fs.mkdirSync(destPath)
         fs.mkdirSync(destPath + "/frontend")
@@ -155,7 +154,6 @@ const createProject = () => {
                 `${destPath}/frontend/src`,
                 ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
             ).then(r => r);
-
 
             console.log(chalk.green(`react frontend successfully!
             
