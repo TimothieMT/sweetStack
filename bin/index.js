@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+//IMPORTS
 import inquirer from "inquirer";
 import {Command} from "commander";
 import fs from 'fs';
@@ -9,13 +9,19 @@ import * as path from "path";
 import {fileURLToPath} from 'url';
 import chalk from "chalk";
 
-
+//VARIABLES
 const app = new Command();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const name = 'sweetstack'
 
+//REQUESTS
 const questions = [
+    {
+        type: "input",
+        name: 'path',
+        message: chalk.hex('#a08c95').bold('please enter the path to ../node_modules/ folder: ')
+    },
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
     {
         type: "list",
@@ -26,62 +32,66 @@ const questions = [
     {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')}
 ]
 
-
+//COPY A FILE
 async function copyAFile(from, to) {
     try {
         await copyFile(from, to);
     } catch (err) {
-        console.error(`Got an error trying to copy the file: ${err.message}`);
+        console.error(`${err.message}`);
     }
 }
 
+//COPY ALL FILES
 async function copyAll(fromDir, toDir, filePaths) {
     return Promise.all(filePaths.map(filePath => {
         return copyAFile(join(fromDir, filePath), join(toDir, filePath));
     }));
 }
 
+//ABSOLUTE PATH TO THE NODE_MODULES FOLDER
 function absPath() {
 
     let result = ''
 
-    //check admin/root and path windows 11 / process.arch
-    //switch case
     const winPath1 = `${path.parse(process.cwd()).root}/Users/${process.env.USERNAME}/AppData/Roaming/npm/node_modules/${name}/`
     const winPath2 = `${path.parse(process.cwd()).root}/Program Files/nodejs/node_modules/${name}/`
-
     const linuxPath1 = `${path.parse(process.cwd()).root}/lib/node_modules/${name}/`
     const linuxPath2 = `${path.parse(process.cwd()).root}/home/${process.env.USERNAME}/.nvm/versions/node/${process.version}/lib/node_modules/${name}/`
-
     const macPath1 = `${path.parse(process.cwd()).root}/usr/local/lib/node_modules/${name}/`
 
-    switch (process.platform) {
-        case 'win32':
-            if (fs.existsSync(winPath1)) {
-                result = winPath1
-            } else {
-                result = winPath2
+    try {
+        switch (process.platform) {
+            case 'win32':
+                if (fs.existsSync(winPath1)) {
+                    result = winPath1
+                } else {
+                    result = winPath2
+                }
+                break;
+            case 'linux':
+                if (fs.existsSync(linuxPath1)) {
+                    result = linuxPath1
+                } else {
+                    result = linuxPath2
+                }
+                break
+            case 'darwin':
+                return macPath1
+            default: {
+                console.log(chalk.red('your platform is not supported'))
             }
-            break;
-        case 'linux':
-            if (fs.existsSync(linuxPath1)) {
-                result = linuxPath1
-            } else {
-                result = linuxPath2
-            }
-            break
-        case 'darwin':
-            return macPath1
-        default: {
-            console.log(chalk.red('your platform is not supported'))
         }
+    } catch (err) {
+        console.error('working system not supported' + err)
     }
 
-    return result
+    return result.toString()
 }
 
+
+//EXPRESS BACKEND
 function expressBackend(from, to, name) {
-    //EXPRESS BACKEND
+
     fs.mkdirSync(to + "/backend")
     fs.mkdirSync(to + "/backend/dist")
     fs.mkdirSync(to + "/backend/src")
@@ -109,11 +119,22 @@ function expressBackend(from, to, name) {
             npm run start`))
 }
 
+//CREATE FUNCTION
 const createProject = () => {
 
     inquirer.prompt(questions).then(((answers) => {
 
-        const absolutePath = absPath()
+            let absolutePath = ''
+
+        function checkPath(dir) {
+            if (dir === null || dir === undefined || dir === '') {
+                absolutePath = absPath()
+            } else {
+                return absolutePath = `${answers.path}/${name}/`
+            }
+        }
+
+        checkPath(absolutePath)
         const destPath = `${path.resolve()}/${answers.name}`
 
         fs.mkdirSync(destPath)
@@ -134,6 +155,7 @@ const createProject = () => {
                 `${destPath}/frontend/src`,
                 ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
             ).then(r => r);
+
 
             console.log(chalk.green(`react frontend successfully!
             
@@ -231,7 +253,7 @@ const createProject = () => {
             ng serve`))
         }
 
-
+        //CREATE BACKEND REACT AND VUE
         if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'yes') {
             expressBackend(absolutePath, destPath, answers.name)
         }
@@ -240,6 +262,8 @@ const createProject = () => {
         }
     }))
 }
+
+
 app
     .action(createProject)
 app.parse(process.argv);
