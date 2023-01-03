@@ -27,6 +27,13 @@ start cli with command below, create directory and go to it
   sweetstack
 ```
 
+find the path to the node_modules folder and paste it. Then select the template you want to use. 
+
+Example:
+```bash
+  \Users\USERNAME\node_modules\
+```
+
 change to project directory
 
 ```bash
@@ -35,12 +42,9 @@ change to project directory
 and install assets with command below
 
 ```bash
+  cd <direktory> 
   npm i -y
 ```
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
 
 
 ## Feedback
