@@ -27,7 +27,7 @@ start cli with command below, create directory and go to it
   sweetstack
 ```
 
-find the path to the node_modules folder and paste it. Then select the template you want to use. 
+if you PATH not supported, find the path to the node_modules folder and paste it. 
 
 Example:
 ```bash

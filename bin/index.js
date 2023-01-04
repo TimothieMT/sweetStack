@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 //IMPORTS
 import inquirer from "inquirer";
 import {Command} from "commander";
@@ -26,7 +27,6 @@ const questions = [
     },
     {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')}
 ]
-
 
 //COPY A FILE
 async function copyAFile(from, to) {
@@ -85,7 +85,6 @@ function absPath() {
     return result.toString()
 }
 
-
 //EXPRESS BACKEND
 function expressBackend(from, to, name) {
 
@@ -115,9 +114,7 @@ function expressBackend(from, to, name) {
             npm install
             npm run start`))
 }
-
-
-const reactFrontend = (from, to, answers) => {
+function reactFrontend (from, to, answers) {
     //CREATE REACT FRONTEND
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react')) {
 
@@ -145,7 +142,6 @@ const reactFrontend = (from, to, answers) => {
             npm run dev`))
     }
 }
-
 function vueFrontend(from, to, answers) {
     //CREATE VUE FRONTEND
     if (answers.name !== '' && answers['frontend'] === chalk.green('vue')) {
@@ -204,8 +200,6 @@ function vueFrontend(from, to, answers) {
             npm run dev`))
     }
 }
-
-
 function angularFrontend(from, to, answers) {
     //CREATE ANGULAR FRONTEND
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular')) {
@@ -285,6 +279,7 @@ const createProject = () => {
     }))
 }
 
+//INIT PROJECT
 app
     .action(createProject)
 app.parse(process.argv);
