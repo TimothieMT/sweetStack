@@ -12,9 +12,9 @@ import chalk from "chalk";
 
 //VARIABLES
 const app = new Command();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const name = 'sweetstack'
+const buttonElement = '<button>Click me</button>'
+const useContext = 'test'
 
 //REQUESTS
 const questions = [
@@ -25,6 +25,12 @@ const questions = [
         choices: [chalk.hex('#A7C7E7')('react'), chalk.green('vue'), chalk.hex('#ff7247')('angular')],
         message: chalk.hex('#a08c95').bold('selected frontend: ')
     },
+    {
+        type: "list",
+        name: 'component',
+        choices: ['buttonElement', 'useContext'],
+        message: chalk.hex('#a08c95').bold('selected component: ')
+    },
     {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')},
     {
         type: "input",
@@ -34,7 +40,6 @@ const questions = [
 ]
 
 //COPY A FILE
-
 async function copyAFile(from, to) {
     try {
         await copyFile(from, to);
@@ -50,7 +55,7 @@ async function copyAll(fromDir, toDir, filePaths) {
     }));
 }
 
-//EXPRESS BACKEND
+//MAIN FUNCTION
 function expressBackend(from, to, answers) {
 
     fs.mkdirSync(to + "/backend")
@@ -118,7 +123,7 @@ function angularBackend(from, to, answers) {
             ng serve`))
 }
 
-function reactFrontend(from, to, answers) {
+function reactFrontend(from, to, answers, component) {
     //CREATE REACT FRONTEND
 
     fs.mkdirSync(to)
@@ -130,12 +135,19 @@ function reactFrontend(from, to, answers) {
         `${from}/templates/react-frontend`,
         `${to}/frontend`,
         ['package.json', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
-    ).then(r => r);
+    ).then(() => {
+        if (answers['component'] === 'buttonElement') {
+        writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, buttonElement)
+        }else if (answers['component'] === 'useContext') {
+        writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, useContext)
+        }
+    });
+
     copyAll(
         `${from}/templates/react-frontend/src`,
         `${to}/frontend/src`,
         ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
-    ).then(r => r);
+    ).then(() => writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, element));
 
     console.log(chalk.green(`react frontend successfully!
             
@@ -241,40 +253,48 @@ function angularFrontend(from, to, answers) {
             ng serve`))
 }
 
-//CREATE FUNCTION
-const createProject = () => {
-
-    inquirer.prompt(questions).then(((answers) => {
-
-        const absolutePath = `${answers.path}/${name}/`
-        const destPath = `${path.resolve()}/${answers.name}`
-
-
-        if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'yes') {
-            expressBackend(absolutePath, destPath, answers)
-        }
-        if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'yes') {
-            expressBackend(absolutePath, destPath, answers)
-        }
-        if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'yes') {
-            angularBackend(absolutePath, destPath, answers)
-        }
-
-        if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'no') {
-            reactFrontend(absolutePath, destPath, answers)
-        }
-
-        if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'no') {
-            vueFrontend(absolutePath, destPath, answers)
-        }
-
-        if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'no') {
-            angularFrontend(absolutePath, destPath, answers)
-        }
-    }))
+function writeInComponent(path, string) {
+    try {
+        fs.appendFileSync(path, string)
+        console.log('file written' + path)
+    } catch (err) {
+        console.log('nnn', err)
+    }
 }
 
+
+//CREATE FUNCTION
+
+function createProject(answers, absolutePath, destPath) {
+
+    if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'no') {
+        reactFrontend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'no') {
+        vueFrontend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'no') {
+        angularFrontend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'yes') {
+        expressBackend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'yes') {
+        expressBackend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'yes') {
+        angularBackend(absolutePath, destPath, answers)
+    } else {
+        console.log(chalk.red('Please select something'))
+    }
+
+}
+
+
+inquirer.prompt(questions).then(((answers) => {
+
+    const absolutePath = `${answers.path}/${name}`
+    const destPath = `${path.resolve()}/${answers.name}`
+
+    createProject(answers, absolutePath, destPath)
+
+}))
+
+
 //INIT PROJECT
-app
-    .action(createProject)
-app.parse(process.argv);
+app.parse(process.argv)
