@@ -7,14 +7,14 @@ import fs from 'fs';
 import {join} from 'path'
 import {copyFile} from 'fs/promises'
 import * as path from "path";
-import {fileURLToPath} from 'url';
 import chalk from "chalk";
+import fuzzy from "inquirer-fuzzy-path";
 
 //VARIABLES
 const app = new Command();
 const name = 'sweetstack'
-const buttonElement = '<button>Click me</button>'
 const useContext = 'test'
+const listHooks = ['useEffect', 'useReducer', 'useContext', 'useState', 'useRef']
 
 //REQUESTS
 const questions = [
@@ -28,14 +28,20 @@ const questions = [
     {
         type: "list",
         name: 'component',
-        choices: ['buttonElement', 'useContext'],
+        choices: listHooks,
         message: chalk.hex('#a08c95').bold('selected component: ')
     },
     {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')},
     {
-        type: "input",
+        type: "fuzzypath",
         name: 'path',
-        message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: ')
+        itemType: 'directory',
+        rootPath: process.env.HOME,
+        message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: '),
+        default: 'results...',
+        suggestOnly: false,
+        depthLimit: 1,
+
     }
 ]
 
@@ -123,7 +129,7 @@ function angularBackend(from, to, answers) {
             ng serve`))
 }
 
-function reactFrontend(from, to, answers, component) {
+function reactFrontend(from, to, answers) {
     //CREATE REACT FRONTEND
 
     fs.mkdirSync(to)
@@ -137,9 +143,9 @@ function reactFrontend(from, to, answers, component) {
         ['package.json', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
     ).then(() => {
         if (answers['component'] === 'buttonElement') {
-        writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, buttonElement)
-        }else if (answers['component'] === 'useContext') {
-        writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, useContext)
+            writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, buttonElement)
+        } else if (answers['component'] === 'useContext') {
+            writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, useContext)
         }
     });
 
@@ -147,7 +153,9 @@ function reactFrontend(from, to, answers, component) {
         `${from}/templates/react-frontend/src`,
         `${to}/frontend/src`,
         ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
-    ).then(() => writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, element));
+    ).then(
+        // () => writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, element)
+    );
 
     console.log(chalk.green(`react frontend successfully!
             
@@ -286,14 +294,19 @@ function createProject(answers, absolutePath, destPath) {
 }
 
 
-inquirer.prompt(questions).then(((answers) => {
+inquirer.registerPrompt('fuzzypath', fuzzy)
+inquirer.prompt(questions)
+    .then(((answers) => {
 
-    const absolutePath = `${answers.path}/${name}`
-    const destPath = `${path.resolve()}/${answers.name}`
 
-    createProject(answers, absolutePath, destPath)
+        const absolutePath = `${answers.path}/${name}`
+        const destPath = `${path.resolve()}/${answers.name}`
 
-}))
+        console.log(absolutePath)
+
+        createProject(answers, absolutePath, destPath)
+
+    }))
 
 
 //INIT PROJECT
