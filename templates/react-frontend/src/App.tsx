@@ -1,6 +1,6 @@
 import './App.scss'
 
-function App() {
+function UseEffect() {
 
   return (
     <div className="App">

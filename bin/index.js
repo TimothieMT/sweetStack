@@ -10,39 +10,17 @@ import * as path from "path";
 import chalk from "chalk";
 import fuzzy from "inquirer-fuzzy-path"
 
-
 //VARIABLES
 const app = new Command();
 const name = 'sweetstack'
-const useContextElement = 'UseContext'
-const useEffectAxiosElement = `
-/*
-Copy this code in row 2 of App.tsx
-import { useState, useEffect } from 'react';
 
-Copy this code in row 4 of App.tsx
-    const [nouns, setNouns] = useState([]);
- 
-    useEffect(() => {
-        (async () => {
-            setNouns((await axios.get(url)).data);
-        })();
-    }, []);
-}
-*/
-`
-const useReducerElement = 'useReducer'
-const useStatesElement = `
-/*
-Copy this code in row 2 of App.tsx
-import {useState} from 'react'
-Copy this code in row 4 of App.tsx
-const [state, setState] = useState()
-*/
-`
-const useRefElement = 'useRef'
+const useEffectAxios = 'useEffectAxios'
+const useReducer = 'useReducer'
+const useStates = 'useState'
+const useRef = 'useRef'
+let useContext = 'useContext'
 
-const listHooks = ['useEffectAxios', 'useReducer', 'useContext', 'useState', 'useRef']
+const listHooks = [useEffectAxios,useStates,useReducer,useContext,useRef]
 
 //REQUESTS
 const questions = [
@@ -178,10 +156,17 @@ function reactFrontend(from, to, answers) {
         `${to}/frontend/src`,
         ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
     ).then(() => {
+        const useEffectAxiosTemplate = fs.readFileSync('templates/react-hooks/useEffectAxiosTemplate.txt', 'utf8')
+        const useStateTemplate = fs.readFileSync('templates/react-hooks/useStateTemplate.txt', 'utf8')
+        const useReducerTemplate = fs.readFileSync('templates/react-hooks/useReducerTemplate.txt', 'utf8')
+        const useContextTemplate = fs.readFileSync('templates/react-hooks/useContextTemplate.txt', 'utf8')
+        const useRefTemplate = fs.readFileSync('templates/react-hooks/useRefTemplate.txt', 'utf8')
         answers['hooks'].forEach((hook) => {
             if (answers['hooks'].includes(hook)) {
-                writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`,  `${hook}Element`)
-                console.log(chalk.green(`${hook} successfully added!`))
+                if (hook.includes('useEffect')){
+                    fs.writeFileSync(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, useEffectTemplate.toString() )
+                    console.log('successfully')
+                }
             }
         })
     });
@@ -215,7 +200,7 @@ function vueFrontend(from, to, answers) {
     copyAll(
         `${from}/templates/vue-frontend/src`,
         `${to}/frontend/src`,
-        ['App.vue', 'main.ts'],
+        ['UseEffectElement.vue', 'main.ts'],
     ).then(r => r);
     copyAll(
         `${from}/templates/vue-frontend/src/assets`,
@@ -290,11 +275,11 @@ function angularFrontend(from, to, answers) {
             ng serve`))
 }
 
-function writeInComponent(path, string) {
+function writeInComponent(path, value) {
     try {
-        fs.appendFileSync(path, string)
+        fs.appendFileSync(path, value)
     } catch (err) {
-        console.log('nnn', err)
+        console.log(err)
     }
 }
 
