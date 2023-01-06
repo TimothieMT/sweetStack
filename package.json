@@ -20,6 +20,7 @@
     "figlet": "^1.5.2",
     "fs-extra": "^11.1.0",
     "inquirer": "^9.1.4",
+    "inquirer-checkbox-plus-prompt": "^1.4.1",
     "inquirer-fuzzy-path": "^2.3.0",
     "typescript": "^4.9.4",
     "yargs": "^17.6.2"

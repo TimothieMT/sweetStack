@@ -8,12 +8,18 @@ import {join} from 'path'
 import {copyFile} from 'fs/promises'
 import * as path from "path";
 import chalk from "chalk";
-import fuzzy from "inquirer-fuzzy-path";
+import fuzzy from "inquirer-fuzzy-path"
+
 
 //VARIABLES
 const app = new Command();
 const name = 'sweetstack'
-const useContext = 'test'
+const useContextElement = 'UseContext'
+const useEffectElement = 'useEffect'
+const useReducerElement = 'useReducer'
+const useStatesElement = 'useStates'
+const useRefElement = 'useRef'
+
 const listHooks = ['useEffect', 'useReducer', 'useContext', 'useState', 'useRef']
 
 //REQUESTS
@@ -26,11 +32,12 @@ const questions = [
         message: chalk.hex('#a08c95').bold('selected frontend: ')
     },
     {
-        type: "list",
-        name: 'component',
+        type: "checkbox",
+        name: 'hooks',
+        message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm witch "enter": '),
         choices: listHooks,
-        message: chalk.hex('#a08c95').bold('selected component: ')
     },
+
     {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')},
     {
         type: "fuzzypath",
@@ -38,7 +45,7 @@ const questions = [
         itemType: 'directory',
         rootPath: process.env.HOME,
         message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: '),
-        default: 'results...',
+        default: 'path to node_modules',
         suggestOnly: false,
         depthLimit: 1,
 
@@ -142,20 +149,25 @@ function reactFrontend(from, to, answers) {
         `${to}/frontend`,
         ['package.json', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
     ).then(() => {
-        if (answers['component'] === 'buttonElement') {
-            writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, buttonElement)
-        } else if (answers['component'] === 'useContext') {
-            writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, useContext)
-        }
+        answers['hooks'].forEach((hook) => {
+            if (answers['hooks'].includes(hook)){
+                writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, `${hook}Element`)
+                console.log(chalk.green(`${hook} successfully added!`))
+            }
+        })
     });
 
     copyAll(
         `${from}/templates/react-frontend/src`,
         `${to}/frontend/src`,
         ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
-    ).then(
-        // () => writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, element)
-    );
+    ).then(() => {
+        answers['hooks'].forEach((hook) => {
+            if (answers['hooks'].includes(hook)){
+                writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, `${hook}Element`)
+            }
+        })
+    });
 
     console.log(chalk.green(`react frontend successfully!
             
@@ -264,7 +276,6 @@ function angularFrontend(from, to, answers) {
 function writeInComponent(path, string) {
     try {
         fs.appendFileSync(path, string)
-        console.log('file written' + path)
     } catch (err) {
         console.log('nnn', err)
     }
@@ -293,7 +304,6 @@ function createProject(answers, absolutePath, destPath) {
 
 }
 
-
 inquirer.registerPrompt('fuzzypath', fuzzy)
 inquirer.prompt(questions)
     .then(((answers) => {
@@ -301,8 +311,6 @@ inquirer.prompt(questions)
 
         const absolutePath = `${answers.path}/${name}`
         const destPath = `${path.resolve()}/${answers.name}`
-
-        console.log(absolutePath)
 
         createProject(answers, absolutePath, destPath)
 
