@@ -15,12 +15,34 @@ import fuzzy from "inquirer-fuzzy-path"
 const app = new Command();
 const name = 'sweetstack'
 const useContextElement = 'UseContext'
-const useEffectElement = 'useEffect'
+const useEffectAxiosElement = `
+/*
+Copy this code in row 2 of App.tsx
+import { useState, useEffect } from 'react';
+
+Copy this code in row 4 of App.tsx
+    const [nouns, setNouns] = useState([]);
+ 
+    useEffect(() => {
+        (async () => {
+            setNouns((await axios.get(url)).data);
+        })();
+    }, []);
+}
+*/
+`
 const useReducerElement = 'useReducer'
-const useStatesElement = 'useStates'
+const useStatesElement = `
+/*
+Copy this code in row 2 of App.tsx
+import {useState} from 'react'
+Copy this code in row 4 of App.tsx
+const [state, setState] = useState()
+*/
+`
 const useRefElement = 'useRef'
 
-const listHooks = ['useEffect', 'useReducer', 'useContext', 'useState', 'useRef']
+const listHooks = ['useEffectAxios', 'useReducer', 'useContext', 'useState', 'useRef']
 
 //REQUESTS
 const questions = [
@@ -48,6 +70,7 @@ const questions = [
         default: 'path to node_modules',
         suggestOnly: false,
         depthLimit: 1,
+    }
 ]
 
 //COPY A FILE
@@ -148,25 +171,17 @@ function reactFrontend(from, to, answers) {
         `${from}/templates/react-frontend`,
         `${to}/frontend`,
         ['package.json', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
-
-    ).then(() => {
-        answers['hooks'].forEach((hook) => {
-            if (answers['hooks'].includes(hook)){
-                writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, `${hook}Element`)
-                console.log(chalk.green(`${hook} successfully added!`))
-            }
-        })
-    });
+    ).then(r => r);
 
     copyAll(
         `${from}/templates/react-frontend/src`,
         `${to}/frontend/src`,
         ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
-
     ).then(() => {
         answers['hooks'].forEach((hook) => {
-            if (answers['hooks'].includes(hook)){
-                writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, `${hook}Element`)
+            if (answers['hooks'].includes(hook)) {
+                writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`,  `${hook}Element`)
+                console.log(chalk.green(`${hook} successfully added!`))
             }
         })
     });
@@ -285,8 +300,6 @@ function writeInComponent(path, string) {
 
 
 //CREATE FUNCTION
-
-
 function createProject(answers, absolutePath, destPath) {
 
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'no') {
@@ -296,10 +309,13 @@ function createProject(answers, absolutePath, destPath) {
     } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'no') {
         angularFrontend(absolutePath, destPath, answers)
     } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'yes') {
+        reactFrontend(absolutePath, destPath, answers)
         expressBackend(absolutePath, destPath, answers)
     } else if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'yes') {
+        vueFrontend(absolutePath, destPath, answers)
         expressBackend(absolutePath, destPath, answers)
     } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'yes') {
+        angularFrontend(absolutePath, destPath, answers)
         angularBackend(absolutePath, destPath, answers)
     } else {
         console.log(chalk.red('Please select something'))
