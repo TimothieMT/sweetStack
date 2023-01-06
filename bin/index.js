@@ -7,14 +7,20 @@ import fs from 'fs';
 import {join} from 'path'
 import {copyFile} from 'fs/promises'
 import * as path from "path";
-import {fileURLToPath} from 'url';
 import chalk from "chalk";
+import fuzzy from "inquirer-fuzzy-path"
+
 
 //VARIABLES
 const app = new Command();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const name = 'sweetstack'
+const useContextElement = 'UseContext'
+const useEffectElement = 'useEffect'
+const useReducerElement = 'useReducer'
+const useStatesElement = 'useStates'
+const useRefElement = 'useRef'
+
+const listHooks = ['useEffect', 'useReducer', 'useContext', 'useState', 'useRef']
 
 //REQUESTS
 const questions = [
@@ -25,12 +31,23 @@ const questions = [
         choices: [chalk.hex('#A7C7E7')('react'), chalk.green('vue'), chalk.hex('#ff7247')('angular')],
         message: chalk.hex('#a08c95').bold('selected frontend: ')
     },
+    {
+        type: "checkbox",
+        name: 'hooks',
+        message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm witch "enter": '),
+        choices: listHooks,
+    },
+
     {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')},
     {
-        type: "input",
+        type: "fuzzypath",
         name: 'path',
-        message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: ')
-    }
+        itemType: 'directory',
+        rootPath: process.env.HOME,
+        message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: '),
+        default: 'path to node_modules',
+        suggestOnly: false,
+        depthLimit: 1,
 ]
 
 //COPY A FILE
@@ -50,7 +67,8 @@ async function copyAll(fromDir, toDir, filePaths) {
     }));
 }
 
-//EXPRESS BACKEND
+
+//MAIN FUNCTION
 function expressBackend(from, to, answers) {
 
     fs.mkdirSync(to + "/backend")
@@ -130,12 +148,28 @@ function reactFrontend(from, to, answers) {
         `${from}/templates/react-frontend`,
         `${to}/frontend`,
         ['package.json', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
-    ).then(r => r);
+
+    ).then(() => {
+        answers['hooks'].forEach((hook) => {
+            if (answers['hooks'].includes(hook)){
+                writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, `${hook}Element`)
+                console.log(chalk.green(`${hook} successfully added!`))
+            }
+        })
+    });
+
     copyAll(
         `${from}/templates/react-frontend/src`,
         `${to}/frontend/src`,
         ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
-    ).then(r => r);
+
+    ).then(() => {
+        answers['hooks'].forEach((hook) => {
+            if (answers['hooks'].includes(hook)){
+                writeInComponent(`${path.resolve()}/${answers.name}/frontend/src/App.tsx`, `${hook}Element`)
+            }
+        })
+    });
 
     console.log(chalk.green(`react frontend successfully!
             
@@ -241,40 +275,50 @@ function angularFrontend(from, to, answers) {
             ng serve`))
 }
 
-//CREATE FUNCTION
-const createProject = () => {
-
-    inquirer.prompt(questions).then(((answers) => {
-
-        const absolutePath = `${answers.path}/${name}/`
-        const destPath = `${path.resolve()}/${answers.name}`
-
-
-        if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'yes') {
-            expressBackend(absolutePath, destPath, answers)
-        }
-        if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'yes') {
-            expressBackend(absolutePath, destPath, answers)
-        }
-        if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'yes') {
-            angularBackend(absolutePath, destPath, answers)
-        }
-
-        if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'no') {
-            reactFrontend(absolutePath, destPath, answers)
-        }
-
-        if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'no') {
-            vueFrontend(absolutePath, destPath, answers)
-        }
-
-        if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'no') {
-            angularFrontend(absolutePath, destPath, answers)
-        }
-    }))
+function writeInComponent(path, string) {
+    try {
+        fs.appendFileSync(path, string)
+    } catch (err) {
+        console.log('nnn', err)
+    }
 }
 
+
+//CREATE FUNCTION
+
+
+function createProject(answers, absolutePath, destPath) {
+
+    if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'no') {
+        reactFrontend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'no') {
+        vueFrontend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'no') {
+        angularFrontend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'yes') {
+        expressBackend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'yes') {
+        expressBackend(absolutePath, destPath, answers)
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'yes') {
+        angularBackend(absolutePath, destPath, answers)
+    } else {
+        console.log(chalk.red('Please select something'))
+    }
+
+}
+
+inquirer.registerPrompt('fuzzypath', fuzzy)
+inquirer.prompt(questions)
+    .then(((answers) => {
+
+
+        const absolutePath = `${answers.path}/${name}`
+        const destPath = `${path.resolve()}/${answers.name}`
+
+        createProject(answers, absolutePath, destPath)
+
+    }))
+
+
 //INIT PROJECT
-app
-    .action(createProject)
-app.parse(process.argv);
+app.parse(process.argv)

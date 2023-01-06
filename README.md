@@ -27,11 +27,11 @@ start cli with command below, create directory and go to it
   sweetstack
 ```
 
-if you PATH not supported, find the path to the node_modules folder and paste it. 
+enter the path from node_module folder, use searchbar and type:
 
 Example:
 ```bash
-  \Users\USERNAME\node_modules
+  node_module
 ```
 
 change to project directory
