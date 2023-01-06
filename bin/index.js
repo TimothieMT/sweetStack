@@ -48,11 +48,10 @@ const questions = [
         default: 'path to node_modules',
         suggestOnly: false,
         depthLimit: 1,
-
-    }
 ]
 
 //COPY A FILE
+
 async function copyAFile(from, to) {
     try {
         await copyFile(from, to);
@@ -67,6 +66,7 @@ async function copyAll(fromDir, toDir, filePaths) {
         return copyAFile(join(fromDir, filePath), join(toDir, filePath));
     }));
 }
+
 
 //MAIN FUNCTION
 function expressBackend(from, to, answers) {
@@ -148,6 +148,7 @@ function reactFrontend(from, to, answers) {
         `${from}/templates/react-frontend`,
         `${to}/frontend`,
         ['package.json', 'index.html', 'package-lock.json', 'tsconfig.json', 'tsconfig.node.json', 'vite.config.ts'],
+
     ).then(() => {
         answers['hooks'].forEach((hook) => {
             if (answers['hooks'].includes(hook)){
@@ -161,6 +162,7 @@ function reactFrontend(from, to, answers) {
         `${from}/templates/react-frontend/src`,
         `${to}/frontend/src`,
         ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
+
     ).then(() => {
         answers['hooks'].forEach((hook) => {
             if (answers['hooks'].includes(hook)){
@@ -283,6 +285,7 @@ function writeInComponent(path, string) {
 
 
 //CREATE FUNCTION
+
 
 function createProject(answers, absolutePath, destPath) {
 
