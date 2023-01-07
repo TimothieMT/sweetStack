@@ -162,7 +162,7 @@ function reactFrontend(from, to, answers) {
         answers['hooks'].forEach((hook) => {
             if (answers['hooks'].includes(hook)) {
 
-                if (hook === 'useEffectAxios')
+                if (hook === 'useEffect/Axios')
                     answerArray.push(useEffectAxios)
             }
             if (hook === 'useState') {
