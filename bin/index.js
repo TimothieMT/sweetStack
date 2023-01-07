@@ -152,11 +152,11 @@ function reactFrontend(from, to, answers) {
         ['App.scss', 'App.tsx', 'index.css', 'main.tsx', 'vite-env.d.ts'],
     ).then(() => {
 
-        const useEffectAxios = fs.readFileSync('templates/react-hooks/useEffectAxiosTemplate.txt', 'utf8')
-        const useReducer = fs.readFileSync('templates/react-hooks/useReducerTemplate.txt', 'utf8')
-        const useState = fs.readFileSync('templates/react-hooks/useStateTemplate.txt', 'utf8')
-        const useRef = fs.readFileSync('templates/react-hooks/useRefTemplate.txt', 'utf8')
-        const useContext = fs.readFileSync('templates/react-hooks/useContextTemplate.txt', 'utf8')
+        const useEffectAxios = fs.readFileSync(from + '/templates/react-hooks/useEffectAxiosTemplate.txt', 'utf8')
+        const useReducer = fs.readFileSync(from + '/templates/react-hooks/useReducerTemplate.txt', 'utf8')
+        const useState = fs.readFileSync(from + '/templates/react-hooks/useStateTemplate.txt', 'utf8')
+        const useRef = fs.readFileSync(from + '/templates/react-hooks/useRefTemplate.txt', 'utf8')
+        const useContext = fs.readFileSync(from + '/templates/react-hooks/useContextTemplate.txt', 'utf8')
         const answerArray = []
 
         answers['hooks'].forEach((hook) => {
