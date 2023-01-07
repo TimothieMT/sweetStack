@@ -1,0 +1,21 @@
+/*
+
+//imports are inserted at the beginning
+
+import React, {useState, useEffect} from 'react'
+import './App.css';
+import axios from 'axios'
+
+//function are inserted after the main function
+
+  const [posts, setPosts] = useState( [] );
+ 
+  useEffect(() => {
+    const axiosPosts = async () => {
+      const response = await axios('https://jsonplaceholder.typicode.com/posts');
+      setPosts(response.data);
+    };
+    axiosPosts();
+  }, []);
+
+*/
