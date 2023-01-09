@@ -21,6 +21,15 @@ const questions = [
         message: chalk.hex('#a08c95').bold('selected frontend: ')
     },
     {
+        type: "list",
+        name: 'menu',
+        choices: ['yes', 'no'],
+        message: chalk.hex('#a08c95').bold('react frontend with Menu?: '),
+        when: function (answers) {
+            return answers['frontend'] === chalk.hex('#A7C7E7')('react')
+        }
+    },
+    {
         type: "checkbox",
         name: 'hooks',
         message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm with "enter": '),

@@ -3,20 +3,18 @@
 //imports are inserted at the beginning
 
 import React, {useState, useEffect} from 'react'
-import './App.css';
 import axios from 'axios'
 
 //function are inserted after the main function
 
-  const url = ""
-  const [posts, setPosts] = useState( [] );
- 
-  useEffect(() => {
-    const axiosPosts = async () => {
-      const response = await axios(url);
-      setPosts(response.data);
-    };
-    axiosPosts();
-  }, []);
+ const [posts, setPosts] = useState( [] );
+
+     useEffect(() => {
+         const axiosPosts = async () => {
+             const response = await axios('http://localhost:3000/response');
+             setPosts(response.data);
+         };
+         axiosPosts().then(r => r);
+     }, []);
 
 */

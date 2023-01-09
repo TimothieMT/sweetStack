@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 const port = process.env.PORT || 3000;
 //paste you own url ->
-const url = "";
+const url = 'URL';
 const options = {
     method: 'GET',
     url: url,

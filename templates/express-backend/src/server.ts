@@ -6,8 +6,12 @@ const app = express()
 app.use(cors())
 const port = process.env.PORT || 3000;
 
+interface Interface {
+
+}
+
 //paste you own url ->
-const url = "";
+const url = 'URL';
 const options = {
     method: 'GET',
     url: url,
@@ -15,7 +19,7 @@ const options = {
         'Accept-Encoding': 'application/json'
     }
 };
-const response: any[] = (await axios.request(options)).data;
+const response: Interface = (await axios.request(options)).data;
 
 app.get('/', (req: express.Request, res: express.Response) => {
     res.send('This is from express.js')
