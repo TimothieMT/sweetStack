@@ -8,11 +8,12 @@ import axios from 'axios'
 
 //function are inserted after the main function
 
+  const url = ""
   const [posts, setPosts] = useState( [] );
  
   useEffect(() => {
     const axiosPosts = async () => {
-      const response = await axios('https://jsonplaceholder.typicode.com/posts');
+      const response = await axios(url);
       setPosts(response.data);
     };
     axiosPosts();

@@ -7,7 +7,7 @@ app.use(cors())
 const port = process.env.PORT || 3000;
 
 //paste you own url ->
-const url = 'https://raw.githubusercontent.com/graphql-compose/graphql-compose-examples/master/examples/northwind/data/json/orders.json';
+const url = "";
 const options = {
     method: 'GET',
     url: url,
