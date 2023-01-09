@@ -290,14 +290,6 @@ function angularFrontend(from, to, answers) {
             ng serve`))
 }
 
-function writeInComponent(path, value) {
-    try {
-        fs.appendFileSync(path, value)
-    } catch (err) {
-        console.log(err)
-    }
-}
-
 
 //CREATE FUNCTION
 function createProject(answers, absolutePath, destPath) {
@@ -315,7 +307,6 @@ function createProject(answers, absolutePath, destPath) {
         vueFrontend(absolutePath, destPath, answers)
         expressBackend(absolutePath, destPath, answers)
     } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'yes') {
-        angularFrontend(absolutePath, destPath, answers)
         angularBackend(absolutePath, destPath, answers)
     } else {
         console.log(chalk.red('Please select something'))
