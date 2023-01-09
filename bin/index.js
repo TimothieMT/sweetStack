@@ -29,8 +29,11 @@ const questions = [
     {
         type: "checkbox",
         name: 'hooks',
-        message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm witch "enter": '),
+        message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm with "enter": '),
         choices: listHooks,
+        when: function (answers) {
+            return answers['frontend'] === chalk.hex('#A7C7E7')('react')
+        }
     },
 
     {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')},
@@ -212,7 +215,7 @@ function vueFrontend(from, to, answers) {
     copyAll(
         `${from}/templates/vue-frontend/src`,
         `${to}/frontend/src`,
-        ['UseEffectElement.vue', 'main.ts'],
+        ['App.vue', 'main.ts'],
     ).then(r => r);
     copyAll(
         `${from}/templates/vue-frontend/src/assets`,
