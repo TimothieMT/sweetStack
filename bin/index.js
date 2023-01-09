@@ -3,26 +3,15 @@
 //IMPORTS
 import inquirer from "inquirer";
 import {Command} from "commander";
-import {join} from 'path'
-import {copyFile} from 'fs/promises'
 import * as path from "path";
 import chalk from "chalk";
 import fuzzy from "inquirer-fuzzy-path"
-import expressBackend from "../bin/expressBackend.js";
-import angularBackend from "../bin/angtularBackend.js";
-import reactFrontend from "./reactFrontend.js";
-import vueFrontend from "./vueFrontend.js";
-import angularFrontend from "./angularFrontend.js";
 import createProject from "./createProject.js";
 
 //VARIABLES
 const app = new Command();
 const name = 'sweetstack'
-
 const listHooks = ['useEffect/Axios', 'useState', 'useReducer', 'useContext', 'useRef']
-
-
-//REQUESTS
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
     {
@@ -53,6 +42,7 @@ const questions = [
         depthLimit: 1,
     }
 ]
+
 
 inquirer.registerPrompt('fuzzypath', fuzzy)
 inquirer.prompt(questions)
