@@ -10,19 +10,23 @@ import reactFrontendWithMenu from "./reactFrontendWithMenu.js";
 function createProject(answers, absolutePath, destPath) {
 
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'yes' && answers['backend'] === 'no') {
-        reactFrontendWithMenu(absolutePath, destPath, answers)
-    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'no') {
-        reactFrontend(absolutePath, destPath, answers)
+        reactFrontendWithMenu(answers, absolutePath, destPath)
+    }else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'yes' && answers['backend'] === 'yes') {
+        reactFrontendWithMenu(answers, absolutePath, destPath)
+        expressBackend(answers, absolutePath, destPath)
+    }
+    else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'no') {
+        reactFrontend(answers, absolutePath, destPath)
     } else if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'no') {
         vueFrontend(absolutePath, destPath, answers)
     } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'no') {
         angularFrontend(absolutePath, destPath, answers)
     } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'yes') {
-        reactFrontend(absolutePath, destPath, answers)
-        expressBackend(absolutePath, destPath, answers)
+        reactFrontend(answers, absolutePath, destPath)
+        expressBackend(answers, absolutePath, destPath)
     } else if (answers.name !== '' && answers['frontend'] === chalk.green('vue') && answers['backend'] === 'yes') {
         vueFrontend(absolutePath, destPath, answers)
-        expressBackend(absolutePath, destPath, answers)
+        expressBackend(answers, absolutePath, destPath)
     } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'yes') {
         angularBackend(absolutePath, destPath, answers)
     } else {
