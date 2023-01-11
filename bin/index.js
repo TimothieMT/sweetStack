@@ -57,7 +57,6 @@ inquirer.registerPrompt('fuzzypath', fuzzy)
 inquirer.prompt(questions)
     .then(((answers) => {
 
-
         const absolutePath = `${answers.path}/${name}`
         const destPath = `${path.resolve()}/${answers.name}`
 

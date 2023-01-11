@@ -16,4 +16,6 @@ async function copyAll(fromDir, toDir, filePaths) {
     }));
 }
 
+
+
 export default copyAll;

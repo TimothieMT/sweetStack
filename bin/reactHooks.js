@@ -1,4 +1,5 @@
 import fs from "fs";
+import './index.js'
 
 function reactHooks(answers, from, to) {
     const useEffectAxios = fs.readFileSync(from + '/templates/react-hooks/useEffectAxiosTemplate.txt', 'utf8')
@@ -28,7 +29,7 @@ function reactHooks(answers, from, to) {
         }
         console.log(`${hook} successfully`)
     })
-    answerArray.map(value => fs.writeFileSync(`${to}/frontendWithMenu/src/App.tsx`, value, {flag: 'a+'}))
+   return  answerArray.map((value) =>  fs.writeFileSync(`${to}/frontendWithMenu/src/App.tsx`, value, {flag: 'a+'}))
 }
 
 export default reactHooks;

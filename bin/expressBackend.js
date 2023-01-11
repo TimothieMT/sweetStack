@@ -24,7 +24,7 @@ function expressBackend(answers, from, to) {
         `${to}/backend/src`,
         ["server.ts"],
     ).then(r => r);
-    console.log(chalk.green(`react backend successfully!
+    console.log(chalk.green(`express backend successfully!
             
             cd ${answers.name}
             cd backend
