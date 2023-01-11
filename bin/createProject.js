@@ -5,14 +5,16 @@ import angularFrontend from "./angularFrontend.js";
 import expressBackend from "./expressBackend.js";
 import angularBackend from "./angtularBackend.js";
 import reactFrontendWithMenu from "./reactFrontendWithMenu.js";
+import reactHooks from "./reactHooks.js";
+import createCopy from "./copyFunction.js";
 
 
 function createProject(answers, absolutePath, destPath) {
 
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'yes' && answers['backend'] === 'no') {
-        reactFrontendWithMenu(answers, absolutePath, destPath)
+        reactFrontendWithMenu(answers, absolutePath, destPath).then(() => reactHooks(answers,absolutePath,destPath))
     }else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'yes' && answers['backend'] === 'yes') {
-        reactFrontendWithMenu(answers, absolutePath, destPath)
+        //reactFrontendWithMenu(answers, absolutePath, destPath)
         expressBackend(answers, absolutePath, destPath)
     }
     else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['backend'] === 'no') {

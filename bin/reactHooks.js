@@ -1,6 +1,8 @@
 import fs from "fs";
 
 function reactHooks(answers, from, to) {
+    console.log(from)
+    console.log(to)
     const useEffectAxios = fs.readFileSync(from + '/templates/react-hooks/useEffectAxiosTemplate.txt', 'utf8')
     const useReducer = fs.readFileSync(from + '/templates/react-hooks/useReducerTemplate.txt', 'utf8')
     const useState = fs.readFileSync(from + '/templates/react-hooks/useStateTemplate.txt', 'utf8')
@@ -28,7 +30,10 @@ function reactHooks(answers, from, to) {
         }
         console.log(`${hook} successfully`)
     })
-    answerArray.map(value => fs.writeFileSync(`${to}/frontendWithMenu/src/App.tsx`, value, {flag: 'a+'}))
+
+    console.log(answerArray)
+
+  answerArray.forEach(value => fs.writeFileSync(`${to}/frontendWithMenu/src/App.tsx`, value, {flag: 'a+'}))
 }
 
 export default reactHooks;

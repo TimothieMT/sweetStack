@@ -1,19 +1,18 @@
-import {copyFile} from "fs/promises";
-import chalk from "chalk";
-import {join} from "path";
+import fs from "fs";
 
-async function copyAFile(from, to) {
-    try {
-        await copyFile(from, to);
-    } catch (err) {
-        console.log(chalk.red(`no such file or directory, copyfile '${from}' -> '${to}'`));
-    }
+function createCopy(arrFrom, arrTo, from, to) {
+    fs.mkdirSync(to)
+    arrTo.map((path) => {
+        fs.mkdirSync(`${to}/${path}`)
+    })
+
+    arrFrom.map((path, index) => {
+        fs.readdirSync(`${from}/${path}`).forEach((file) => {
+            fs.cp(`${from}/${path}/${file}`, `${to}/${arrTo[index]}/${file}`, {recursive: true}, (err) => {
+                if (err) throw err;
+            })
+        })
+    })
 }
 
-async function copyAll(fromDir, toDir, filePaths) {
-    return Promise.all(filePaths.map(filePath => {
-        return copyAFile(join(fromDir, filePath), join(toDir, filePath));
-    }));
-}
-
-export default copyAll;
+export default createCopy;
