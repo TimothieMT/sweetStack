@@ -1,62 +1,27 @@
-import fs from "fs";
 import chalk from "chalk";
-import copyAll from "./copyFunction.js";
+import copyFiles from "./copyFiles.js";
+
+const pathArrayVueTo = ['frontend', 'frontend/src','frontend/public', 'frontend/src/assets', 'frontend/src/components', 'frontend/src/components/icons', 'frontend/src/router', 'frontend/src/views']
+const pathArrayVueFrom = ['templates/vue-frontend', 'templates/vue-frontend/src','templates/vue-frontend/public', 'templates/vue-frontend/src/assets', 'templates/vue-frontend/src/components', 'templates/vue-frontend/src/components/icons', 'templates/vue-frontend/src/router', 'templates/vue-frontend/src/views']
+
 
 function vueFrontend(from, to, answers) {
     //CREATE VUE FRONTEND
 
-    fs.mkdirSync(to)
-    fs.mkdirSync(to + "/frontend")
-    fs.mkdirSync(to + "/frontend/src")
-    fs.mkdirSync(to + "/frontend/public")
-    fs.mkdirSync(to + "/frontend/src/assets")
-    fs.mkdirSync(to + "/frontend/src/components")
-    fs.mkdirSync(to + "/frontend/src/components/icons")
-    fs.mkdirSync(to + "/frontend/src/router")
-    fs.mkdirSync(to + "/frontend/src/views")
+    console.log(`
+    create files...`)
 
-    copyAll(
-        `${from}/templates/vue-frontend`,
-        `${to}/frontend`,
-        ['env.d.ts', 'index.html', 'package.json', 'package-lock.json', 'README.md', 'tsconfig.config.json', 'tsconfig.json', 'vite.config.ts'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/vue-frontend/src`,
-        `${to}/frontend/src`,
-        ['App.vue', 'main.ts'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/vue-frontend/src/assets`,
-        `${to}/frontend/src/assets`,
-        ['base.css', 'logo.svg', 'main.css'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/vue-frontend/src/components`,
-        `${to}/frontend/src/components`,
-        ['HelloWorld.vue', 'TheWelcome.vue', 'WelcomeItem.vue'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/vue-frontend/src/components/icons`,
-        `${to}/frontend/src/components/icons`,
-        ['IconCommunity.vue', 'IconDocumentation.vue', 'IconEcosystem.vue', 'IconSupport.vue', 'IconTooling.vue'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/vue-frontend/src/router`,
-        `${to}/frontend/src/router`,
-        ['index.ts'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/vue-frontend/src/views`,
-        `${to}/frontend/src/views`,
-        ['AboutView.vue', 'HomeView.vue'],
-    ).then(r => r);
 
-    console.log(chalk.green(`vue backend successfully!
+    setTimeout(() => {
+        copyFiles(pathArrayVueFrom, pathArrayVueTo, from, to)
+        console.log(chalk.green(`    vue frontend completed!
             
             cd ${answers.name}
             cd frontend
             npm install
             npm run dev`))
+    }, 2000)
+
 }
 
 export default vueFrontend;

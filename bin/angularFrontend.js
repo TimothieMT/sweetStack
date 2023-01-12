@@ -1,44 +1,24 @@
-import fs from "fs";
 import chalk from "chalk";
-import copyAll from "./copyFunction.js";
+import copyFiles from "./copyFiles.js";
+
+export const pathArrayAngularFrontendTo = ['frontend','frontend/src','frontend/public','frontend/src/app', 'frontend/src/assets']
+export const pathArrayAngularFrontendFrom = ['templates/angular-frontend', 'templates/angular-frontend/public', 'templates/angular-frontend/src', 'templates/angular-frontend/src/assets', 'templates/backend-components']
 
 function angularFrontend(from, to, answers) {
     //CREATE ANGULAR FRONTEND
 
-    fs.mkdirSync(to)
-    fs.mkdirSync(to + "/frontend")
-    fs.mkdirSync(to + "/frontend/src")
-    fs.mkdirSync(to + "/frontend/public")
-    fs.mkdirSync(to + '/frontend/src/app')
-    fs.mkdirSync(to + '/frontend/src/assets')
+    console.log(`
+    create project...`)
 
-    copyAll(
-        `${from}/templates/angular-frontend`,
-        `${to}/frontend`,
-        ['angular.json', 'package.json', 'package-lock.json', 'README.md', 'tsconfig.app.json', 'tsconfig.spec.json', 'tsconfig.json'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/angular-frontend/src`,
-        `${to}/frontend/src`,
-        ['styles.sass', 'index.html', 'favicon.ico', 'main.ts'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/angular-frontend/src/assets`,
-        `${to}/frontend/src/assets`,
-        ['.gitkeep'],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/angular-frontend/src/app`,
-        `${to}/frontend/src/app`,
-        ['app.component.html', 'app.component.sass', 'app.component.ts', 'app.module.ts', 'app-routing.module.ts'],
-    ).then(r => r);
-
-    console.log(chalk.green(`angular backend successfully!
+    setTimeout(() => {
+        copyFiles(pathArrayAngularFrontendFrom, pathArrayAngularFrontendTo, from, to)
+        console.log(chalk.green(`    angular frontend completed!
             
             cd ${answers.name}
             cd frontend
             npm install
-            ng serve`))
+            npm run dev`))
+    }, 2000)
 }
 
 export default angularFrontend;

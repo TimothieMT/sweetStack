@@ -1,35 +1,21 @@
-import fs from "fs";
 import chalk from "chalk";
-import copyAll from "./copyFunction.js";
+import copyFiles from "./copyFiles.js";
 
+const pathArrayExpressBackendTo = ['backend', 'backend/dist', 'backend/src']
+const pathArrayExpressBackendFrom = ['templates/express-backend', 'templates/express-backend/dist', 'templates/express-backend/src']
 
 function expressBackend(answers, from, to) {
 
-    fs.mkdirSync(to + "/backend")
-    fs.mkdirSync(to + "/backend/dist")
-    fs.mkdirSync(to + "/backend/src")
-
-    copyAll(
-        `${from}/templates/express-backend`,
-        `${to}/backend`,
-        ["nodemon.json", "package.json", "package-lock.json", "tsconfig.json"],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/express-backend/dist`,
-        `${to}/backend/dist`,
-        ["server.js", "server.js.map"],
-    ).then(r => r);
-    copyAll(
-        `${from}/templates/express-backend/src`,
-        `${to}/backend/src`,
-        ["server.ts"],
-    ).then(r => r);
-    console.log(chalk.green(`react backend successfully!
+    setTimeout(() => {
+        copyFiles(pathArrayExpressBackendFrom, pathArrayExpressBackendTo, from, to)
+        console.log(chalk.green(`    express backend completed!
             
             cd ${answers.name}
             cd backend
             npm install
-            npm run start`))
+            npm run dev`))
+    }, 2500)
+
 }
 
 export default expressBackend;

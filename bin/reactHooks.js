@@ -1,6 +1,9 @@
+
 import fs from "fs";
+import chalk from "chalk";
 
 function reactHooks(answers, from, to) {
+
     const useEffectAxios = fs.readFileSync(from + '/templates/react-hooks/useEffectAxiosTemplate.txt', 'utf8')
     const useReducer = fs.readFileSync(from + '/templates/react-hooks/useReducerTemplate.txt', 'utf8')
     const useState = fs.readFileSync(from + '/templates/react-hooks/useStateTemplate.txt', 'utf8')
@@ -26,9 +29,10 @@ function reactHooks(answers, from, to) {
         if (hook === 'useRef') {
             answerArray.push(useRef)
         }
-        console.log(`${hook} successfully`)
+        console.log(chalk.green(`
+    ${hook} added to template!`))
     })
-    answerArray.map(value => fs.writeFileSync(`${to}/frontendWithMenu/src/App.tsx`, value, {flag: 'a+'}))
+    answerArray.forEach(value => fs.writeFileSync(`${to}`, value, {flag: 'a+'}))
 }
 
 export default reactHooks;
