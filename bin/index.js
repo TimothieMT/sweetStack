@@ -23,8 +23,8 @@ const questions = [
     {
         type: "list",
         name: 'menu',
-        choices: ['yes', 'no'],
-        message: chalk.hex('#a08c95').bold('react frontend with Menu?: '),
+        choices: ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database','none'],
+        message: chalk.hex('#a08c95').bold('react template with:  '),
         when: function (answers) {
             return answers['frontend'] === chalk.hex('#A7C7E7')('react')
         }
