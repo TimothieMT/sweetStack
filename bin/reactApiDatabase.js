@@ -5,8 +5,8 @@ import chalk from "chalk";
 
 const pathArrayReactApiTo = ['sqliteFrontend', 'sqliteFrontend/src', 'sqliteFrontend/src/components', 'sqliteFrontend/src/pages', 'sqliteFrontend/public', 'sqliteFrontend/cli', "sqliteFrontend/dev", "sqliteFrontend/dev"
     , 'sqliteBackend', 'sqliteBackend/src', 'sqliteBackend/src/data']
-const pathArrayReactApiFrom = ['templates/sqlite_crud_frontend','templates/sqlite_crud_frontend/dev', 'templates/sqlite_crud_frontend/src', 'templates/sqlite_crud_frontend/src/components', 'templates/sqlite_crud_frontend/public', 'templates/sqlite_crud_frontend/cli'
-    , 'templates/sqlite_crud_backend', 'templates/sqlite_crud_backend/src', 'templates/sqlite_crud_backend/src/data']
+const pathArrayReactApiFrom = ['templates/react_sqlite_CRUD', 'templates/react_sqlite_CRUD/sqlite_crud_frontend/dev', 'templates/react_sqlite_CRUD/sqlite_crud_frontend/src', 'templates/react_sqlite_CRUD/sqlite_crud_frontend/src/pages', 'templates/react_sqlite_CRUD/sqlite_crud_frontend/src/components', 'templates/react_sqlite_CRUD/sqlite_crud_frontend/public', 'templates/react_sqlite_CRUD/sqlite_crud_frontend/cli'
+    , 'templates/react_sqlite_CRUD/sqlite_crud_backend/src', 'templates/react_sqlite_CRUD/sqlite_crud_backend/src/data']
 
 
 function reactApiDatabase(answers, from, to) {
