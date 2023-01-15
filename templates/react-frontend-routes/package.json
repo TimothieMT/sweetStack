@@ -1,6 +1,6 @@
 {
-  "name": "et-001-nestcomps",
-  "version": "0.0.0",
+  "name": "sweetstack-react-with-routes",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
