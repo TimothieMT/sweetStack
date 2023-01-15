@@ -7,14 +7,15 @@ const pathArrayReactZustandFrom = ['templates/react-routes-zustand', 'templates/
 
 function menuZustand(answers, from, to) {
 
-    console.log(`
-    create files...`)
+    console.log(`create files...`)
 
 
     setTimeout(() => {
         copyFiles(pathArrayReactZustandFrom, pathArrayReactZustandTo, from, to)
-        reactHooks(answers, from, to + '/frontend/src/App.tsx')
-        console.log(chalk.green(`    react frontend with menu and zustand completed!
+        setTimeout(() => {
+            reactHooks(answers, from, to + '/frontend/src/App.tsx')
+        }, 1000)
+        console.log(chalk.green(`react frontend with menu and zustand completed!
             
             cd ${answers.name}
             cd frontend

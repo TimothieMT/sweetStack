@@ -29,8 +29,7 @@ function reactHooks(answers, from, to) {
         if (hook === 'useRef') {
             answerArray.push(useRef)
         }
-        console.log(chalk.green(`
-    ${hook} added to template!`))
+        console.log(chalk.green(`${hook} added to template!`))
     })
     answerArray.forEach(value => fs.writeFileSync(`${to}`, value, {flag: 'a+'}))
 }

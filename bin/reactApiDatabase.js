@@ -10,14 +10,14 @@ const pathArrayReactApiFrom = ['templates/react_sqlite_CRUD', 'templates/react_s
 
 
 function reactApiDatabase(answers, from, to) {
-    console.log(`
-    create files...`)
-
+    console.log(`create files...`)
 
     setTimeout(() => {
         copyFiles(pathArrayReactApiFrom, pathArrayReactApiTo, from, to)
-        reactHooks(answers, from, to + '/frontend/src/App.tsx')
-        console.log(chalk.green(`    react CRUD sqlite is completed!
+        setTimeout(() => {
+            reactHooks(answers, from, to + '/sqliteCRUDDatabase/frontend/src/App.tsx')
+        }, 1000)
+        console.log(chalk.green(`react CRUD sqlite is completed!
             
             cd ${answers.name}
             cd frontend

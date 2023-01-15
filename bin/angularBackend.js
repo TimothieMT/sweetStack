@@ -7,13 +7,12 @@ const pathArrayAngularBackendFrom = ['templates/angular-frontend', 'templates/an
 function angularBackend(from, to, answers) {
     //CREATE ANGULAR BACKEND
 
-    console.log(`
-    create files...`)
+    console.log(`create files...`)
 
 
     setTimeout(() => {
         copyFiles(pathArrayAngularBackendFrom, pathArrayAngularBackendTo, from, to)
-        console.log(chalk.green(`    angular backend completed!
+        console.log(chalk.green(`angular backend completed!
             
             cd ${answers.name}
             cd frontend

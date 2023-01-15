@@ -9,14 +9,15 @@ const pathArrayReactMenuFrom = ['templates/react-frontend-routes', 'templates/re
 function reactFrontendWithMenu(answers, from, to) {
     //CREATE REACT FRONTEND
 
-    console.log(`
-    create files...`)
+    console.log(`create files...`)
 
 
     setTimeout(() => {
         copyFiles(pathArrayReactMenuFrom, pathArrayReactMenuTo, from, to)
-        reactHooks(answers, from, to + '/frontendWithMenu/src/App.tsx')
-        console.log(chalk.green(`    react frontend with menu completed!
+        setTimeout(() => {
+            reactHooks(answers, from, to + '/frontendWithMenu/src/App.tsx')
+        }, 1000)
+        console.log(chalk.green(`react frontend with menu completed!
             
             cd ${answers.name}
             cd frontend

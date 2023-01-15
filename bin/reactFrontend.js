@@ -8,14 +8,15 @@ const pathArrayReactFrom = ['templates/react-frontend', 'templates/react-fronten
 function reactFrontend(answers, from, to) {
     //CREATE REACT FRONTEND
 
-    console.log(`
-    create files...`)
+    console.log(`create files...`)
 
 
     setTimeout(() => {
         copyFiles(pathArrayReactFrom, pathArrayReactTo, from, to)
-        reactHooks(answers, from, to + '/frontend/src/App.tsx')
-        console.log(chalk.green(`    react frontend completed!
+        setTimeout(() => {
+            reactHooks(answers, from, to + '/frontend/src/App.tsx')
+        }, 1000)
+        console.log(chalk.green(`react frontend completed!
             
             cd ${answers.name}
             cd frontend

@@ -8,13 +8,12 @@ const pathArrayVueFrom = ['templates/vue-frontend', 'templates/vue-frontend/src'
 function vueFrontend(from, to, answers) {
     //CREATE VUE FRONTEND
 
-    console.log(`
-    create files...`)
+    console.log(`create files...`)
 
 
     setTimeout(() => {
         copyFiles(pathArrayVueFrom, pathArrayVueTo, from, to)
-        console.log(chalk.green(`    vue frontend completed!
+        console.log(chalk.green(`vue frontend completed!
             
             cd ${answers.name}
             cd frontend

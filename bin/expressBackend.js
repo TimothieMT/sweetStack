@@ -6,9 +6,11 @@ const pathArrayExpressBackendFrom = ['templates/express-backend', 'templates/exp
 
 function expressBackend(answers, from, to) {
 
+    console.log(`create files...`)
+
     setTimeout(() => {
         copyFiles(pathArrayExpressBackendFrom, pathArrayExpressBackendTo, from, to)
-        console.log(chalk.green(`    express backend completed!
+        console.log(chalk.green(`express backend completed!
             
             cd ${answers.name}
             cd backend

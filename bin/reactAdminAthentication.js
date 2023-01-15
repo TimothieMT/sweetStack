@@ -10,14 +10,14 @@ const pathArrayReactAdminFrom = ['templates/react_adminAuthentication', 'templat
 
 function reactAdminAuthentication(answers, from, to) {
 
-    console.log(`
-    create files...`)
-
+    console.log(`create files...`)
 
     setTimeout(() => {
         copyFiles(pathArrayReactAdminFrom, pathArrayReactAdminTo, from, to)
-        reactHooks(answers, from, to + '/frontend/src/App.tsx')
-        console.log(chalk.green(`    react admin authentication completed!
+        setTimeout(() => {
+            reactHooks(answers, from, to + '/adminAuthentication/frontend/src/App.tsx')
+        }, 1000)
+        console.log(chalk.green(`react admin authentication completed!
             
             cd ${answers.name}
             cd adminAuthentication
@@ -26,7 +26,7 @@ function reactAdminAuthentication(answers, from, to) {
             npm run dev
             cd backend
             npm install
-            npm start`))
+            npm run exec`))
     }, 2000)
 }
 
