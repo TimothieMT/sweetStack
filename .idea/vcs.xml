@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/templates/react_CRUD:Lowdb_pinAuthentication/backend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/templates/react_CRUD:Lowdb_pinAuthentication/frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/templates/react_adminAuthentication/backend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/templates/react_adminAuthentication/frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/templates/react_sqlite_CRUD/backend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/templates/react_sqlite_CRUD/frontend" vcs="Git" />
+  </component>
+</project>
