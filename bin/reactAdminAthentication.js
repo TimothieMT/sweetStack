@@ -14,9 +14,6 @@ function reactAdminAuthentication(answers, from, to) {
 
     setTimeout(() => {
         copyFiles(pathArrayReactAdminFrom, pathArrayReactAdminTo, from, to)
-        setTimeout(() => {
-            reactHooks(answers, from, to + '/adminAuthentication/frontend/src/App.tsx')
-        }, 1000)
         console.log(chalk.green(`react admin authentication completed!
             
             cd ${answers.name}

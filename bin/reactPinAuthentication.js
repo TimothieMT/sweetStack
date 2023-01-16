@@ -17,9 +17,6 @@ function reactPinAuthentication(answers, from, to) {
 
     setTimeout(() => {
         copyFiles(pathArrayReactPinFrom, pathArrayReactPinTo, from, to)
-        setTimeout(() => {
-            reactHooks(answers, from, to + '/reactPinAuthentication/frontend/src/App.tsx')
-        }, 1000)
         console.log(chalk.green(`react CRUD pin authentication with lowdb completed!
             
             cd ${answers.name}

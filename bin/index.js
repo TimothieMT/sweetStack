@@ -23,7 +23,7 @@ const questions = [
     {
         type: "list",
         name: 'menu',
-        choices: ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database','none'],
+        choices: ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database', 'none'],
         message: chalk.hex('#a08c95').bold('react template with:  '),
         when: function (answers) {
             return answers['frontend'] === chalk.hex('#A7C7E7')('react')
@@ -35,11 +35,20 @@ const questions = [
         message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm with "enter": '),
         choices: listHooks,
         when: function (answers) {
-            return answers['frontend'] === chalk.hex('#A7C7E7')('react')
+            return answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu'
         }
     },
 
-    {type: "list", name: 'backend', choices: ['yes', 'no'], message: chalk.hex('#a08c95').bold('need a backend? ')},
+    {
+        type: "list",
+        name: 'backend',
+        choices: ['yes', 'no'],
+        message: chalk.hex('#a08c95').bold('need a backend? '),
+        when: function (answers) {
+            return answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu'
+        }
+    },
+
     {
         type: "fuzzypath",
         name: 'path',

@@ -14,9 +14,6 @@ function reactApiDatabase(answers, from, to) {
 
     setTimeout(() => {
         copyFiles(pathArrayReactApiFrom, pathArrayReactApiTo, from, to)
-        setTimeout(() => {
-            reactHooks(answers, from, to + '/sqliteCRUDDatabase/frontend/src/App.tsx')
-        }, 1000)
         console.log(chalk.green(`react CRUD sqlite is completed!
             
             cd ${answers.name}

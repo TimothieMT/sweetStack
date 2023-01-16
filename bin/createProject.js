@@ -15,15 +15,15 @@ import reactApiDatabase from './reactApiDatabase.js'
 function createProject(answers, absolutePath, destPath) {
 
 
-    if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu included Zustand' && answers['backend'] === 'no') {
+    if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu included Zustand') {
         reactMenuZustand(answers, absolutePath, destPath)
-    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD/Lowdb and PIN authentication' && answers['backend'] === 'no') {
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD/Lowdb and PIN authentication') {
         reactPinAuthentication(answers, absolutePath, destPath)
-    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'admin authentication' && answers['backend'] === 'no') {
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'admin authentication' ) {
         reactAdminAuthentication(answers, absolutePath, destPath)
-    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD API which adds/edits/deletes data from a database' && answers['backend'] === 'no') {
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD API which adds/edits/deletes data from a database' ) {
         reactApiDatabase(answers, absolutePath, destPath)
-    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu' && answers['backend'] === 'no') {
+    } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu' ) {
         reactFrontendWithMenu(answers, absolutePath, destPath)
     } else if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu' && answers['backend'] === 'yes') {
         reactFrontendWithMenu(answers, absolutePath, destPath)
