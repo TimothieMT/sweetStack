@@ -5,16 +5,20 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
+interface IDatabase {
+    title: string;
+}
+
 //function are inserted after the main function
 
- const [posts, setPosts] = useState( [] );
+ const [database, setDatabase] = useState<IDatabase[]>( [] );
 
-     useEffect(() => {
-         const axiosPosts = async () => {
-             const response = await axios('http://localhost:3000/response');
-             setPosts(response.data);
-         };
-         axiosPosts().then(r => r);
-     }, []);
+      useEffect(() => {
+          const axiosDatabase = async () => {
+              const response = await axios('http://localhost:3000/database');
+              setDatabase(response.data);
+          };
+          axiosDatabase()
+      }, []);
 
 */

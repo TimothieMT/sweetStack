@@ -1,5 +1,4 @@
 import copyFiles from "./copyFiles.js";
-import reactHooks from "./reactHooks.js";
 import chalk from "chalk";
 
 

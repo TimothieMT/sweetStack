@@ -1,6 +1,6 @@
 {
   "name": "sweetstack",
-  "version": "1.0.55",
+  "version": "1.0.56",
   "type": "module",
   "description": "create application with sweetstack",
   "main": "index.js",
@@ -17,6 +17,7 @@
     "clear": "^0.1.0",
     "clui": "^0.3.6",
     "commander": "^10.0.0",
+    "concurrently": "^7.6.0",
     "figlet": "^1.5.2",
     "fs-extra": "^11.1.0",
     "inquirer": "^9.1.4",
