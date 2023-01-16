@@ -1,6 +1,6 @@
 {
   "name": "sweetstack",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "type": "module",
   "description": "create application with sweetstack",
   "main": "index.js",
