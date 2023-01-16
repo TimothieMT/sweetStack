@@ -13,12 +13,12 @@ const options = {
         'Accept-Encoding': 'application/json'
     }
 };
-const response = (await axios.request(options)).data;
+const database = (await axios.request(options)).data;
 app.get('/', (req, res) => {
     res.send('This is from express.js');
 });
-app.get('/response', (req, res) => {
-    res.json(response);
+app.get('/database', (req, res) => {
+    res.json(database);
 });
 app.listen(port, () => {
     console.log(`listening on http://localhost:${port}`);

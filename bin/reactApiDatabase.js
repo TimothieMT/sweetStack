@@ -2,8 +2,8 @@ import copyFiles from "./copyFiles.js";
 import chalk from "chalk";
 
 
-const pathArrayReactApiTo = ['sqliteCRUDDatabase', 'sqliteCRUDDatabase/src', 'sqliteCRUDDatabase/src/components', 'sqliteCRUDDatabase/src/pages', 'sqliteCRUDDatabase/public', 'sqliteCRUDDatabase/cli', "sqliteCRUDDatabase/dev", "sqliteCRUDDatabase/dev"
-    , 'sqliteBackend', 'sqliteBackend/src', 'sqliteBackend/src/data']
+const pathArrayReactApiTo = ['SqliteCRUD','frontend/src', 'frontend/src/components', 'frontend/src/pages', 'frontend/public', 'frontend/cli', "frontend/dev", "frontend/dev"
+    , 'backend', 'backend/src', 'backend/src/data']
 const pathArrayReactApiFrom = ['templates/react_sqlite_CRUD', 'templates/react_sqlite_CRUD/frontend/dev', 'templates/react_sqlite_CRUD/frontend/src', 'templates/react_sqlite_CRUD/frontend/src/pages', 'templates/react_sqlite_CRUD/frontend/src/components', 'templates/react_sqlite_CRUD/frontend/public', 'templates/react_sqlite_CRUD/frontend/cli'
     , 'templates/react_sqlite_CRUD/backend/src', 'templates/react_sqlite_CRUD/backend/src/data']
 

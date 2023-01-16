@@ -2,8 +2,8 @@ import copyFiles from "./copyFiles.js";
 import reactHooks from "./reactHooks.js";
 import chalk from "chalk";
 
-const pathArrayReactAdminTo = ['adminAuthentication', 'adminAuthentication/src', 'adminAuthentication/public', 'adminAuthentication/dev', 'adminAuthentication/cli', 'adminAuthentication/src/pages',
-    'adminBackend', 'adminBackend/src']
+const pathArrayReactAdminTo = ['AdminAuthentication', 'frontend/src', 'frontend/public', 'frontend/dev', 'frontend/cli', 'frontend/src/pages',
+    'backend', 'backend/src']
 const pathArrayReactAdminFrom = ['templates/react_adminAuthentication', 'templates/react_adminAuthentication/frontend/src', 'templates/react_adminAuthentication/frontend/public',
     'templates/react_adminAuthentication/frontend/dev', 'templates/react_adminAuthentication/frontend/cli', 'templates/react_adminAuthentication/frontend/src/pages',
     'templates/react_adminAuthentication/backend', 'templates/react_adminAuthentication/backend/src']
@@ -23,7 +23,7 @@ function reactAdminAuthentication(answers, from, to) {
             npm run dev
             cd backend
             npm install
-            npm run exec`))
+            npm `))
     }, 2000)
 }
 
