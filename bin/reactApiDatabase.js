@@ -16,7 +16,11 @@ function reactApiDatabase(answers, from, to) {
         console.log(chalk.green(`react CRUD sqlite is completed!
             
             cd ${answers.name}
+            cd sqliteCRUD
             cd frontend
+            npm install
+            npm run dev
+            cd backend
             npm install
             npm run dev`))
     }, 2000)
