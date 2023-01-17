@@ -45,14 +45,14 @@ const questions = [
         choices: ['yes', 'no'],
         message: chalk.hex('#a08c95').bold('need a backend? '),
         when: function (answers) {
-            return answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu'
+            return answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu' || answers['frontend'] === chalk.green('vue') || answers['frontend'] === chalk.hex('#ff7247')('angular')
         }
     },
 
     {
         type: "fuzzypath",
         name: 'path',
-        itemType: 'directory',
+        itemType: 'folder',
         rootPath: process.env.HOME,
         message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: '),
         default: 'path to node_modules',
