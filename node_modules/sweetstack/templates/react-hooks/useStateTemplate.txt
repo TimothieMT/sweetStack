@@ -1,8 +1,0 @@
-
-/*
-
-//function are inserted after the main function
-
-const [count, setCount] = useState(0);
-
-*/

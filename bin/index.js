@@ -5,12 +5,14 @@ import inquirer from "inquirer";
 import {Command} from "commander";
 import * as path from "path";
 import chalk from "chalk";
-import fuzzy from "inquirer-fuzzy-path"
+// import fuzzy from "inquirer-fuzzy-path"
 import createProject from "./createProject.js";
+import * as tools from './tools.js';
 
 //VARIABLES
 const app = new Command();
 const name = 'sweetstack'
+const npmRoot = await tools.getNpmRoot();
 const listHooks = ['useEffect/Axios', 'useState', 'useReducer', 'useContext', 'useRef']
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
@@ -48,26 +50,25 @@ const questions = [
             return answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu' || answers['frontend'] === chalk.green('vue') || answers['frontend'] === chalk.hex('#ff7247')('angular')
         }
     },
-
-    {
-        type: "fuzzypath",
-        name: 'path',
-        itemType: 'folder',
-        rootPath: process.env.HOME,
-        message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: '),
-        default: 'path to node_modules',
-        suggestOnly: false,
-        depthLimit: 1,
-    }
+    //
+    // {
+    //     type: "fuzzypath",
+    //     name: 'path',
+    //     itemType: 'folder',
+    //     rootPath: process.env.HOME,
+    //     message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: '),
+    //     default: 'path to node_modules',
+    //     suggestOnly: false,
+    //     depthLimit: 1,
+    // }
 ]
 
 
-inquirer.registerPrompt('fuzzypath', fuzzy)
+// inquirer.registerPrompt('fuzzypath', fuzzy)
 inquirer.prompt(questions)
     .then(((answers) => {
 
-
-        const absolutePath = `${answers.path}/${name}`
+        const absolutePath = npmRoot + '/' + name;
         const destPath = `${path.resolve()}/${answers.name}`
 
         createProject(answers, absolutePath, destPath)
