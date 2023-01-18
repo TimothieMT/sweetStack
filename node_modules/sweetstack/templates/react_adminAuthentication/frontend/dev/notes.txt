@@ -1,0 +1,18 @@
+- TODO
+	- put in wait cursor
+		- disable all buttons
+	- take out any blinking
+		- when logged in and refresh (fix and fade in)
+	- change 10 seconds to 5 minutes, make easy to change
+	- backend: put port in .env
+
+
+============================================
+CODE REMOVED, MAY BE NEEDED:
+============================================
+const logger = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+	const date = new Date();
+	const logLine = `${date.toISOString()} - ${req.originalUrl}`;
+	fs.appendFileSync(config.logPathAndFileName, logLine + '\n');
+	next();
+}

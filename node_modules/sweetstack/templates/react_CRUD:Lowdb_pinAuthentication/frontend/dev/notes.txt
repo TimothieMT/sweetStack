@@ -1,0 +1,27 @@
+- x refactor styles to pages
+- x in edit mode, no add
+- x refactor rows
+- x toggle on add button click
+
+- x fix clear button on edit form
+- x make delete work again
+- x make add form work
+	- x clear button
+	- x create backend route
+	- x test with postman
+	- x save button
+	- x add  "publicationDate": "2022-12-07",
+- x test add/delete
+- x add pin feature
+	- x first with test.rest
+	- x frontend
+- x pin on add
+- x pin on edit
+- .. make admin login
+	- x page
+	- .. route: identify-as-admin
+
+- always clear pin
+- update howto
+- publish to hetzner
+- update howto with hetzner

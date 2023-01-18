@@ -17,7 +17,7 @@ function angularBackend(from, to, answers) {
             cd ${answers.name}
             cd frontend
             npm install
-            npm run dev`))
+            ng serve`))
     }, 2000)
 
 }

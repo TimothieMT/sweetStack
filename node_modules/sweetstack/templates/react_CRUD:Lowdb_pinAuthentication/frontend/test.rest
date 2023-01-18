@@ -1,0 +1,60 @@
+@url = http://localhost:3011
+
+### base route
+{{url}}
+
+### jobs
+{{url}}/jobs
+
+### delete a job
+DELETE {{url}}/jobs/3 
+content-type: application/json
+
+{
+	"pin": "1232"
+}
+
+### save an edited job
+PATCH {{url}}/job
+content-type: application/json
+
+{
+	"job": {
+		"id": 1,
+		"title": "ttt555",
+		"company": "ccc",
+		"url": "uuu",
+		"description": "ddd",
+		"skillList": "sss",
+		"todo": "ttt"
+	}, 
+	"pin": "1233"
+}
+
+### test route (replace with vitest later)
+{{url}}/test
+
+### add job
+POST {{url}}/job
+content-type: application/json
+
+{
+	"job": {
+		"id": 0,
+		"title": "ttt added222",
+		"company": "ccc",
+		"url": "uuu",
+		"description": "ddd",
+		"skillList": "sss",
+		"todo": "ttt"
+	}, 
+	"pin": "nnn"
+}
+
+### identify as admin
+POST {{url}}/identify-as-admin
+content-type: application/json
+
+{
+	"pin": "nnn"
+}

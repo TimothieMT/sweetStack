@@ -1,0 +1,72 @@
+.pageSkills {
+	.skillTotal {
+		margin-bottom: 1rem;
+		width: 25rem;
+
+		.mainArea {
+			padding: .5rem;
+			cursor: pointer;
+		}
+
+		.openArea {
+			padding: .5rem;
+
+			.description {
+				a {
+					text-decoration: none;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+
+	.found {
+		background-color: rgb(30, 67, 30);
+
+		.mainArea {
+			.total {
+				color: rgb(206, 206, 115);
+			}
+		}
+
+		.openArea {
+			background-color: rgb(21, 49, 21);
+			color: #888;
+
+			.description {
+				a {
+					color: rgb(78, 111, 62);
+					font-family: courier;
+				}
+			}
+		}
+
+	}
+
+	.missing {
+		background-color: rgb(86, 5, 5);
+		color: #777;
+		font-family: courier;
+
+		.mainArea {
+			.total {
+				color: #777;
+			}
+		}
+
+		.openArea {
+			background-color: rgb(56, 17, 17);
+			color: #666;
+
+			.description {
+				a {
+					color: rgb(121, 42, 38);
+				}
+			}
+		}
+	}
+}
+

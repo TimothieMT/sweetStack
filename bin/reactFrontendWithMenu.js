@@ -2,7 +2,7 @@ import chalk from "chalk";
 import copyFiles from "./copyFiles.js";
 import reactHooks from "./reactHooks.js";
 
-const pathArrayReactMenuTo = ['FrontendWithMenu', 'frontend/src', 'frontend/src/assets', 'frontend/src/pages', 'frontend/public', 'frontend/cli']
+const pathArrayReactMenuTo = ['frontend', 'frontend/src', 'frontend/src/assets', 'frontend/src/pages', 'frontend/public', 'frontend/cli']
 const pathArrayReactMenuFrom = ['templates/react-frontend-routes', 'templates/react-frontend-routes/src', 'templates/react-frontend-routes/src/assets', 'templates/react-frontend-routes/public', 'templates/react-frontend-routes/cli']
 
 

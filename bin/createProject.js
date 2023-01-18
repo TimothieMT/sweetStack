@@ -63,6 +63,8 @@ function createProject(answers, absolutePath, destPath) {
     }
 //ANGULAR END
 
+   return true
+
 }
 
 
