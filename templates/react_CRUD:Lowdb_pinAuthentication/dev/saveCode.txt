@@ -1,0 +1,11 @@
+
+export const blankJobEditItem: IJobEditItem = {
+	id: 0,
+	title: '',
+	company: '',
+	url: '',
+	description: '',
+	skillList: '',
+	todo: '',
+	pin: ''
+}

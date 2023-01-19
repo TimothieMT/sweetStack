@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import copyFiles from "./copyFiles.js";
 
-const pathArrayExpressBackendTo = ['backend', 'backend/dist', 'backend/src']
+const pathArrayExpressBackendTo = ['backend','backend/dist', 'backend/src']
 const pathArrayExpressBackendFrom = ['templates/express-backend', 'templates/express-backend/dist', 'templates/express-backend/src']
 
 function expressBackend(answers, from, to) {

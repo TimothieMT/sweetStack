@@ -2,7 +2,7 @@ import copyFiles from "./copyFiles.js";
 import reactHooks from "./reactHooks.js";
 import chalk from "chalk";
 
-const pathArrayReactZustandTo = ['frontend', 'frontend/src', 'frontend/src/assets', 'frontend/src/pages', 'frontend/public', 'frontend/cli']
+const pathArrayReactZustandTo = ['frontend','frontend/src', 'frontend/src/assets', 'frontend/src/pages', 'frontend/public', 'frontend/cli']
 const pathArrayReactZustandFrom = ['templates/react-routes-zustand', 'templates/react-routes-zustand/src', 'templates/react-routes-zustand/src/assets', 'templates/react-routes-zustand/public', 'templates/react-routes-zustand/cli']
 
 function menuZustand(answers, from, to) {

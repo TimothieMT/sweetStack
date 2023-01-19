@@ -1,12 +1,9 @@
 import copyFiles from "./copyFiles.js";
-import reactHooks from "./reactHooks.js";
 import chalk from "chalk";
 
-const pathArrayReactAdminTo = ['AdminAuthentication', 'frontend/src', 'frontend/public', 'frontend/dev', 'frontend/cli', 'frontend/src/pages',
-    'backend', 'backend/src']
+const pathArrayReactAdminTo = ['frontend','frontend/src', 'frontend/public', 'frontend/dev', 'frontend/cli', 'frontend/src/pages']
 const pathArrayReactAdminFrom = ['templates/react_adminAuthentication', 'templates/react_adminAuthentication/frontend/src', 'templates/react_adminAuthentication/frontend/public',
-    'templates/react_adminAuthentication/frontend/dev', 'templates/react_adminAuthentication/frontend/cli', 'templates/react_adminAuthentication/frontend/src/pages',
-    'templates/react_adminAuthentication/backend', 'templates/react_adminAuthentication/backend/src']
+    'templates/react_adminAuthentication/frontend/dev', 'templates/react_adminAuthentication/frontend/cli', 'templates/react_adminAuthentication/frontend/src/pages']
 
 function reactAdminAuthentication(answers, from, to) {
 
@@ -14,16 +11,12 @@ function reactAdminAuthentication(answers, from, to) {
 
     setTimeout(() => {
         copyFiles(pathArrayReactAdminFrom, pathArrayReactAdminTo, from, to)
-        console.log(chalk.green(`react admin authentication completed!
+        console.log(chalk.green(`react admin authentication frontend completed!
             
             cd ${answers.name}
-            cd adminAuthentication
             cd frontend
             npm install
-            npm run dev
-            cd backend
-            npm install
-            npm `))
+            npm run dev`))
     }, 2000)
 }
 

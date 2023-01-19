@@ -1,0 +1,209 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Frontend Developer",
+      "company": "PwC Deutschland",
+      "url": "https://www.get-in-it.de/jobsuche/p172318?filter[thematic_priority]=5&filter[city][radius]=25&filter[city][city][0][lon]=13.41053&filter[city][city][0][lat]=52.52437&start=0&limit=39&ref=Jobsuche",
+      "description": "Frontend-Entwicklung - Unser Produkt ist zentraler Bestandteil der Digitalisierungsstrategie von PwC Deutschland. Unsere Lösungen sollen komplexe Probleme einfach machen, dafür brauchen wir intuitive und moderne Frontends - und die baust du! Du bist zentrale:r Ansprechpartner:in für die Frontend Entwicklung eines wichtigen internationalen Prüfungstools in einem agilen Team der Digital Factory. Du konzipierst Responsive Web-Apps mit JavaScript /TypeScript und Angular und entwickelst diese weiter. Du kannst schnell UI-Prototypen aufsetzen, aber auch robuste, skalierbare Frontends im Angular Framework für unser Tool implementieren.\n\nFachliche Expertise - Du hast bereits Erfahrung in der Entwicklung von Web Applikationen mit HTML, CSS und JavaScript/TypeScript. Moderne UI Frameworks (Angular) hast du bereits erfolgreich eingesetzt, idealerweise hast du auch schon Erfahrung mit WebSocket.\n\nAgile Mindset - Du lebst und liebst Frontend-Technologien und entwickelst so kontinuierlich Produkt, Prozesse und Zusammenarbeit weiter.\n\nTeamwork - Unsere Teams sind cross-funktional. Du arbeitest Hand in Hand mit anderen Entwickler:innen, Automation Engineers und UX Kolleg:innen an der gemeinsamen Produktvision.\n\nArbeite wie es zu deinem Leben passt: mit FlexWork. Keine fixen Home-Office-Tage, sondern deine Chance Arbeitszeit und -ort variabel zu gestalten.\nDein Profil\n\nDu verfügst über ein abgeschlossenes Studium im Bereich Informatik oder eine vergleichbare Ausbildung und bringst Berufserfahrung im IT Umfeld, insbesondere im Frontend-Bereich, mit.\n\nDu hast ein grundlegendes Verständnis von Build-Prozessen, CI/ CD, Testing. Die Testautomatisierung im Frontend-Bereich ist für dich kein Neuland.\n\nDu hast idealerweise auch Erfahrungen im User Tracking mit Hotjar oder Piwik.\n\nDu suchst ein agiles Umfeld, in dem du deine Stärken ausspielen kannst.\n\nSehr gute Deutsch- und Englischkenntnisse helfen dir dabei, deine Ideen auch im internationalen Kontext oder mit internationalen Teamkolleg:innen zu teilen.",
+      "skillList": "angular, cicd, testing, hotjar, piwik, react, ux, dotnet",
+      "todo": "2022-12-13 call to see if they received application"
+    },
+    {
+      "id": 2,
+      "title": "Frontend-Entwickler",
+      "company": "networker, solutions",
+      "url": "https://www.get-in-it.de/jobsuche/p197373?filter[thematic_priority]=5&filter[city][radius]=25&filter[city][city][0][lon]=13.41053&filter[city][city][0][lat]=52.52437&start=0&limit=39&ref=Jobsuche",
+      "description": "Deine Aufgaben bei uns\n\n    Entwicklung von Frontend und UI-Komponenten\n    Betreuung und Weiterentwicklung bestehender Systeme\n    Zusammenarbeit mit anderen Dienstleistern an gemeinsamen Kundenprojekten\n    Umsetzung eigener Webentwicklung gemeinsam mit den Teams\n\nDeine Kompetenzen\n\n    JavaScript, Type Script\n    HTML + CSS\n    React\n    Jest Testing\n    RESTful APIs + Swagger\n    Git, Gitlab\n    Webstorm\n    NestJs\n    UX-Design",
+      "skillList": "typescript, react, jest, rest, swagger, git, gitlab, webstorm, nestjs, ux",
+      "todo": "2022-12-08 send application"
+    },
+    {
+      "id": 3,
+      "title": "Web Frontend Entwickler",
+      "company": "EPI development",
+      "url": "https://www.get-in-it.de/jobsuche/p132078?filter[thematic_priority]=5&filter[city][radius]=25&filter[city][city][0][lon]=13.41053&filter[city][city][0][lat]=52.52437&start=0&limit=39&ref=Jobsuche",
+      "description": "Die Herausforderung\n\n    Erstellung einer Bedarfsanalyse für neue Funktionen mit einer selbsterklärenden UI Gestaltung\n    Entwickeln von Funktionen und Algorithmen die nachhaltig lesbar sind\n    Der Fokus liegt in der Vereinfachung komplexer Vorgänge\n\nDeine Aufgaben\n\n    Weiterentwicklung von epirent aufgrund von aktuellen Anforderungen\n    Im Team Lösungen für neue Funktionen erarbeiten\n    Erstellen von gut bedienbaren und ausgeklügelten UI, denke wie ein Anwender\n    Kommunikation im Team, einbringen eigener Ideen\n    Offener Umgang mit neuen Technologien\n    Kreativität ist gefragt\n\nDeine Fähigkeiten\n\n    Weitreichende Erfahrungen in der Anwendungsprogrammierung\n    Klare und selbsterklärende UI Designs erstellen\n    Komplizierte technische Zusammenhänge auf einfache Funktionen herunterbrechen\n    Kommunikativ im Team, zielorientiert und selbständig in der Arbeitsorganisation\n    Deine Sprachkenntnisse (optimal): JavaScript, CSS, HTML, Bootstrap, AngularJS, API Entwicklung (REST), Responsive Design / Progressive Apps\n    Kein Hochschulabschluss notwendig, Können zählt!",
+      "skillList": "angular, bootstrap, rest, responsive, pwa",
+      "todo": "2022-12-09 send application"
+    },
+    {
+      "id": 4,
+      "title": "Frontend Developer",
+      "company": "reuter onlineshop",
+      "url": "https://www.get-in-it.de/jobsuche/p206536?filter[thematic_priority]=5&filter[city][radius]=25&filter[city][city][0][lon]=13.41053&filter[city][city][0][lat]=52.52437&start=0&limit=39&ref=Jobsuche",
+      "description": "Successfully completed studies with a focus on computer science, a similar education or relevant professional experience\nVery good knowledge in React or similar\nGood knowledge of HTML, CSS, JavaScript and Jest/Mocha\nTypeScript, Gitlab, Next.js, styled-components, Storybook and Webpack sound familiar to you\nInspire with your innovative thinking and don't lose sight of the big picture\nGet actively involved in professional discussions",
+      "skillList": "react, jest, mocha, typescript, gitlab, nextjs, styledcomponents, storybook, webpack",
+      "publicationDate": "2022-12-06",
+      "todo": "2022-12-09 send application"
+    },
+    {
+      "id": 5,
+      "title": "Frontend Developer und Consultant",
+      "company": "codecentric",
+      "url": "https://www.get-in-it.de/jobsuche/p206964?filter[thematic_priority]=5&filter[city][radius]=25&filter[city][city][0][lon]=13.41053&filter[city][city][0][lat]=52.52437&start=0&limit=39&ref=Jobsuche",
+      "description": "Du hast ein tiefes, technisches Verständnis von Webtechnologien, wie JavaScript, TypeScript, HTML5 und CSS3 sowie Angular, ReactJS und/oder VueJS\n    Du kennst dich mit CSS-Präprozessoren und CSS-Architekturen aus\n    Du bist vertraut mit der Cross-Browser-Problematik\n    Du bist sicher im Umgang mit modernen Buildtools (z. B. Fuse-Box, Rollup, Webpack) und hast Kenntnisse aktueller Testing Frameworks (z. B. Mocha, Jasmine oder Jest)\n    Du kennst die agilen Werte und arbeitest gerne in agilen Teams\n    User Experience und Responsive Design interessieren dich\n    Beratung liegt dir und du kannst dir vorstellen, unsere Kunden technologisch oder/und methodisch zu schulen. Dafür bringst du eine hohe Kommunikationsfähigkeit und verhandlungssichere Deutschkenntnisse mit",
+      "skillList": "typescript, angular, react, vue, fusebox, rollup,webpack, mocha, jasmine, jest, ux, responsive",
+      "publicationDate": "2022-12-07",
+      "todo": "2022-12-11 send application"
+    }
+  ],
+  "skills": [
+    {
+      "idCode": "angular",
+      "name": "Angular",
+      "url": "https://onespace.pages.dev/techItems?id=36",
+      "description": "together with React and Vue.js one of the three most popular JavaScript frameworks"
+    },
+    {
+      "idCode": "cicd",
+      "name": "CI/CD",
+      "url": "https://about.gitlab.com/topics/ci-cd",
+      "description": "the combined practices of continuous integration (CI) and continuous deployment (CD)"
+    },
+    {
+      "idCode": "react",
+      "name": "React",
+      "url": "https://onespace.pages.dev/techItems?id=2",
+      "description": "currently the most popular front-end JavaScript framework along with Vue and Angular"
+    },
+    {
+      "idCode": "jest",
+      "name": "Jest",
+      "url": "https://onespace.pages.dev/techItems?id=19",
+      "description": "a JavaScript testing framework like Mocha, but simpler"
+    },
+    {
+      "idCode": "swagger",
+      "name": "Swagger",
+      "url": "https://en.wikipedia.org/wiki/Swagger_(software)",
+      "description": "a suite of tools for API developers created in 2011"
+    },
+    {
+      "idCode": "typescript",
+      "name": "TypeScript",
+      "url": "https://onespace.pages.dev/techItems?id=35",
+      "description": "in larger applications, the preferred way to program in JavaScript"
+    },
+    {
+      "idCode": "rest",
+      "name": "REST",
+      "url": "https://en.wikipedia.org/wiki/Representational_state_transfer",
+      "description": "a way to make services on a web available to software and other websites"
+    },
+    {
+      "idCode": "gitlab",
+      "name": "GitLab",
+      "url": "https://onespace.pages.dev/techItems?id=140",
+      "description": "a popular tool to organize the lifecyle of software development - a local GitHub"
+    },
+    {
+      "idCode": "ux",
+      "name": "UX",
+      "url": "https://en.wikipedia.org/wiki/User_experience",
+      "description": "how a user interacts with and experiences a software application including the person's perceptions of utility, ease of use, and efficiency"
+    },
+    {
+      "idCode": "responsive",
+      "name": "Responsive web design",
+      "url": "https://en.wikipedia.org/wiki/Responsive_web_design",
+      "description": "an approach to web design that aims to make web pages render well on a variety of devices and window or screen sizes from minimum to maximum display size to ensure usability and satisfaction"
+    },
+    {
+      "idCode": "mocha",
+      "name": "Mocha",
+      "url": "https://onespace.pages.dev/techItems?id=18",
+      "description": "one of the most popular JavaScript testing frameworks"
+    },
+    {
+      "idCode": "webpack",
+      "name": "Webpack",
+      "url": "https://onespace.pages.dev/techItems?id=55",
+      "description": "the most popular JavaScript module bundler"
+    },
+    {
+      "idCode": "testing",
+      "name": "Testing",
+      "url": "https://wanago.io/2018/08/27/testing-javascript-tutorial-types-of-tests-of-unit-testing-with-jest",
+      "description": "1. unit tests, 2. integration tests, 3. end-to-end tests"
+    },
+    {
+      "idCode": "git",
+      "name": "Git",
+      "url": "https://onespace.pages.dev/techItems?id=12",
+      "description": "the most-used revision control system today"
+    },
+    {
+      "idCode": "webstorm",
+      "name": "WebStorm",
+      "url": "https://www.jetbrains.com/webstorm",
+      "description": "an integrated development environment for JavaScript and related technologies"
+    },
+    {
+      "idCode": "nestjs",
+      "name": "NestJS",
+      "url": "https://onespace.pages.dev/techItems?id=217",
+      "description": "a Node.js framework for building efficient, reliable and scalable server-side applications"
+    },
+    {
+      "idCode": "bootstrap",
+      "name": "Bootstrap",
+      "url": "https://onespace.pages.dev/techItems?id=25",
+      "description": "a ubiquitous CSS framework that simplifies website design"
+    },
+    {
+      "idCode": "pwa",
+      "name": "PWA",
+      "url": "https://onespace.pages.dev/techItems?id=306",
+      "description": "Progresssive Web App - application software delivered through the web"
+    },
+    {
+      "idCode": "nextjs",
+      "name": "Next.js",
+      "url": "https://onespace.pages.dev/techItems?id=219",
+      "description": "a React framework that enables server-side rendering"
+    },
+    {
+      "idCode": "styledcomponents",
+      "name": "styled-components",
+      "url": "https://styled-components.com",
+      "description": "the best bits of ES6 and CSS to style your React app components without stress"
+    },
+    {
+      "idCode": "storybook",
+      "name": "Storybook",
+      "url": "https://storybook.js.org/docs/react/get-started/introduction",
+      "description": "a tool for UI development that makes development faster and easier by isolating components"
+    },
+    {
+      "idCode": "vue",
+      "name": "Vue.js",
+      "url": "https://onespace.pages.dev/techItems?id=37",
+      "description": "can easily be used to enhance existing applications as well as to create new applications"
+    },
+    {
+      "idCode": "fusebox",
+      "name": "FuseBox",
+      "url": "https://auth0.com/blog/introducing-fusebox-an-alternative-to-webpack",
+      "description": "module bundler that is simple to configure but has enough features to be a valid alternative to WebPack"
+    },
+    {
+      "idCode": "rollup",
+      "name": "Rollup",
+      "url": "https://onespace.pages.dev/techItems?id=143",
+      "description": "the second most popular module bundler for JavaScript"
+    },
+    {
+      "idCode": "jasmine",
+      "name": "Jasmine",
+      "url": "https://onespace.pages.dev/techItems?id=174",
+      "description": "an open-source testing framework for JavaScript"
+    },
+    {
+      "idCode": "hotjar",
+      "name": "Hotjar",
+      "url": "https://www.hotjar.com/web-app-design",
+      "description": "a software tool to track users"
+    }
+  ]
+}

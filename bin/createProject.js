@@ -8,7 +8,10 @@ import reactFrontendWithMenu from "./reactFrontendWithMenu.js";
 import reactMenuZustand from './reactMenuZustand.js'
 import reactPinAuthentication from './reactPinAuthentication.js'
 import reactAdminAuthentication from './reactAdminAthentication.js'
-import reactApiDatabase from './reactApiDatabase.js'
+import react_sqlite_CRUD from './react_sqlite_CRUD.js'
+import react_CRUDLowdb_pinAuthentication_backend from "./react_CRUD:lowdb_pinAuthentication_backend.js";
+import reactAdminAuthenticationBackend from "./react_adminAuthentication_backend.js";
+import react_sqlite_CRUDBackend from "./react-sqlite_CRUD_backend.js";
 
 
 function createProject(answers, absolutePath, destPath) {
@@ -20,12 +23,15 @@ function createProject(answers, absolutePath, destPath) {
     }
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD/Lowdb and PIN authentication') {
         reactPinAuthentication(answers, absolutePath, destPath)
+        react_CRUDLowdb_pinAuthentication_backend(answers, absolutePath, destPath)
     }
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'admin authentication') {
         reactAdminAuthentication(answers, absolutePath, destPath)
+        reactAdminAuthenticationBackend(answers, absolutePath, destPath)
     }
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD API which adds/edits/deletes data from a database') {
-        reactApiDatabase(answers, absolutePath, destPath)
+        react_sqlite_CRUD(answers, absolutePath, destPath)
+        react_sqlite_CRUDBackend(answers, absolutePath, destPath)
     }
     if (answers.name !== '' && answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu' && answers['backend'] === 'yes') {
         reactFrontendWithMenu(answers, absolutePath, destPath)

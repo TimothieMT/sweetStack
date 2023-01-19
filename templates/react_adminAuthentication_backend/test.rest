@@ -1,0 +1,37 @@
+@url = http://localhost:3610
+
+### ROOT
+GET {{url}}
+
+### GET WELCOME MESSAGE
+GET {{url}}/welcomemessage
+
+### SAVE WELCOME MESSAGE
+POST {{url}}/welcomemessage
+content-type: application/json
+
+{
+	"welcomeMessage": "Welcome to this site. (CHANGED)"
+}
+
+### BAD LOGIN 
+POST {{url}}/login
+content-type: application/json
+
+{
+	"password": "badpassword"
+}
+
+### SUCCESSFUL LOGIN
+POST {{url}}/login
+content-type: application/json
+
+{
+	"password": "123"
+}
+
+### GET LOGGED IN USER GET 
+GET {{url}}/currentuser
+
+### LOGOUT
+GET {{url}}/logout

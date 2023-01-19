@@ -2,7 +2,7 @@ import chalk from "chalk";
 import reactHooks from "./reactHooks.js";
 import copyFiles from "./copyFiles.js";
 
-const pathArrayReactTo = ['frontend', 'frontend/src', 'frontend/public']
+const pathArrayReactTo = ['frontend','frontend/src', 'frontend/public']
 const pathArrayReactFrom = ['templates/react-frontend', 'templates/react-frontend/src', 'templates/react-frontend/public']
 
 function reactFrontend(answers, from, to) {

@@ -1,0 +1,32 @@
+@use 'variables' as v;
+
+body {
+	background-color: #333;
+	color: #ccc;
+	font-family: sans-serif;
+	padding: 0 1rem;
+
+	button {
+		font-size: v.$button-font-size;
+	}
+
+	h1 {
+		color: rgb(209, 168, 85);
+	}
+
+	nav {
+		background-color: #222;
+		padding: .5rem;
+
+		a {
+			color: #aaa;
+			text-decoration: none;
+			margin-right: 1rem;
+		}
+
+		a.active {
+			color: rgb(211, 211, 110);
+		}
+	}
+
+}

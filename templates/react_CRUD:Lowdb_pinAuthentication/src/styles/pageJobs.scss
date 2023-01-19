@@ -1,0 +1,175 @@
+@use 'variables' as v;
+
+.pageJobs {
+	.jobs {
+		.jobsHeader {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+		}
+
+		.job {
+			background-color: #222;
+			padding: 1rem;
+			margin-bottom: 1rem;
+
+			div {
+				margin-bottom: .5rem;
+			}
+
+			.managePanel {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+
+				.deleteButtonArea {
+					input {
+						margin-right: .5rem;
+						width: 3rem;
+						font-size: v.$button-font-size;
+
+						&::placeholder {
+							color: #999;
+						}
+					}
+				}
+			}
+
+			.title {
+				a {
+					color: rgb(176, 146, 91);
+					font-size: 1.5rem;
+				}
+			}
+
+			.company {
+				color: rgb(208, 208, 114);
+			}
+
+			.description {
+				font-style: italic;
+				color: #999;
+			}
+
+			.skills {
+				.skill {
+					font-family: 'Courier New', Courier, monospace;
+				}
+
+				.found {
+					color: green;
+
+					a {
+						color: rgb(114, 208, 114);
+					}
+				}
+
+				.missing {
+					color: red;
+
+					a {
+						color: rgb(210, 77, 77);
+					}
+				}
+			}
+
+			.todo {
+				color: yellow;
+				background-color: #111;
+				padding: .4rem;
+				font-family: 'Courier New', Courier, monospace;
+				display: inline-block;
+				border-radius: .4rem;
+			}
+		}
+	}
+
+	form.formActionEdit {
+		fieldset {
+			background-color: #444;
+		}
+	}
+
+	form.formActionAdd {
+		fieldset {
+			background-color: rgb(12, 100, 12);
+		}
+	}
+
+	form {
+		fieldset {
+			margin: 0 2em 2em 0;
+			padding: 1.5em 2em 2em 2em;
+			border: solid 1px #ccc;
+			border-radius: 6px;
+			width: 50rem;
+			min-width: 200px;
+
+			.row:not(:first-of-type) {
+				margin-top: 1rem;
+			}
+
+			legend {
+				padding: 0 .25em;
+				color: rgb(200, 169, 110) !important;
+			}
+
+			label {
+				display: block;
+				margin-bottom: .3rem;
+
+				&::after {
+					content: ':';
+				}
+			}
+
+			input[type=text] {
+				padding: .5em;
+				border: 1px solid #999;
+				width: 96%;
+				margin-bottom: .5rem;
+				font-family: courier;
+			}
+
+			textarea {
+				width: 97%;
+				height: 8rem;
+				font-family: courier;
+				font-size: .8rem;
+			}
+
+			.buttonRow {
+				display: flex;
+				justify-content: space-between;
+				padding-right: 1rem;
+
+				button {
+					margin-top: 1rem;
+					font-size: 1rem;
+					padding: .3rem;
+					display: flex;
+					align-items: center;
+				}
+
+				.saveButtonArea {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					input {
+						margin-right: .5rem;
+						width: 3rem;
+						font-size: v.$button-font-size;
+						margin-top: 1rem;
+
+						&::placeholder {
+							color: #999;
+						}
+					}
+				}
+			}
+		}
+	}
+}

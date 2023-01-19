@@ -49,27 +49,15 @@ const questions = [
         when: function (answers) {
             return answers['frontend'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu' || answers['frontend'] === chalk.green('vue') || answers['frontend'] === chalk.hex('#ff7247')('angular')
         }
-    },
-    //
-    // {
-    //     type: "fuzzypath",
-    //     name: 'path',
-    //     itemType: 'folder',
-    //     rootPath: process.env.HOME,
-    //     message: chalk.hex('#a08c95').bold('please enter the path to "/../node_modules" folder: '),
-    //     default: 'path to node_modules',
-    //     suggestOnly: false,
-    //     depthLimit: 1,
-    // }
-]
+    }]
 
 
-// inquirer.registerPrompt('fuzzypath', fuzzy)
 inquirer.prompt(questions)
     .then(((answers) => {
 
         const absolutePath = npmRoot + '/' + name;
         const destPath = `${path.resolve()}/${answers.name}`
+
 
         createProject(answers, absolutePath, destPath)
 
