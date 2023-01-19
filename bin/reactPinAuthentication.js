@@ -11,9 +11,6 @@ const pathArrayReactPinFrom = ['templates/react_CRUD:Lowdb_pinAuthentication', '
 
 function reactPinAuthentication(answers, from, to) {
 
-    console.log(`create files...`)
-
-
     setTimeout(() => {
         copyFiles(pathArrayReactPinFrom, pathArrayReactPinTo, from, to)
         console.log(chalk.green(`react CRUD pin authentication with lowdb frontend completed!

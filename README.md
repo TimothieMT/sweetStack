@@ -13,7 +13,7 @@ Sweetstack is an application to quickly and easily create starter pages with or 
 ## Authors
 
 - [@TimothieMT](https://github.com/TimothieMT)
-## Run Locally
+## Run Globally
 
 Go to the dektop and install globally
 
@@ -21,7 +21,7 @@ Go to the dektop and install globally
   npm install sweetstack -g
 ```
 
-start cli with command below, create directory and go to it
+start cli with command
 
 ```bash
   sweetstack
@@ -31,9 +31,9 @@ change to project directory
 
 ```bash
   cd <project-name>
-  cd <folder>
+  cd <frontend> or <backend>
 ```
-and install assets with command below
+and install assets with command
 
 ```bash 
   npm install 

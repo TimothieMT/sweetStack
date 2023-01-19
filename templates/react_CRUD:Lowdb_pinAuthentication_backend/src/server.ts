@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.get('/', (req: express.Request, res: express.Response) => {
 	res.send(model.getApiInstructionsHtml());

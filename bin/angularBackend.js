@@ -5,10 +5,6 @@ const pathArrayAngularBackendTo = ['backend', 'backend/public', 'backend/src', '
 const pathArrayAngularBackendFrom = ['templates/angular-frontend', 'templates/angular-frontend/public', 'templates/angular-frontend/src', 'templates/angular-frontend/src/assets', 'templates/backend-components']
 
 function angularBackend(from, to, answers) {
-    //CREATE ANGULAR BACKEND
-
-    console.log(`create files...`)
-
 
     setTimeout(() => {
         copyFiles(pathArrayAngularBackendFrom, pathArrayAngularBackendTo, from, to)

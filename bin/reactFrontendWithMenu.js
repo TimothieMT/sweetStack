@@ -7,10 +7,6 @@ const pathArrayReactMenuFrom = ['templates/react-frontend-routes', 'templates/re
 
 
 function reactFrontendWithMenu(answers, from, to) {
-    //CREATE REACT FRONTEND
-
-    console.log(`create files...`)
-
 
     setTimeout(() => {
         copyFiles(pathArrayReactMenuFrom, pathArrayReactMenuTo, from, to)

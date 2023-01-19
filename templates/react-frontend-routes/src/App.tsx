@@ -7,12 +7,13 @@ import { PageAbout } from './pages/PageAbout';
 function App() {
 	return (
 		<div className="App">
-			<h1>Info Site</h1>
+			<h1>SweetStack</h1>
 			<nav>
 				<NavLink to="/welcome">Welcome</NavLink>
 				<NavLink to="/info">Info</NavLink>
 				<NavLink to="/about">About</NavLink>
 			</nav>
+
 
 			<Routes>
 				<Route path="/welcome" element={<PageWelcome />} />

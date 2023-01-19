@@ -8,8 +8,6 @@ const pathArrayReactPinFrom = ['templates/react_CRUD:Lowdb_pinAuthentication_bac
 
 function reactPinAuthenticationBackend(answers, from, to) {
 
-    console.log(`create files...`)
-
 
     setTimeout(() => {
         copyFiles(pathArrayReactPinFrom, pathArrayReactPinTo, from, to)

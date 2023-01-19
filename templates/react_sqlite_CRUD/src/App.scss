@@ -10,12 +10,56 @@ $row_width_short: 8rem;
 $flashcard_background_front: #222;
 $flashcard_background_back: #111;
 
+* {
+
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	background-color: #333;
 	color: #ccc;
 	font-family: sans-serif;
-	padding: 0 1rem;
 	animation: fadein .2s ease-in;
+
+	h1 {
+		color: #a08c95;
+		font-size: 2rem;
+		align-self: start;
+		background: #222;
+		width: 100%;
+		padding: 1rem;
+	}
+
+	nav {
+		background-color: #222;
+		width: 100%;
+		box-sizing: border-box;
+		height: 50px;
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		a {
+			color: #aaa;
+			text-decoration: none;
+			margin-right: 1rem;
+			font-size: 1.4rem;
+			font-weight: lighter;
+
+		}
+
+		a.active {
+			color: #725258;
+		}
+	}
+	p {
+		transform: translate(0, 50vh);
+		font-size: 1.5rem;
+		font-weight: bolder;
+	}
+
 
 	.toast-position {
 		right: 1.25rem !important;
@@ -53,12 +97,6 @@ body {
 		}
 	}
 
-	h1 {
-		color: rgb(209, 168, 85);
-		font-size: 2.5rem;
-		margin-top: 1.5rem;
-		margin-bottom: .8rem;
-	}
 
 	h1.adminMode {
 		color: #000;
@@ -92,24 +130,14 @@ body {
 		}
 	}
 
-	nav {
-		background-color: #222;
-		padding: .5rem;
-		border-radius: .3rem;
-
-		a {
-			color: #aaa;
-			text-decoration: none;
-			margin-right: 1rem;
-		}
-
-		a.active {
-			color: rgb(211, 211, 110);
-		}
-	}
 
 	.page {
-		padding-top: 1rem;
+		padding-top: 10rem;
+		display: inline-flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-items: center;
+		width: 100%;
 	}
 
 	.pageLogin {
@@ -121,10 +149,10 @@ body {
 	.pageFlashcards {
 		.headerArea {
 			display: flex;
-			justify-content: space-between;
+			justify-content: center;
 			align-items: center;
 			width: $flashcard_width;
-			margin-bottom: -1rem;
+			margin: 2rem auto;
 
 			button {
 				height: fit-content;

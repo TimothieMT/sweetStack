@@ -6,10 +6,6 @@ const pathArrayReactTo = ['frontend','frontend/src', 'frontend/public']
 const pathArrayReactFrom = ['templates/react-frontend', 'templates/react-frontend/src', 'templates/react-frontend/public']
 
 function reactFrontend(answers, from, to) {
-    //CREATE REACT FRONTEND
-
-    console.log(`create files...`)
-
 
     setTimeout(() => {
         copyFiles(pathArrayReactFrom, pathArrayReactTo, from, to)

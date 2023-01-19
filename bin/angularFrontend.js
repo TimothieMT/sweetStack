@@ -5,9 +5,6 @@ export const pathArrayAngularFrontendTo = ['frontend', 'frontend/src', 'frontend
 export const pathArrayAngularFrontendFrom = ['templates/angular-frontend', 'templates/angular-frontend/public', 'templates/angular-frontend/src', 'templates/angular-frontend/src/assets', 'templates/backend-components']
 
 function angularFrontend(from, to, answers) {
-    //CREATE ANGULAR FRONTEND
-
-    console.log(`create project...`)
 
     setTimeout(() => {
         copyFiles(pathArrayAngularFrontendFrom, pathArrayAngularFrontendTo, from, to)

@@ -7,7 +7,6 @@ const pathArrayReactApiFrom = ['templates/react_sqlite_CRUD_backend/src', 'templ
 
 
 function react_sqlite_CRUDBackend(answers, from, to) {
-    console.log(`create files...`)
 
     setTimeout(() => {
         copyFiles(pathArrayReactApiFrom, pathArrayReactApiTo, from, to)

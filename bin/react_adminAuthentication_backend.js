@@ -6,8 +6,6 @@ const pathArrayReactAdminFrom = ['templates/react_adminAuthentication_backend', 
 
 function reactAdminAuthenticationBackend(answers, from, to) {
 
-    console.log(`create files...`)
-
     setTimeout(() => {
         copyFiles(pathArrayReactAdminFrom, pathArrayReactAdminTo, from, to)
         console.log(chalk.green(`react admin authentication backend completed!

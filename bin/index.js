@@ -5,14 +5,13 @@ import inquirer from "inquirer";
 import {Command} from "commander";
 import * as path from "path";
 import chalk from "chalk";
-// import fuzzy from "inquirer-fuzzy-path"
 import createProject from "./createProject.js";
-import * as tools from './tools.js';
+import * as sweet from './sweet.js';
 
 //VARIABLES
 const app = new Command();
 const name = 'sweetstack'
-const npmRoot = await tools.getNpmRoot();
+const npmRoot = await sweet.getNpmRoot();
 const listHooks = ['useEffect/Axios', 'useState', 'useReducer', 'useContext', 'useRef']
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},

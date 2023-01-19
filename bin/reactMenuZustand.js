@@ -7,9 +7,6 @@ const pathArrayReactZustandFrom = ['templates/react-routes-zustand', 'templates/
 
 function menuZustand(answers, from, to) {
 
-    console.log(`create files...`)
-
-
     setTimeout(() => {
         copyFiles(pathArrayReactZustandFrom, pathArrayReactZustandTo, from, to)
         setTimeout(() => {
