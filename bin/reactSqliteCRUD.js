@@ -6,7 +6,7 @@ const pathArrayReactApiTo = ['frontend','frontend/src', 'frontend/src/components
 const pathArrayReactApiFrom = ['templates/react_sqlite_CRUD', 'templates/react_sqlite_CRUD/dev', 'templates/react_sqlite_CRUD/src', 'templates/react_sqlite_CRUD/src/pages', 'templates/react_sqlite_CRUD/src/components', 'templates/react_sqlite_CRUD/public', 'templates/react_sqlite_CRUD/cli']
 
 
-function react_sqlite_CRUD(answers, from, to) {
+function reactSqliteCRUD(answers, from, to) {
 
     setTimeout(() => {
         copyFiles(pathArrayReactApiFrom, pathArrayReactApiTo, from, to)
@@ -19,4 +19,4 @@ function react_sqlite_CRUD(answers, from, to) {
     }, 2000)
 }
 
-export default react_sqlite_CRUD
+export default reactSqliteCRUD

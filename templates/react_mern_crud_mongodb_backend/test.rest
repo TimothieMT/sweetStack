@@ -1,0 +1,61 @@
+@url = http://localhost:5001
+
+### GET INFO
+GET {{url}}
+
+### GET ALL BOOKS
+GET {{url}}/books
+
+### GET SPECIFIC BOOK
+GET {{url}}/book/62c3fca5997884b0fdda415a
+
+### ADD BOOK
+POST {{url}}/book
+content-type: application/json
+
+{
+  "title": "Added - test.rest 111",
+  "description": "lorem ipsum dolor sit amet, consectetur, lorem ipsum dolor sit amet, lorem ipsum dolor sit amet",
+  "numberOfPages": 999,
+  "language": "english",
+  "imageUrl": "http://test.com",
+  "buyUrl": "http://test.com"
+}
+
+### EDIT BOOK
+PUT {{url}}/book/62c3fca5997884b0fdda415a
+content-type: application/json
+
+{
+  "title": "Homo Deus - CHANGED2",
+  "description": "I had taken Harari's course which he used to write his book Sapiens, which was one of the most insightful courses I have ever taken. That book was on the history of humanity, this new book by Harari is on the future of humanity.",
+  "numberOfPages": 425,
+  "language": "english",
+  "imageUrl": "http://edwardtanguay.vercel.app/share/images/books/homodeus.png",
+  "buyUrl": "https://www.amazon.com/Homo-Deus-Brief-History-Tomorrow-ebook/dp/B019CGXTP0"
+}
+
+### DELETE BOOK
+DELETE {{url}}/book/63c858db629fc2975e9ab3c2
+
+### BAD LOGIN 
+POST {{url}}/login
+content-type: application/json
+
+{
+	"password": "badpassword"
+}
+
+### GOOD LOGIN
+POST {{url}}/login
+content-type: application/json
+
+{
+	"password": "123"
+}
+
+### GET CURRENT USER
+GET {{url}}/get-current-user
+
+### LOGOUT
+GET {{url}}/logout

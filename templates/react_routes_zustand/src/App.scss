@@ -1,0 +1,100 @@
+	$header_color: rgb(194, 164, 107);
+
+* {
+
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: #222;
+}
+
+.App {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
+	font-family: sans-serif;
+	color: #a08c95;
+	width: auto;
+
+
+
+
+	.pageWelcome {
+		p {
+			font-size: 1.4rem;
+			strong {
+				color: $header_color;
+			}
+		}
+	}
+
+	.pageInfo {
+		.content {
+			margin: 0 auto;
+			width: 90%;
+			display: grid;
+			gap: 3rem;
+			grid-template-columns: 1fr 1fr;
+
+			h2 {
+				color: $header_color;
+			}
+
+			.jobs {
+				.job {
+					background-color: #222;
+					padding: .5rem;
+					margin-bottom: .5rem;
+				}
+			}
+
+			.skills {
+				.skill {
+					margin-bottom: 1rem;
+
+					.name {
+						color: white;
+					}
+				}
+			}
+		}
+	}
+	h1 {
+		color: #a08c95;
+		font-size: 2rem;
+		align-self: start;
+		background: #222;
+		width: 100%;
+		padding: 1rem;
+	}
+
+	nav {
+		background-color: #222;
+		width: 100%;
+		box-sizing: border-box;
+		height: 50px;
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		a {
+			color: #aaa;
+			text-decoration: none;
+			margin-right: 1rem;
+			font-size: 1.4rem;
+			font-weight: lighter;
+
+		}
+
+		a.active {
+			color: #725258;
+		}
+	}
+	p {
+		transform: translate(0, 50vh);
+		font-size: 1.5rem;
+		font-weight: bolder;
+	}
+}
+

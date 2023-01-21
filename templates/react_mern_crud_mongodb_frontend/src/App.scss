@@ -1,0 +1,209 @@
+$header_color: rgb(194, 164, 107);
+$book_background_front: #222;
+$book_background_back: #111;
+$book_width: 35rem;
+$row_width_full: 24.5rem;
+$row_width_short: 8rem;
+
+body {
+	background-color: #333;
+	color: #ccc;
+	font-family: sans-serif;
+	padding: 0 1rem;
+	animation: fadein .5s ease-in;
+
+	@keyframes fadein {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+
+	h1 {
+		color: rgb(209, 168, 85);
+	}
+
+	nav {
+		background-color: #222;
+		padding: .5rem;
+
+		a {
+			color: #aaa;
+			text-decoration: none;
+			margin-right: 1rem;
+		}
+
+		a.active {
+			color: rgb(211, 211, 110);
+		}
+	}
+
+	.pageBooks {
+		p {
+			font-size: 1.4rem;
+
+			strong {
+				color: $header_color;
+			}
+		}
+
+		.addBookArea {
+			margin-bottom: 1rem;
+		}
+
+		fieldset.addBookForm {
+			margin: 0 2em 2em 0;
+			padding: 1em 1.5em 1.5em 1.5em;
+			border: solid 1px #777;
+			border-radius: 6px;
+			width: 49.9rem;
+			min-width: 200px;
+			background-color: rgb(45, 91, 45);
+
+			legend {
+				padding: 0 .25em;
+			}
+
+			label {
+				display: block;
+				margin-bottom: .3rem;
+
+				&:after {
+					content: ':';
+				}
+			}
+
+			input[type=text] {
+				padding: .5em;
+				border: 1px solid #999;
+				width: 96%;
+				margin-bottom: .5rem;
+				font-family: courier;
+			}
+
+			textarea {
+				width: 97%;
+				height: 8rem;
+				font-family: courier;
+				font-size: .8rem;
+			}
+
+			.buttonRow {
+				display: flex;
+				justify-content: space-between;
+				padding-right: 1rem;
+
+				button {
+					margin-top: 1rem;
+					display: flex;
+					align-items: center;
+				}
+			}
+		}
+
+		.books {
+			.book {
+				background-color: #222;
+				margin-bottom: 1rem;
+				padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+				display: flex;
+				gap: 1rem;
+				align-items: start;
+				width: 50rem;
+
+				img {
+					width: 7rem;
+					height: 11rem;
+					animation: fadeinBook 2s ease-in;
+				}
+
+				.info {
+					.title {
+						font-size: 1.3rem;
+						margin-bottom: .5rem;
+					}
+
+					a {
+						color: rgb(209, 161, 71);
+					}
+
+					.description {
+						font-style: italic;
+						margin-bottom: .5rem;
+					}
+
+					.language {
+						color: rgb(212, 212, 140);
+					}
+
+					.buttonArea {
+						margin-top: 1rem;
+
+						button {
+							margin-right: .5rem;
+						}
+					}
+
+					.editArea {
+						background: $book_background_front;
+						max-width: $book_width - 1.6rem;
+						padding: 1.2rem .7rem .9rem .5rem;
+
+						.editFormButtons {
+							margin-top: 1rem;
+							width: 41.7rem;
+
+							button {
+								margin-right: .5rem;
+							}
+
+							text-align: right;
+						}
+
+						.row {
+							display: flex;
+							gap: .5rem;
+							margin-bottom: .3rem;
+
+							label {
+								&::after {
+									content: ': ';
+								}
+
+								width: 5.3rem;
+							}
+
+							div.control {
+								width: $row_width_full;
+
+								input {
+									width: 34.3rem;
+									font-size: .9rem;
+									font-family: courier;
+									padding: .5rem;
+								}
+
+								textarea {
+									width: 35rem;
+									height: 4rem;
+									font-size: .9rem;
+									font-family: courier;
+								}
+							}
+						}
+
+
+					}
+
+
+				}
+			}
+		}
+	}
+
+
+}

@@ -1,0 +1,28 @@
+{
+  "name": "recat-with-zustand",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "cp": "node cli/cp.mjs"
+  },
+  "dependencies": {
+    "axios": "^1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.4.3",
+    "sass": "^1.55.0",
+    "zustand": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-helmet": "^6.1.6",
+    "@vitejs/plugin-react": "^2.0.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7"
+  }
+}
