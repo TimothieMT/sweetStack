@@ -13,7 +13,7 @@ const app = new Command();
 const name = 'sweetstack'
 const npmRoot = await sweet.getNpmRoot();
 const listHooks = ['useEffect/Axios', 'useState', 'useReducer', 'useContext', 'useRef']
-const listMenu = ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database', 'mern CRUD API mongodb and authentication', 'none']
+const listMenu = ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database', 'mern CRUD API mongodb and authentication', 'simple page']
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
     {
@@ -37,7 +37,7 @@ const questions = [
         message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm with "enter": '),
         choices: listHooks,
         when: function (answers) {
-            return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu'
+            return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu'
         }
     },
 
@@ -47,7 +47,7 @@ const questions = [
         choices: ['yes', 'no'],
         message: chalk.hex('#a08c95').bold('need a backend? '),
         when: function (answers) {
-            return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu' || answers['framework'] === chalk.green('vue') || answers['framework'] === chalk.hex('#ff7247')('angular')
+            return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu' || answers['framework'] === chalk.green('vue') || answers['framework'] === chalk.hex('#ff7247')('angular')
         }
     }]
 

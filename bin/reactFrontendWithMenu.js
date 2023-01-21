@@ -3,7 +3,7 @@ import copyFiles from "./copyFiles.js";
 import reactHooks from "./reactHooks.js";
 
 const pathArrayReactMenuTo = ['frontend','frontend/src', 'frontend/src/assets', 'frontend/src/pages', 'frontend/public', 'frontend/cli']
-const pathArrayReactMenuFrom = ['templates/react-frontend-routes', 'templates/react-frontend-routes/src', 'templates/react-frontend-routes/src/assets', 'templates/react-frontend-routes/public', 'templates/react-frontend-routes/cli']
+const pathArrayReactMenuFrom = ['templates/react_frontend_routes', 'templates/react_frontend_routes/src', 'templates/react_frontend_routes/src/assets', 'templates/react_frontend_routes/public', 'templates/react_frontend_routes/cli']
 
 
 function reactFrontendWithMenu(answers, from, to) {

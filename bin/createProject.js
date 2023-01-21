@@ -12,7 +12,7 @@ import reactSqliteCRUD from './reactSqliteCRUD.js'
 import react_CRUDLowdb_pinAuthentication_backend from "./reactCRUD:lowdbPinAuthenticationBackend.js";
 import reactAdminAuthenticationBackend from "./reactAdminAuthenticationBackend.js";
 import react_sqlite_CRUDBackend from "./reactSqliteCRUDBackend.js";
-import reactMernCRUDAPIMongodbAuthenticationFrontend from "./reactMernCRUDAPIMongodbAuthenticationFrontend.js";
+import reactMernCRUDAPIMongodbAuthentication from "./reactMernCRUDAPIMongodbAuthentication.js";
 import reactMernCRUDAPIMongodbAuthenticationBackend from "./reactMernCRUDAPIMongodbAuthenticationBackend.js";
 
 
@@ -20,6 +20,11 @@ function createProject(answers, absolutePath, destPath) {
 
 
 //REACT START
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'mern CRUD API mongodb and authentication') {
+        console.log(`create files...`)
+        reactMernCRUDAPIMongodbAuthentication(answers, absolutePath, destPath)
+        reactMernCRUDAPIMongodbAuthenticationBackend(answers, absolutePath, destPath)
+    }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu included Zustand') {
         console.log(`create files...`)
         reactMenuZustand(answers, absolutePath, destPath)
@@ -44,12 +49,12 @@ function createProject(answers, absolutePath, destPath) {
         reactFrontendWithMenu(answers, absolutePath, destPath)
         expressBackend(answers, absolutePath, destPath)
     }
-    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' && answers['backend'] === 'yes') {
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page' && answers['backend'] === 'yes') {
         console.log(`create files...`)
         reactFrontend(answers, absolutePath, destPath)
         expressBackend(answers, absolutePath, destPath)
     }
-    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'none' && answers['backend'] === 'no') {
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page' && answers['backend'] === 'no') {
         console.log(`create files...`)
         reactFrontend(answers, absolutePath, destPath)
     }
@@ -58,11 +63,6 @@ function createProject(answers, absolutePath, destPath) {
         reactFrontendWithMenu(answers, absolutePath, destPath)
     }
 
-    if (answers.name === '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'mern CRUD API mongodb and authentication') {
-        console.log(`create files...`)
-        reactMernCRUDAPIMongodbAuthenticationFrontend(answers, absolutePath, destPath)
-        reactMernCRUDAPIMongodbAuthenticationBackend(answers, absolutePath, destPath)
-    }
 
 //REACT END
 

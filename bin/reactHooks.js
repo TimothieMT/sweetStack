@@ -4,11 +4,11 @@ import chalk from "chalk";
 
 function reactHooks(answers, from, to) {
 
-    const useEffectAxios = fs.readFileSync(from + '/templates/react-hooks/useEffectAxiosTemplate.txt', 'utf8')
-    const useReducer = fs.readFileSync(from + '/templates/react-hooks/useReducerTemplate.txt', 'utf8')
-    const useState = fs.readFileSync(from + '/templates/react-hooks/useStateTemplate.txt', 'utf8')
-    const useRef = fs.readFileSync(from + '/templates/react-hooks/useRefTemplate.txt', 'utf8')
-    const useContext = fs.readFileSync(from + '/templates/react-hooks/useContextTemplate.txt', 'utf8')
+    const useEffectAxios = fs.readFileSync(from + '/templates/react_hooks/useEffectAxiosTemplate.txt', 'utf8')
+    const useReducer = fs.readFileSync(from + '/templates/react_hooks/useReducerTemplate.txt', 'utf8')
+    const useState = fs.readFileSync(from + '/templates/react_hooks/useStateTemplate.txt', 'utf8')
+    const useRef = fs.readFileSync(from + '/templates/react_hooks/useRefTemplate.txt', 'utf8')
+    const useContext = fs.readFileSync(from + '/templates/react_hooks/useContextTemplate.txt', 'utf8')
     const answerArray = []
 
     answers['hooks'].forEach((hook) => {
