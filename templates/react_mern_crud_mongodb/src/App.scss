@@ -5,11 +5,17 @@ $book_width: 35rem;
 $row_width_full: 24.5rem;
 $row_width_short: 8rem;
 
+* {
+
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
 body {
-	background-color: #333;
 	color: #ccc;
 	font-family: sans-serif;
-	padding: 0 1rem;
 	animation: fadein .5s ease-in;
 
 	@keyframes fadein {
@@ -24,27 +30,54 @@ body {
 
 
 	h1 {
-		color: rgb(209, 168, 85);
+		color: #a08c95;
+		font-size: 2rem;
+		align-self: start;
+		width: 100%;
+		padding: 1rem;
 	}
 
 	nav {
-		background-color: #222;
-		padding: .5rem;
+		width: 100%;
+		box-sizing: border-box;
+		height: 50px;
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
 
 		a {
 			color: #aaa;
 			text-decoration: none;
 			margin-right: 1rem;
+			font-size: 1.4rem;
+			font-weight: lighter;
+
 		}
 
 		a.active {
-			color: rgb(211, 211, 110);
+			color: #725258;
 		}
 	}
+
+	.pageLogin{
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+  button {
+    color: white;
+    border-radius: 5px;
+    height: 20px;
+    width: 100px;
+  }
 
 	.pageBooks {
 		p {
 			font-size: 1.4rem;
+
 
 			strong {
 				color: $header_color;
@@ -82,7 +115,7 @@ body {
 				border: 1px solid #999;
 				width: 96%;
 				margin-bottom: .5rem;
-				font-family: courier;
+				font-family: courier, serif;
 			}
 
 			textarea {

@@ -10,7 +10,7 @@ function App() {
 	const { adminIsLoggedIn } = useContext(AppContext);
 	return (
 		<div className="App">
-			<h1>Book Site</h1>
+			<h1>SweetStack</h1>
 			<nav>
 				<NavLink to="/books">Books</NavLink>
 				{adminIsLoggedIn ? (
