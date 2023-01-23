@@ -2,8 +2,8 @@ import copyFiles from "./copyFiles.js";
 import chalk from "chalk";
 
 
-const pathArrayReactApiTo = ['backend','backend/src', 'backend/src/data']
-const pathArrayReactApiFrom = ['templates/react_sqlite_CRUD_backend/src', 'templates/react_sqlite_CRUD_backend/src/data']
+const pathArrayReactApiTo = ['backend','backend/dist', 'backend/src/src', 'backend/src/data']
+const pathArrayReactApiFrom = ['templates/react_sqlite_CRUD_backend','templates/react_sqlite_CRUD_backend/src', 'templates/react_sqlite_CRUD_backend/src/data']
 
 
 function react_sqlite_CRUDBackend(answers, from, to) {

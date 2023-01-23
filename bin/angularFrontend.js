@@ -2,7 +2,7 @@ import chalk from "chalk";
 import copyFiles from "./copyFiles.js";
 
 export const pathArrayAngularFrontendTo = ['frontend', 'frontend/src', 'frontend/public', 'frontend/src/app', 'frontend/src/assets']
-export const pathArrayAngularFrontendFrom = ['templates/angular-frontend', 'templates/angular-frontend/public', 'templates/angular-frontend/src', 'templates/angular-frontend/src/assets', 'templates/backend-components']
+export const pathArrayAngularFrontendFrom = ['templates/angular_frontend', 'templates/angular_frontend/public', 'templates/angular_frontend/src', 'templates/angular_frontend/src/assets', 'templates/backend_components']
 
 function angularFrontend(from, to, answers) {
 

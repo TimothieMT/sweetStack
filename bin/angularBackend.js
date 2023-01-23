@@ -2,7 +2,7 @@ import chalk from "chalk";
 import copyFiles from "./copyFiles.js";
 
 const pathArrayAngularBackendTo = ['backend', 'backend/public', 'backend/src', 'backend/src/assets', 'backend/src/app']
-const pathArrayAngularBackendFrom = ['templates/angular-frontend', 'templates/angular-frontend/public', 'templates/angular-frontend/src', 'templates/angular-frontend/src/assets', 'templates/backend-components']
+const pathArrayAngularBackendFrom = ['templates/angular_frontend', 'templates/angular_frontend/public', 'templates/angular_frontend/src', 'templates/angular_frontend/src/assets', 'templates/angular_backend_components']
 
 function angularBackend(from, to, answers) {
 

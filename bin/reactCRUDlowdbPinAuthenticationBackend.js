@@ -3,7 +3,7 @@ import chalk from "chalk";
 
 
 const pathArrayReactPinTo = ['backend','backend/src', 'backend/src/data']
-const pathArrayReactPinFrom = ['templates/react_CRUD:Lowdb_pinAuthentication_backend', 'templates/react_CRUD:Lowdb_pinAuthentication_backend/src', 'templates/react_CRUD:Lowdb_pinAuthentication_backend/src/data']
+const pathArrayReactPinFrom = ['templates/react_CRUDLowdb_pinAuthentication_backend', 'templates/react_CRUDLowdb_pinAuthentication_backend/src', 'templates/react_CRUDLowdb_pinAuthentication_backend/src/data']
 
 
 function reactPinAuthenticationBackend(answers, from, to) {

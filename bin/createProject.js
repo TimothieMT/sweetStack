@@ -9,7 +9,7 @@ import reactMenuZustand from './reactMenuZustand.js'
 import reactPinAuthentication from './reactPinAuthentication.js'
 import reactAdminAuthentication from './reactAdminAthentication.js'
 import reactSqliteCRUD from './reactSqliteCRUD.js'
-import react_CRUDLowdb_pinAuthentication_backend from "./reactCRUD:lowdbPinAuthenticationBackend.js";
+import react_CRUDLowdb_pinAuthentication_backend from "./reactCRUDlowdbPinAuthenticationBackend.js";
 import reactAdminAuthenticationBackend from "./reactAdminAuthenticationBackend.js";
 import react_sqlite_CRUDBackend from "./reactSqliteCRUDBackend.js";
 import reactMernCRUDAPIMongodbAuthentication from "./reactMernCRUDAPIMongodbAuthentication.js";

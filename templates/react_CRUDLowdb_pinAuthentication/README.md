@@ -2,7 +2,6 @@
 
 This is a fullstack MERN frontend/backend example app which has all the moving parts for you to deploy an application online to e.g. Hetzner which allows users who know the admin PIN to edit, delete and add new items online. This is a good basis to study, learn and use if you have React/Node/Express skills but not yet database or auth security skills. It has everything you need to publish an online website in which users can identify themselves and change content online. Note that if you want to build a job-application management app, this is a useful basis which can be used as is. Otherwise you will have to replace the content with your own.
 
-
 ## features
 
 - **frontend:** Vite/React with Sass, TypeScript and ES6 modules
@@ -16,12 +15,8 @@ This is a fullstack MERN frontend/backend example app which has all the moving p
 - go to your projects directory
 - create a directory called `getajob`
 
-## install backend
+## backend
 
-- go to your projects directory
-- `cd getajob`
-- `git clone git@github.com:edwardtanguay/getajob007-backend.git`
-- `npm i`
 - create **.env** file
 
 ```text
@@ -31,12 +26,9 @@ PIN = 1234
 
 - `npm run dev`
 
-## install frontend
+## frontend
 
-- go to your projects directory
-- `cd getajob`
-- `git clone git@github.com:edwardtanguay/getajob007-frontend.git`
-- `npm i`
+
 - create **.env** file
 
 ```text
