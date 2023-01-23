@@ -5,7 +5,7 @@ import { exec } from 'child_process';
  *
  * returns the directory of where node_modules is stored on Linux, Mac and Windows
  *
- * const npmRoot = await tools.getNpmRoot();
+ * const npmRoot = await sweet.getNpmRoot();
  */
 export const getNpmRoot = () => {
     return new Promise((resolve) => {

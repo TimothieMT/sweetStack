@@ -31,5 +31,4 @@ PIN = 1234
 VITE_BACKEND_URL = http://localhost:3001
 ```
 
-- `npm run dev`
 

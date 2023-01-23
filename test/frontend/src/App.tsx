@@ -2,7 +2,7 @@ import './App.scss'
 
 function App() {
 
-    //@hook
+    const [count, setCount] = useState(0);
 
     return (
         <div className="App">

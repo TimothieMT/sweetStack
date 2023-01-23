@@ -1,17 +1,4 @@
-/*
-
-//imports are inserted at the beginning
-
-import React, {useState, useEffect} from 'react'
-import axios from 'axios'
-
-interface IDatabase {
-    title: string;
-}
-
-//function are inserted after the main function
-
- const [database, setDatabase] = useState<IDatabase[]>( [] );
+const [database, setDatabase] = useState<IDatabase[]>( [] );
 
       useEffect(() => {
           const axiosDatabase = async () => {
@@ -20,5 +7,3 @@ interface IDatabase {
           };
           axiosDatabase()
       }, []);
-
-*/

@@ -51,12 +51,6 @@ This starter is not only a good way to learn the basic skills of building a full
   NODE_ENVIRONMENT = development
   ```
 
-### start the backend
-
-- `npm run dev`
-
-
-
 ### create .env file for frontend
 
 - create an `.env` file in the root directory of your project
@@ -66,11 +60,6 @@ This starter is not only a good way to learn the basic skills of building a full
   ``` text
   VITE_BACKEND_URL = http://localhost:5001
   ```
-  
-### start the frontend
 
-- `npm run dev`
-- open in browser
-- click url in terminal
 
 

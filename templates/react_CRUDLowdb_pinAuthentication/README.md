@@ -10,10 +10,6 @@ This is a fullstack MERN frontend/backend example app which has all the moving p
 - **authentication:** simple PIN which is an environment variable in the backend, i.e. all POST/PATCH/DELETE backend routes are protected
 - **toastify notifications**: easy-to-implement app messages that pop out with animation in e.g. upper-right-hand corner, see [react-toastify](https://www.npmjs.com/package/react-toastify)
 
-## install
-
-- go to your projects directory
-- create a directory called `getajob`
 
 ## backend
 
@@ -24,8 +20,6 @@ PORT = 3001
 PIN = 1234
 ```
 
-- `npm run dev`
-
 ## frontend
 
 
@@ -35,5 +29,4 @@ PIN = 1234
 VITE_BACKEND_URL = http://localhost:3001
 ```
 
-- `npm run dev`
 

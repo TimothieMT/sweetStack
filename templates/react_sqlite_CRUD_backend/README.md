@@ -27,8 +27,6 @@ This is the starting point for the simplest fullstack CRUD site that has a datab
 	- SQLite database (file: `data/db.sqlite`)
 
 
-	- `mkdir site001`
-
 ## create .env file
 
 - create `.env` file with **any random characters** for the session secret, and an **admin password** you can remember

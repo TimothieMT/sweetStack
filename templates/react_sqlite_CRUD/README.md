@@ -36,11 +36,5 @@ SESSION_SECRET = ksks2374skjdf
 ADMIN_PASSWORD = pass828
 ```
 
-- install node_modules
-	- `npm i`
-- start the backend
-	- `npm run dev`
-- open API in browser
-	- click url in terminal
 
 
