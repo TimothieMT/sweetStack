@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"vite\" \" cd ../backend && npm run build && npm start\"",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "concurrently": "^7.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.57.1",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "axios": "^0.26.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",

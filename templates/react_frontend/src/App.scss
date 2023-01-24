@@ -13,3 +13,23 @@
   color: #a08c95;
   width: auto;
 }
+
+.theCount {
+  color: rgb(216, 216, 97);
+}
+
+.buttonAreaExtra {
+  display: flex;
+  gap: .5rem;
+  margin-top: 1rem;
+
+  button {
+    font-size: 2rem;
+  }
+
+  input {
+    font-size: 2rem;
+    width: 5rem;
+    text-align: right;
+  }
+}

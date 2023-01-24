@@ -1,51 +1,122 @@
-/*
+import { useReducer } from 'react';
+import './App.scss';
 
-//imports are inserted at the beginning
-
-import { createContext, useContext } from 'react';
-
-//function are inserted after the main function
-
-const ThemeContext = createContext(null);
-
-//Example for useContext copy or overwrite
-
-export default function MyApp() {
-  return (
-    <ThemeContext.Provider value="dark">
-      <Form />
-    </ThemeContext.Provider>
-  )
+interface IState {
+    count: number;
+    newCount: string;
+    message: string;
 }
 
-function Form() {
-  return (
-    <Panel title="Welcome">
-      <Button>Sign up</Button>
-      <Button>Log in</Button>
-    </Panel>
-  );
+enum IActionType {
+    INCREMENT = 'INCREMENT',
+    DECREMENT = 'DECREMENT',
+    RESET = 'RESET',
+    UPDATENEWCOUNT = 'UPDATENEWCOUNT',
+    SETCOUNT = 'SETCOUNT',
 }
 
-function Panel({ title, children }) {
-  const theme = useContext(ThemeContext);
-  const className = 'panel-' + theme;
-  return (
-    <section className={className}>
-      <h1>{title}</h1>
-      {children}
-    </section>
-  )
+interface IAction {
+    type: IActionType;
+    payload: any;
 }
 
-function Button({ children }) {
-  const theme = useContext(ThemeContext);
-  const className = 'button-' + theme;
-  return (
-    <button className={className}>
-      {children}
-    </button>
-  );
+const initialState: IState = {
+    count: 0,
+    newCount: '',
+    message: '',
+};
+
+const reducer = (state: IState, action: IAction): IState => {
+    switch (action.type) {
+        case IActionType.INCREMENT:
+            state.count++;
+            state.newCount = '';
+            state.message = '';
+            break;
+        case IActionType.DECREMENT:
+            state.count--;
+            state.newCount = '';
+            state.message = '';
+            break;
+        case IActionType.RESET:
+            state.count = 0;
+            state.newCount = '';
+            state.message = '';
+            break;
+        case IActionType.UPDATENEWCOUNT:
+            state.newCount = action.payload;
+            break;
+        case IActionType.SETCOUNT:
+            const strNum = action.payload;
+            const num = Number(strNum);
+            if (!isNaN(num)) {
+                state.count = num;
+                state.newCount = '';
+                state.message = '';
+            } else {
+                state.message = `"${strNum}" is not a number`;
+            }
+            break;
+    }
+    return { ...state };
+};
+
+function App() {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    return (
+        <div className="App">
+            <h1>Info Site</h1>
+            <p className="theCount">Count: {state.count}</p>
+            <div className="buttonArea">
+                <button
+                    onClick={() =>
+                        dispatch({ type: IActionType.DECREMENT, payload: 0 })
+                    }
+                >
+                    -
+                </button>
+                <button
+                    onClick={() =>
+                        dispatch({ type: IActionType.INCREMENT, payload: 0 })
+                    }
+                >
+                    +
+                </button>
+            </div>
+            <div className="buttonAreaExtra">
+                <button
+                    onClick={() =>
+                        dispatch({ type: IActionType.RESET, payload: 0 })
+                    }
+                >
+                    Reset
+                </button>
+            </div>
+            <div className="buttonAreaExtra">
+                <input
+                    type="text"
+                    value={state.newCount}
+                    onChange={(e) =>
+                        dispatch({
+                            type: IActionType.UPDATENEWCOUNT,
+                            payload: e.target.value,
+                        })
+                    }
+                />
+                <button
+                    onClick={() =>
+                        dispatch({
+                            type: IActionType.SETCOUNT,
+                            payload: state.newCount,
+                        })
+                    }
+                >
+                    Save
+                </button>
+            </div>
+            <p>{state.message}</p>
+        </div>
+    );
 }
 
-*/
+export default App;

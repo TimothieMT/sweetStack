@@ -11,15 +11,6 @@ This is a fullstack MERN frontend/backend example app which has all the moving p
 - **toastify notifications**: easy-to-implement app messages that pop out with animation in e.g. upper-right-hand corner, see [react-toastify](https://www.npmjs.com/package/react-toastify)
 
 
-## backend
-
-- create **.env** file
-
-```text
-PORT = 3001
-PIN = 1234
-```
-
 ## frontend
 
 

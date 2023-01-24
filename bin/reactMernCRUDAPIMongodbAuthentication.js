@@ -11,7 +11,7 @@ function reactMernCRUDAPIMongodbAuthentication(answers, from, to) {
         console.log(chalk.green(`react MERN CRUD API MongoDB authentication frontend completed!
             
             cd ${answers.name}
-            cd backend
+            cd frontend
             npm install
             npm run dev`))
     }, 2000)

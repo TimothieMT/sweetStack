@@ -1,30 +1,122 @@
-/*
+import { useReducer } from 'react';
+import './App.scss';
 
-
-//Example for useContext copy or overwrite
-
-const initialState = {count: 0};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return {count: state.count + 1};
-    case 'decrement':
-      return {count: state.count - 1};
-    default:
-      throw new Error();
-  }
+interface IState {
+    count: number;
+    newCount: string;
+    message: string;
 }
 
-function Counter() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  return (
-    <>
-      Count: {state.count}
-      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
-    </>
-  );
+enum IActionType {
+    INCREMENT = 'INCREMENT',
+    DECREMENT = 'DECREMENT',
+    RESET = 'RESET',
+    UPDATENEWCOUNT = 'UPDATENEWCOUNT',
+    SETCOUNT = 'SETCOUNT',
 }
 
-*/
+interface IAction {
+    type: IActionType;
+    payload: any;
+}
+
+const initialState: IState = {
+    count: 0,
+    newCount: '',
+    message: '',
+};
+
+const reducer = (state: IState, action: IAction): IState => {
+    switch (action.type) {
+        case IActionType.INCREMENT:
+            state.count++;
+            state.newCount = '';
+            state.message = '';
+            break;
+        case IActionType.DECREMENT:
+            state.count--;
+            state.newCount = '';
+            state.message = '';
+            break;
+        case IActionType.RESET:
+            state.count = 0;
+            state.newCount = '';
+            state.message = '';
+            break;
+        case IActionType.UPDATENEWCOUNT:
+            state.newCount = action.payload;
+            break;
+        case IActionType.SETCOUNT:
+            const strNum = action.payload;
+            const num = Number(strNum);
+            if (!isNaN(num)) {
+                state.count = num;
+                state.newCount = '';
+                state.message = '';
+            } else {
+                state.message = `"${strNum}" is not a number`;
+            }
+            break;
+    }
+    return { ...state };
+};
+
+function App() {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    return (
+        <div className="App">
+            <h1>Info Site</h1>
+            <p className="theCount">Count: {state.count}</p>
+            <div className="buttonArea">
+                <button
+                    onClick={() =>
+                        dispatch({ type: IActionType.DECREMENT, payload: 0 })
+                    }
+                >
+                    -
+                </button>
+                <button
+                    onClick={() =>
+                        dispatch({ type: IActionType.INCREMENT, payload: 0 })
+                    }
+                >
+                    +
+                </button>
+            </div>
+            <div className="buttonAreaExtra">
+                <button
+                    onClick={() =>
+                        dispatch({ type: IActionType.RESET, payload: 0 })
+                    }
+                >
+                    Reset
+                </button>
+            </div>
+            <div className="buttonAreaExtra">
+                <input
+                    type="text"
+                    value={state.newCount}
+                    onChange={(e) =>
+                        dispatch({
+                            type: IActionType.UPDATENEWCOUNT,
+                            payload: e.target.value,
+                        })
+                    }
+                />
+                <button
+                    onClick={() =>
+                        dispatch({
+                            type: IActionType.SETCOUNT,
+                            payload: state.newCount,
+                        })
+                    }
+                >
+                    Save
+                </button>
+            </div>
+            <p>{state.message}</p>
+        </div>
+    );
+}
+
+export default App;

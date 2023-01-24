@@ -26,15 +26,7 @@ This is the starting point for the simplest fullstack CRUD site that has a datab
 	- cookie/session authentication
 	- SQLite database (file: `data/db.sqlite`)
 
-## create .env file
 
-
-- create `.env` file with **any random characters** for the session secret, and an **admin password** you can remember
-
-```text
-SESSION_SECRET = ksks2374skjdf
-ADMIN_PASSWORD = pass828
-```
 
 
 

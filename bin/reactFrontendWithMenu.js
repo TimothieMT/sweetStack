@@ -10,9 +10,6 @@ function reactFrontendWithMenu(answers, from, to) {
 
     setTimeout(() => {
         copyFiles(pathArrayReactMenuFrom, pathArrayReactMenuTo, from, to)
-        setTimeout(() => {
-            reactHooks(answers, from, to + '/frontend/src/App.tsx')
-        }, 1000)
         console.log(chalk.green(`react frontend with menu completed!
             
             cd ${answers.name}

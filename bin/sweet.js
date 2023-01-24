@@ -1,4 +1,5 @@
-import { exec } from 'child_process';
+import {exec} from 'child_process';
+import fs from "fs";
 
 /**
  * getNpmRoot
@@ -19,3 +20,7 @@ export const getNpmRoot = () => {
         });
     });
 };
+
+export const makeHook = (content, to) => {
+    fs.writeFileSync(to, content, {flag: 'w', encoding: 'utf8'});
+}

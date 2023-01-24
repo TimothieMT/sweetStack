@@ -21,14 +21,5 @@ PORT = 3001
 PIN = 1234
 ```
 
-- `npm run dev`
-
-## frontend
-
-- create **.env** file
-
-```text
-VITE_BACKEND_URL = http://localhost:3001
-```
 
 
