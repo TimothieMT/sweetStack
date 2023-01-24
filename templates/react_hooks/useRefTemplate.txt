@@ -1,7 +1,3 @@
-/*
-
-//Example for useContext copy or overwrite
-
 function TextInputWithFocusButton() {
   const inputEl = useRef(null);
   const onButtonClick = () => {
@@ -15,5 +11,3 @@ function TextInputWithFocusButton() {
     </>
   );
 }
-
-*/

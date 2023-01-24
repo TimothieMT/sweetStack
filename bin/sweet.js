@@ -1,11 +1,12 @@
-import { exec } from 'child_process';
+import {exec} from 'child_process';
+import fs from "fs";
 
 /**
  * getNpmRoot
  *
  * returns the directory of where node_modules is stored on Linux, Mac and Windows
  *
- * const npmRoot = await tools.getNpmRoot();
+ * const npmRoot = await sweet.getNpmRoot();
  */
 export const getNpmRoot = () => {
     return new Promise((resolve) => {
@@ -19,3 +20,7 @@ export const getNpmRoot = () => {
         });
     });
 };
+
+export const makeHook = (content, to) => {
+    fs.writeFileSync(to, content, {flag: 'w', encoding: 'utf8'});
+}
