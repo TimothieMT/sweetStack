@@ -1,0 +1,59 @@
+@url = http://localhost:3515
+
+### ROOT
+GET {{url}}
+
+### BAD LOGIN 
+POST {{url}}/login
+content-type: application/json
+
+{
+	"password": "badpassword"
+}
+
+### GOOD LOGIN
+POST {{url}}/login
+content-type: application/json
+
+{
+	"password": "123"
+}
+
+### GET CURRENT USER
+GET {{url}}/get-current-user
+
+### LOGOUT
+GET {{url}}/logout
+
+### GET FLASHCARDS
+GET {{url}}/flashcards
+
+### DELETE FLASHCARD DELETE 
+DELETE {{url}}/flashcard/2805
+
+### DELETE BAD FLASHCARD DELETE 
+DELETE {{url}}/flashcard/askdjfskdf
+
+### EDIT FLASHCARD
+PUT {{url}}/flashcard/3000
+content-type: application/json
+
+{
+	"flashcard": {
+		"category": "category changed",
+		"front": "front changed",
+		"back": "back changed"
+	}
+}
+
+### ADD FLASHCARD
+POST {{url}}/flashcard
+content-type: application/json
+
+{
+	"flashcard": {
+		"category": "linux",
+		"front": "show all files with full info",
+		"back": "`ls -al`"
+	}
+}

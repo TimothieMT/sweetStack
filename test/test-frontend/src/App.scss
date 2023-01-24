@@ -1,0 +1,331 @@
+$corner: .5rem;
+$header_color: rgb(194, 164, 107);
+$color_border_admin: #555;
+$flashcard_width: 35rem;
+$admin_color: rgb(75, 2, 2);
+$admin_add_color: rgb(13, 95, 13);
+$admin_color2: lighten($admin_color, 4%);
+$row_width_full: 27.5rem;
+$row_width_short: 8rem;
+$flashcard_background_front: #222;
+$flashcard_background_back: #111;
+
+* {
+
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #333;
+	color: #ccc;
+	font-family: sans-serif;
+	animation: fadein .2s ease-in;
+
+	h1 {
+		color: #a08c95;
+		font-size: 2rem;
+		align-self: start;
+		background: #222;
+		width: 100%;
+		padding: 1rem;
+	}
+
+	nav {
+		background-color: #222;
+		width: 100%;
+		box-sizing: border-box;
+		height: 50px;
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		a {
+			color: #aaa;
+			text-decoration: none;
+			margin-right: 1rem;
+			font-size: 1.4rem;
+			font-weight: lighter;
+
+		}
+
+		a.active {
+			color: #725258;
+		}
+	}
+	p {
+		transform: translate(0, 50vh);
+		font-size: 1.5rem;
+		font-weight: bolder;
+	}
+
+
+	.toast-position {
+		right: 1.25rem !important;
+		top: .4rem !important;
+		--toastify-color-progress-dark: rgb(202, 155, 68);
+		--toastify-color-dark: #222;
+	}
+
+	@keyframes fadein {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	.siteLoading {
+		font-size: 7rem;
+		color: #555;
+
+		.spinner {
+			animation: spin infinite 3s linear;
+		}
+
+		@keyframes spin {
+			from {
+				transform: rotate(0deg);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	}
+
+
+	h1.adminMode {
+		color: #000;
+		text-shadow: 2px 2px 10px #ccc;
+
+		span.sideIcon {
+			color: $admin_color;
+			text-shadow: 2px 2px 10px #555;
+		}
+	}
+
+	.appMessage {
+		background-color: rgb(204, 204, 84);
+		display: inline-block;
+		color: #333;
+		padding: .3rem .5rem;
+		margin-bottom: 1rem;
+		border-radius: .2rem;
+
+		.inner {
+			display: flex;
+			gap: .5rem;
+
+			.messageText {
+				margin-top: .1rem;
+
+				a {
+					color: darkred;
+				}
+			}
+		}
+	}
+
+
+	.page {
+		padding-top: 10rem;
+		display: inline-flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-items: center;
+		width: 100%;
+	}
+
+	.pageLogin {
+		input {
+			width: 5rem;
+		}
+	}
+
+	.pageFlashcards {
+		.headerArea {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: $flashcard_width;
+			margin: 2rem auto;
+
+			button {
+				height: fit-content;
+			}
+		}
+
+		h3.newFlashcard {
+			margin-bottom: -.5rem;
+			color: green;
+			text-shadow: 1px 1px 10px #111;
+		}
+
+		.addFlashcardArea {
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+			background: $flashcard_background_front;
+			max-width: $flashcard_width - 1.6rem;
+			padding: 1.2rem .7rem .9rem .9rem;
+
+			.row {
+				display: flex;
+				gap: .5rem;
+				margin-bottom: .3rem;
+
+				label {
+					&::after {
+						content: ': ';
+					}
+
+					width: 4.3rem;
+				}
+
+				div.control {
+					width: $row_width_full;
+
+					input {
+						width: $row_width_full;
+					}
+				}
+			}
+
+			.rowCategory {
+				div.control {
+					input {
+						width: 8rem;
+					}
+				}
+			}
+		}
+
+		.newFlashcardAdminArea {
+			margin-top: -1rem;
+			background: $admin_add_color;
+			max-width: $flashcard_width - 1.6rem;
+			padding: .8rem;
+			display: flex;
+			gap: .5rem;
+			justify-content: flex-end;
+		}
+
+		.flashcards {
+			.flashcardWrapper {
+				.flashcard {
+					margin-top: 1rem;
+					max-width: $flashcard_width;
+
+					.front {
+						background-color: $flashcard_background_front;
+						padding: 1rem;
+						user-select: none;
+						cursor: pointer;
+
+						.category {
+							color: rgb(216, 174, 96);
+						}
+					}
+
+					.back {
+						background-color: $flashcard_background_back;
+						padding: 1rem;
+						color: rgb(228, 228, 128);
+
+						p {
+							margin: 0;
+							font-size: 1rem;
+
+							code {
+								padding: 0;
+								background-color: #292929;
+								color: yellow;
+								overflow-wrap: normal;
+								white-space: pre-wrap;
+								word-wrap: break-word;
+							}
+
+							a {
+								color: orange;
+							}
+						}
+					}
+				}
+
+				.editArea {
+					margin-top: 1rem;
+					background: $flashcard_background_front;
+					max-width: $flashcard_width - 1.6rem;
+					padding: 1.2rem .7rem .9rem .9rem;
+
+					.row {
+						display: flex;
+						gap: .5rem;
+						margin-bottom: .3rem;
+
+						label {
+							&::after {
+								content: ': ';
+							}
+
+							width: 4.3rem;
+						}
+
+						div.control {
+							width: $row_width_full;
+
+							input {
+								width: 95%;
+							}
+						}
+					}
+
+					.rowCategory {
+						div.control {
+							input {
+								width: 8rem;
+							}
+						}
+					}
+				}
+
+				.adminArea {
+					margin-top: -.1rem;
+					background: $admin_color;
+					max-width: $flashcard_width - 1.6rem;
+					padding: .8rem;
+					display: flex;
+					gap: .5rem;
+				}
+
+				.editAdminArea {
+					margin-top: -.1rem;
+					background: $admin_color;
+					max-width: $flashcard_width - 1.6rem;
+					padding: .8rem;
+					display: flex;
+					gap: .5rem;
+					justify-content: flex-end;
+				}
+
+				.deleteAdminArea {
+					margin-top: -.1rem;
+					background: $admin_color;
+					max-width: $flashcard_width - 1.6rem;
+					padding: .8rem;
+					display: flex;
+					gap: .5rem;
+					justify-content: flex-end;
+
+					button {
+						height: fit-content;
+					}
+				}
+			}
+		}
+	}
+
+}
