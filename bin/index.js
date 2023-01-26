@@ -7,8 +7,18 @@ import * as path from "path";
 import chalk from "chalk";
 import createProject from "./createProject.js";
 import * as sweet from './sweet.js';
+import * as cliProgress from "cli-progress";
 
 //VARIABLES
+
+
+const loader = new cliProgress.SingleBar({
+    format: 'CLI Progress |' + ('{bar}') + '| {percentage}% || {value}/{total} Chunks || Speed: {speed}',
+    barCompleteChar: '\u2588',
+    barIncompleteChar: '\u2591',
+    hideCursor: true
+});
+
 const app = new Command();
 const name = 'sweetstack'
 const npmRoot = await sweet.getNpmRoot();
@@ -34,7 +44,7 @@ const questions = [
     {
         type: "list",
         name: 'hooks',
-        message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm with "enter": '),
+        message: chalk.hex('#a08c95').bold('selected hook: '),
         choices: listHooks,
         when: function (answers) {
             return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page'

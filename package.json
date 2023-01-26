@@ -1,6 +1,6 @@
 {
   "name": "sweetstack",
-  "version": "1.0.78",
+  "version": "1.0.80",
   "type": "module",
   "description": "create application with sweetstack",
   "main": "index.js",
@@ -14,8 +14,11 @@
   "author": "TimothieMT",
   "license": "MIT",
   "dependencies": {
+    "@jest/globals": "^29.4.0",
+    "ansi-colors": "^4.1.3",
     "chalk": "^5.2.0",
     "clear": "^0.1.0",
+    "cli-progress": "^3.11.2",
     "clui": "^0.3.6",
     "commander": "^10.0.0",
     "figlet": "^1.5.2",
