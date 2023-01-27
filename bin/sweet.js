@@ -55,7 +55,7 @@ export const npmInstaller =  (path) => {
     });
 }
 
-export const loader = (onComplete, timerValue) => {
+export const loader = ([], timerValue) => {
     // create new progress bar using default values
     const b1 = new _progress.Bar();
     b1.start(100, 0);
