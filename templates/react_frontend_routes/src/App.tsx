@@ -8,14 +8,13 @@ function App() {
     return (
         <div className="App">
             <h1>SweetStack</h1>
-            // <nav> is a container for navigation links
+
             <nav>
                 <NavLink to="/welcome">Welcome</NavLink>
                 <NavLink to="/info">Info</NavLink>
                 <NavLink to="/about">About</NavLink>
             </nav>
 
-            // <Routes> is a container for <Route> elements
                 <Routes>
                     <Route path="/welcome" element={<PageWelcome/>}/>
                     <Route path="/info" element={<PageInfo/>}/>
