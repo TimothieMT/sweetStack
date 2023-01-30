@@ -7,23 +7,15 @@ import * as path from "path";
 import chalk from "chalk";
 import createProject from "./createProject.js";
 import * as sweet from './sweet.js';
-import * as cliProgress from "cli-progress";
 
 //VARIABLES
 
-
-const loader = new cliProgress.SingleBar({
-    format: 'CLI Progress |' + ('{bar}') + '| {percentage}% || {value}/{total} Chunks || Speed: {speed}',
-    barCompleteChar: '\u2588',
-    barIncompleteChar: '\u2591',
-    hideCursor: true
-});
 
 const app = new Command();
 const name = 'sweetstack'
 const npmRoot = await sweet.getNpmRoot();
 const listHooks = ['useEffect/Axios', 'useState', 'useReducer', 'useContext', 'useRef', 'noHook']
-const listMenu = ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database', 'mern CRUD API mongodb and authentication', 'simple page']
+const listMenu = ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database', 'CRUD API mongodb and authentication','CRUD member authentication', 'simple page']
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
     {
@@ -71,7 +63,9 @@ inquirer.prompt(questions)
 
         createProject(answers, absolutePath, destPath)
 
-    }))
+    }), (err) => {
+        console.log(err)
+    })
 
 
 //INIT PROJECT

@@ -15,11 +15,13 @@ import react_sqlite_CRUDBackend from "./reactSqliteCRUDBackend.js";
 import reactMernCRUDAPIMongodbAuthentication from "./reactMernCRUDAPIMongodbAuthentication.js";
 import reactMernCRUDAPIMongodbAuthenticationBackend from "./reactMernCRUDAPIMongodbAuthenticationBackend.js";
 import * as sweet from "./sweet.js";
+import CRUDMemberAuthentication from "./CRUDMemberAuthentication.js";
+import CRUDMemberAuthenticationBackend from "./CRUDMemeberAuthenticationBackend.js";
 
 function createProject(answers, absolutePath, destPath) {
 
 //REACT START
-    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'mern CRUD API mongodb and authentication') {
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD API mongodb and authentication') {
         sweet.loader([reactMernCRUDAPIMongodbAuthentication(answers, absolutePath, destPath),
             reactMernCRUDAPIMongodbAuthenticationBackend(answers, absolutePath, destPath)], 60)
     }
@@ -27,17 +29,22 @@ function createProject(answers, absolutePath, destPath) {
         sweet.loader([reactMenuZustand(answers, absolutePath, destPath)], 60)
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD/Lowdb and PIN authentication') {
-  sweet.loader([reactPinAuthentication(answers, absolutePath, destPath),
-        react_CRUDLowdb_pinAuthentication_backend(answers, absolutePath, destPath)], 60)
+        sweet.loader([reactPinAuthentication(answers, absolutePath, destPath),
+            react_CRUDLowdb_pinAuthentication_backend(answers, absolutePath, destPath)], 60)
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'admin authentication') {
         sweet.loader(
             [reactAdminAuthentication(answers, absolutePath, destPath),
-        reactAdminAuthenticationBackend(answers, absolutePath, destPath)], 60)
+                reactAdminAuthenticationBackend(answers, absolutePath, destPath)], 60)
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD API which adds/edits/deletes data from a database') {
         sweet.loader([reactSqliteCRUD(answers, absolutePath, destPath),
             react_sqlite_CRUDBackend(answers, absolutePath, destPath)], 600)
+    }
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD member authentication') {
+        sweet.loader([CRUDMemberAuthentication(answers,absolutePath,destPath),
+        CRUDMemberAuthenticationBackend(answers,absolutePath,destPath)], 60)
+
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu' && answers['backend'] === 'yes') {
         sweet.loader([reactFrontendWithMenu(answers, absolutePath, destPath),
