@@ -1,18 +1,17 @@
-
 # SweetStack
 
-Sweetstack is an application to quickly and easily create starter pages with or without backend. It is possible to generate complete applications in a very short time without investing a lot of time. So you can concentrate on more important things.
-
+Sweetstack is an application to quickly and easily create starter pages with or without backend. It is possible to
+generate complete applications in a very short time without investing a lot of time. So you can concentrate on more
+important things.
 
 ## Badges
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-
-
 ## Authors
 
 - [@TimothieMT](https://github.com/TimothieMT)
+
 ## Run Globally
 
 Go to the dektop and install globally
@@ -33,12 +32,12 @@ change to project directory
   cd <project-name>
   cd <frontend> or <backend>
 ```
-and install assets with command
+
+and start the project
 
 ```bash 
-  npm install 
+  npm run dev
 ```
-
 
 ## Feedback
 

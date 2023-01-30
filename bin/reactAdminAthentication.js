@@ -1,5 +1,5 @@
 import copyFiles from "./copyFiles.js";
-import chalk from "chalk";
+import * as sweet from "./sweet.js";
 
 function reactAdminAuthentication(answers, from, to) {
 
@@ -7,15 +7,12 @@ function reactAdminAuthentication(answers, from, to) {
     const pathArrayReactAdminFrom = ['templates/react_adminAuthentication', 'templates/react_adminAuthentication/frontend/src', 'templates/react_adminAuthentication/frontend/public',
         'templates/react_adminAuthentication/frontend/dev', 'templates/react_adminAuthentication/frontend/cli', 'templates/react_adminAuthentication/frontend/src/pages']
 
-    setTimeout(() => {
-        copyFiles(pathArrayReactAdminFrom, pathArrayReactAdminTo, from, to)
-        console.log(chalk.green(`react admin authentication frontend completed!
-            
-            cd ${answers.name}
-            cd ${answers.name}-frontend
-            npm install
-            npm run dev`))
-    }, 2000)
+
+    copyFiles(pathArrayReactAdminFrom, pathArrayReactAdminTo, from, to)
+    sweet.renameFileSync(`${to}/${pathArrayReactAdminTo[0]}/env`, `${to}/${pathArrayReactAdminTo[0]}/.env`)
+    sweet.renameFileSync(`${to}/${pathArrayReactAdminTo[0]}/gitignore`, `${to}/${pathArrayReactAdminTo[0]}/.gitignore`)
+    sweet.renameFileSync(`${to}/${pathArrayReactAdminTo[0]}/prettierrc`, `${to}/${pathArrayReactAdminTo[0]}/.prettierrc`)
+    sweet.npmInstaller(`${to}/${pathArrayReactAdminTo[0]}`)
 }
 
 export default reactAdminAuthentication

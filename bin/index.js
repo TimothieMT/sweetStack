@@ -9,11 +9,13 @@ import createProject from "./createProject.js";
 import * as sweet from './sweet.js';
 
 //VARIABLES
+
+
 const app = new Command();
 const name = 'sweetstack'
 const npmRoot = await sweet.getNpmRoot();
 const listHooks = ['useEffect/Axios', 'useState', 'useReducer', 'useContext', 'useRef', 'noHook']
-const listMenu = ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database', 'mern CRUD API mongodb and authentication', 'simple page']
+const listMenu = ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database', 'CRUD API mongodb and authentication','CRUD member authentication', 'simple page']
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
     {
@@ -34,7 +36,7 @@ const questions = [
     {
         type: "list",
         name: 'hooks',
-        message: chalk.hex('#a08c95').bold('selected hooks with "space" and confirm with "enter": '),
+        message: chalk.hex('#a08c95').bold('selected hook: '),
         choices: listHooks,
         when: function (answers) {
             return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page'
@@ -61,7 +63,9 @@ inquirer.prompt(questions)
 
         createProject(answers, absolutePath, destPath)
 
-    }))
+    }), (err) => {
+        console.log(err)
+    })
 
 
 //INIT PROJECT

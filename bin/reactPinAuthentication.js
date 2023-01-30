@@ -1,5 +1,5 @@
 import copyFiles from "./copyFiles.js";
-import chalk from "chalk";
+import * as sweet from "./sweet.js";
 
 
 function reactPinAuthentication(answers, from, to) {
@@ -10,16 +10,12 @@ function reactPinAuthentication(answers, from, to) {
     const pathArrayReactPinFrom = ['templates/react_CRUDLowdb_pinAuthentication', 'templates/react_CRUDLowdb_pinAuthentication/dev', 'templates/react_CRUDLowdb_pinAuthentication/src', 'templates/react_CRUDLowdb_pinAuthentication/frontend/src/assets', 'templates/react_CRUDLowdb_pinAuthentication/public', 'templates/react_CRUDLowdb_pinAuthentication/cli'
     ]
 
-    setTimeout(() => {
-        copyFiles(pathArrayReactPinFrom, pathArrayReactPinTo, from, to)
-        console.log(chalk.green(`react CRUD pin authentication with lowdb frontend completed!
-            
-            cd ${answers.name}
-            cd ${answers.name}-frontend
-            npm install
-            npm run dev`))
-    }, 2000)
 
+    copyFiles(pathArrayReactPinFrom, pathArrayReactPinTo, from, to)
+    sweet.renameFileSync(`${to}/${pathArrayReactPinTo[0]}/gitignore`, `${to}/${pathArrayReactPinTo[0]}/.gitignore`)
+    sweet.renameFileSync(`${to}/${pathArrayReactPinTo[0]}/prettierrc`, `${to}/${pathArrayReactPinTo[0]}/.prettierrc`)
+    sweet.npmInstaller(`${to}/${pathArrayReactPinTo[0]}`)
 }
+
 
 export default reactPinAuthentication

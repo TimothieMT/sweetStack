@@ -4,6 +4,8 @@ import axios from 'axios';
 import { IBook, IOriginalEditFields, blankNewBook } from './interfaces';
 import * as tools from './tools';
 
+
+//Interfaces and types for AppContext
 interface IAppContext {
 	appTitle: string;
 	books: IBook[];

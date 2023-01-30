@@ -27,9 +27,6 @@ function reactHooks(answers, from, to) {
         sweet.makeHook(noHooks, to);
     }
 
-    return console.log(chalk.green(`added hook to template!`))
-
-
 }
 
 export default reactHooks;
