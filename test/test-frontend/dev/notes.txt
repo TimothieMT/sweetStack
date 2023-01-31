@@ -1,0 +1,2 @@
+- .. clean all code out that is not used
+- make starter

@@ -2,6 +2,7 @@ import {exec} from 'child_process';
 import fs from "fs";
 import _progress from "cli-progress";
 import chalk from "chalk";
+import {MongoClient} from 'mongodb';
 
 /**
  * getNpmRoot
@@ -47,7 +48,7 @@ export const renameFileSync = (oldName, newName) => {
     * npm install automatic execution
  */
 
-export const npmInstaller =  (path) => {
+export const npmInstaller = (path) => {
     return new Promise((resolve) => {
         exec(`cd ${path} && npm install`, (error, stdout, stderr) => {
             resolve(stdout);
@@ -64,7 +65,7 @@ export const loader = ([], timerValue) => {
     let value = 0;
 
     // 20ms update rate
-    const timer = setInterval(function(){
+    const timer = setInterval(function () {
         // increment value
         value++;
 
@@ -72,7 +73,7 @@ export const loader = ([], timerValue) => {
         b1.update(value)
 
         // set limit
-        if (value >= b1.getTotal()){
+        if (value >= b1.getTotal()) {
             // stop timer
             clearInterval(timer);
 
@@ -85,3 +86,45 @@ export const loader = ([], timerValue) => {
     }, timerValue);
 }
 
+
+/**
+ * Function to create a MongoDB database and collections
+ * @param connectionString
+ * @param {string} databaseName - The name of the MongoDB database
+ * @param {string[]} collectionNames - An array of collection names to be created
+ */
+export const createDB = (connectionString, databaseName, ...collectionNames) => {
+    // URL for connecting to MongoDB
+    MongoClient.connect(connectionString, (err, db) => {
+        if (err) throw err;
+        // Access the database
+        const dbo = db.db(databaseName)
+        let collectionsCreated = 0;
+        // Loop through the collection names and create each collection
+        collectionNames.forEach(collectionName => {
+            dbo.createCollection(collectionName, (err) => {
+                if (err) throw err;
+                collectionsCreated++;
+                // Close the connection after all collections have been created
+                if (collectionsCreated === collectionNames.length) {
+                    db.close();
+                }
+            });
+
+        });
+    });
+}
+
+export const importData = (connectionString, databaseName, data, collectionName) => {
+    // URL for connecting to MongoDB
+    MongoClient.connect(connectionString, (err, db) => {
+        if (err) throw err;
+        // Access the database
+        const dbo = db.db(databaseName)
+        // Insert the data
+        dbo.collection(collectionName).insertMany(data, (err) => {
+            if (err) throw err;
+            db.close();
+        });
+    });
+}
