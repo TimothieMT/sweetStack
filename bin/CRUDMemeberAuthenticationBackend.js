@@ -11,7 +11,7 @@ function CRUDMemberAuthenticationBackend(answers, from, to) {
     sweet.renameFileSync(`${to}/${pathArrayReactMemberTo[0]}/env`, `${to}/${pathArrayReactMemberTo[0]}/.env`)
     sweet.renameFileSync(`${to}/${pathArrayReactMemberTo[0]}/gitignore`, `${to}/${pathArrayReactMemberTo[0]}/.gitignore`)
     sweet.npmInstaller(`${to}/${pathArrayReactMemberTo[0]}`)
-    sweet.createDB('mongodb://localhost:27017', answers.name, 'books', 'users')
+    sweet.createDB(answers['connectionString'], answers.name, 'books', 'users')
 }
 
 export default CRUDMemberAuthenticationBackend

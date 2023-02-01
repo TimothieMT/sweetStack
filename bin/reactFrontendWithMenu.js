@@ -8,7 +8,9 @@ function reactFrontendWithMenu(answers, from, to) {
     const pathArrayReactMenuFrom = ['templates/react_frontend_routes', 'templates/react_frontend_routes/src', 'templates/react_frontend_routes/src/assets', 'templates/react_frontend_routes/public', 'templates/react_frontend_routes/cli']
 
     copyFiles(pathArrayReactMenuFrom, pathArrayReactMenuTo, from, to)
+    sweet.renameFileSync(`${to}/${pathArrayReactMenuTo[0]}/gitignore`, `${to}/${pathArrayReactMenuTo[0]}/.gitignore`)
     sweet.npmInstaller(`${to}/${pathArrayReactMenuTo[0]}`)
+    sweet.gitInit(`${to}/${pathArrayReactMenuTo[0]}`)
 
 }
 

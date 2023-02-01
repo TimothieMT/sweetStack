@@ -9,7 +9,9 @@ function reactFrontend(answers, from, to) {
 
     copyFiles(pathArrayReactFrom, pathArrayReactTo, from, to)
     reactHooks(answers, from, to + `/${pathArrayReactTo[0]}/src/App.tsx`)
+    sweet.renameFileSync(`${to}/${pathArrayReactTo[0]}/gitignore`, `${to}/${pathArrayReactTo[0]}/.gitignore`)
     sweet.npmInstaller(`${to}/${pathArrayReactTo[0]}`)
+    sweet.gitInit(`${to}/${pathArrayReactTo[0]}`)
 }
 
 

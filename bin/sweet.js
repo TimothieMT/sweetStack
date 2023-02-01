@@ -51,6 +51,20 @@ export const renameFileSync = (oldName, newName) => {
 export const npmInstaller = (path) => {
     return new Promise((resolve) => {
         exec(`cd ${path} && npm install`, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+            }
+            resolve(stdout);
+        });
+    });
+}
+
+export const gitInit = (path) => {
+    return new Promise((resolve) => {
+        exec(`cd ${path} && git init -b main`, (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+            }
             resolve(stdout);
         });
     });
@@ -110,21 +124,7 @@ export const createDB = (connectionString, databaseName, ...collectionNames) => 
                     db.close();
                 }
             });
-
         });
     });
 }
 
-export const importData = (connectionString, databaseName, data, collectionName) => {
-    // URL for connecting to MongoDB
-    MongoClient.connect(connectionString, (err, db) => {
-        if (err) throw err;
-        // Access the database
-        const dbo = db.db(databaseName)
-        // Insert the data
-        dbo.collection(collectionName).insertMany(data, (err) => {
-            if (err) throw err;
-            db.close();
-        });
-    });
-}

@@ -43,7 +43,7 @@ function createProject(answers, absolutePath, destPath) {
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'CRUD member authentication') {
         sweet.loader([CRUDMemberAuthentication(answers,absolutePath,destPath),
-        CRUDMemberAuthenticationBackend(answers,absolutePath,destPath)], 60)
+        CRUDMemberAuthenticationBackend(answers,absolutePath,destPath)], 80)
 
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu' && answers['backend'] === 'yes') {

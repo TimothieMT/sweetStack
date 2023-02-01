@@ -30,12 +30,9 @@ This starter is a base fullstack MERN site that allows you to have multiple user
 
 ### create database
 
-- in your MongoDB Atlas cluster, create a MongoDB database with the name of your project, e.g. `merncrudmulti`
-- create a collection in it called `books`
 - with MongoDB Compass, import the file `dev/books.json` into the collection `books`
-- create a collection in it called `users`
 - with MongoDB Compass, import the file `dev/users.json` into the collection `users`
--
+- 
 - you can also change the backend/frontend ports if you need to, e.g. to avoid conflicts
 
 

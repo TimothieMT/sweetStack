@@ -1,7 +1,7 @@
- APP_NAME =
+  APP_NAME = ${answers['name']]}
   SECONDS_TILL_SESSION_TIMEOUT = 3600
   PORT = 3210
-  MONGODB_CONNECTION =
+  MONGODB_CONNECTION = `${answers['connectionString']}${answers['name']}`
   SESSION_SECRET = 8234skdfj2834
   FRONTEND_URL = http://localhost:3211
   NODE_ENVIRONMENT = development
