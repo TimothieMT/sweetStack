@@ -57,7 +57,7 @@ const questions = [
         name: 'connectionString',
         message: chalk.hex('#a08c95').bold('MongoDB connection string: '),
         when: function (answers) {
-            return answers['menu'] === 'CRUD member authentication'
+            return answers['menu'] === 'CRUD member authentication' ||  answers['menu'] === 'CRUD API mongodb and authentication'
         }
     }
 ]

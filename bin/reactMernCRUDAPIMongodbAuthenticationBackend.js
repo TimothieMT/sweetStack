@@ -11,6 +11,7 @@ function reactMernCRUDAPIMongodbAuthenticationBackend(answers, from, to) {
     sweet.renameFileSync(`${to}/${pathArrayMernTo[0]}/env`, `${to}/${pathArrayMernTo[0]}/.env`)
     sweet.renameFileSync(`${to}/${pathArrayMernTo[0]}/gitignore`, `${to}/${pathArrayMernTo[0]}/.gitignore`)
     sweet.npmInstaller(`${to}/${pathArrayMernTo[0]}`)
+    sweet.createDB(answers['connectionString'], answers.name, 'books')
     sweet.replaceData('@appName', answers.name, `${to}/${pathArrayMernTo[0]}/.env`)
     sweet.replaceData('@connectionString', `${answers['connectionString']}/${answers.name}`, `${to}/${pathArrayMernTo[0]}/.env`)
 }
