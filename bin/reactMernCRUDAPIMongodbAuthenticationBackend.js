@@ -7,10 +7,12 @@ function reactMernCRUDAPIMongodbAuthenticationBackend(answers, from, to) {
     const pathArrayMernFrom = ['templates/react_mern_crud_mongodb_backend', 'templates/react_mern_crud_mongodb_backend/dev', 'templates/react_mern_crud_mongodb_backend/src', 'templates/react_mern_crud_mongodb_backend/src/models']
 
 
-        copyFiles(pathArrayMernFrom, pathArrayMernTo, from, to)
-        sweet.renameFileSync(`${to}/${pathArrayMernTo[0]}/env`, `${to}/${pathArrayMernTo[0]}/.env`)
-        sweet.renameFileSync(`${to}/${pathArrayMernTo[0]}/gitignore`, `${to}/${pathArrayMernTo[0]}/.gitignore`)
-        sweet.npmInstaller(`${to}/${pathArrayMernTo[0]}`)
+    copyFiles(pathArrayMernFrom, pathArrayMernTo, from, to)
+    sweet.renameFileSync(`${to}/${pathArrayMernTo[0]}/env`, `${to}/${pathArrayMernTo[0]}/.env`)
+    sweet.renameFileSync(`${to}/${pathArrayMernTo[0]}/gitignore`, `${to}/${pathArrayMernTo[0]}/.gitignore`)
+    sweet.npmInstaller(`${to}/${pathArrayMernTo[0]}`)
+    sweet.replaceData('@appName', answers.name, `${to}/${pathArrayMernTo[0]}/.env`)
+    sweet.replaceData('@connectionString', `${answers['connectionString']}/${answers.name}`, `${to}/${pathArrayMernTo[0]}/.env`)
 }
 
 export default reactMernCRUDAPIMongodbAuthenticationBackend

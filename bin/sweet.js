@@ -128,3 +128,13 @@ export const createDB = (connectionString, databaseName, ...collectionNames) => 
     });
 }
 
+
+export const replaceData = (searchValue, replaceValue, destinationPath) => {
+
+    const fileReader = fs.readFileSync(destinationPath, 'utf8')
+
+    if (fileReader.includes(searchValue)) {
+        const replaced = fileReader.replace(searchValue, replaceValue)
+        fs.writeFileSync(destinationPath, replaced, 'utf8')
+    }
+}

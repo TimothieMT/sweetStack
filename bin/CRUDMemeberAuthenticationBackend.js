@@ -12,6 +12,8 @@ function CRUDMemberAuthenticationBackend(answers, from, to) {
     sweet.renameFileSync(`${to}/${pathArrayReactMemberTo[0]}/gitignore`, `${to}/${pathArrayReactMemberTo[0]}/.gitignore`)
     sweet.npmInstaller(`${to}/${pathArrayReactMemberTo[0]}`)
     sweet.createDB(answers['connectionString'], answers.name, 'books', 'users')
+    sweet.replaceData('@appName',answers.name, `${to}/${pathArrayReactMemberTo[0]}/.env`)
+    sweet.replaceData('@connectionString',`${answers['connectionString']}/${answers.name}`, `${to}/${pathArrayReactMemberTo[0]}/.env`)
 }
 
 export default CRUDMemberAuthenticationBackend
