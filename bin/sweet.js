@@ -2,7 +2,7 @@ import {exec} from 'child_process';
 import fs from "fs";
 import _progress from "cli-progress";
 import chalk from "chalk";
-import {MongoClient} from 'mongodb';
+import {MongoClient as client, MongoClient} from 'mongodb';
 
 /**
  * getNpmRoot
@@ -126,6 +126,29 @@ export const createDB = (connectionString, databaseName, ...collectionNames) => 
             });
         });
     });
+}
+
+export const dataImportCollection = (connectionString,dataBaseName, collectionName, file) => {
+    MongoClient.connect(connectionString, (err, db) => {
+        if (err) throw err;
+        const dbo = db.db(dataBaseName)
+
+        fs.readFile(file, (err, data) => {
+            if (err) throw err;
+            const documents = JSON.parse(data);
+
+            documents.forEach((document) => {
+                delete document._id
+                delete document.__v
+
+            })
+
+            dbo.collection(collectionName).insertMany(documents, (err, res) => {
+                if (err) throw err;
+                db.close();
+            });
+        })
+    })
 }
 
 
