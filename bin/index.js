@@ -15,7 +15,7 @@ const app = new Command();
 const name = 'sweetstack'
 const npmRoot = await sweet.getNpmRoot();
 const listHooks = ['useEffect/Axios', 'useState', 'useReducer', 'useContext', 'useRef', 'noHook']
-const listMenu = ['menu', 'menu included Zustand', 'CRUD/Lowdb and PIN authentication', 'admin authentication', 'CRUD API which adds/edits/deletes data from a database', 'CRUD API mongodb and authentication', 'CRUD member authentication', 'simple page']
+const listMenu = ['menu', 'menu(zustand)', 'simple page', 'simple page(nextjs/usecontext)', 'pin authentication(CRUD/Lowdb)', 'admin authentication', 'adds/edits/deletes data from a database(CRUD API)', 'authentication and mongodb(CRUD API)', 'member authentication(CRUD)']
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
     {
@@ -49,7 +49,7 @@ const questions = [
         choices: ['yes', 'no'],
         message: chalk.hex('#a08c95').bold('need a backend? '),
         when: function (answers) {
-            return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page' || answers['menu'] === 'menu included Zustand' || answers['menu'] === 'menu' || answers['framework'] === chalk.green('vue') || answers['framework'] === chalk.hex('#ff7247')('angular')
+            return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page(nextjs/usecontext)' && answers['menu'] === 'simple page' || answers['menu'] === 'menu(zustand)' || answers['menu'] === 'menu' || answers['framework'] === chalk.green('vue') || answers['framework'] === chalk.hex('#ff7247')('angular')
         }
     },
     {
@@ -57,7 +57,7 @@ const questions = [
         name: 'connectionString',
         message: chalk.hex('#a08c95').bold('MongoDB connection string: '),
         when: function (answers) {
-            return answers['menu'] === 'CRUD member authentication' ||  answers['menu'] === 'CRUD API mongodb and authentication'
+            return answers['menu'] === 'member authentication(CRUD)' || answers['menu'] === 'authentication and mongodb(CRUD API)'
         }
     }
 ]
@@ -68,10 +68,6 @@ inquirer.prompt(questions)
 
         const absolutePath = npmRoot + '/' + name;
         const destPath = `${path.resolve()}/${answers.name}`
-
-
-
-
 
         createProject(answers, absolutePath, destPath)
 

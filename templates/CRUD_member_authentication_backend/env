@@ -1,6 +1,6 @@
   APP_NAME = @appName
   SECONDS_TILL_SESSION_TIMEOUT = 3600
-  PORT = 3210
+  PORT = 3000
   MONGODB_CONNECTION = @connectionString
   SESSION_SECRET = 8234skdfj2834
   FRONTEND_URL = http://localhost:3201

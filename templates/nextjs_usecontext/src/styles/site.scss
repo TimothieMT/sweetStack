@@ -1,0 +1,76 @@
+body {
+	background-color: #333;
+	color: #ccc;
+	font-family: sans-serif;
+	padding: 1rem;
+
+	.active {
+		color: rgb(223, 212, 58);
+	}
+
+	.headerArea {
+		display: flex;
+		gap: .4rem;
+
+		img {
+			height: 1.5rem;
+			border-radius: .2rem;
+			margin-top: .3rem;
+		}
+	}
+
+	.sass-error-area {
+		width: 18rem;
+	}
+
+	animation: fadein 2.5s ease-in;
+
+	@keyframes fadein {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	.page {
+		h2 {
+			font-size: 1.5rem;
+		}
+	}
+
+	.pageInfo {
+		.content {
+			margin-top: 1rem;
+			width: 90%;
+			display: grid;
+			gap: 3rem;
+			grid-template-columns: 1fr 1fr;
+
+			h2 {
+				color: rgb(194, 164, 107);
+				margin-bottom: 1rem;
+			}
+
+			.jobs {
+				.job {
+					background-color: #222;
+					padding: .5rem;
+					margin-bottom: .5rem;
+				}
+			}
+
+			.skills {
+				.skill {
+					margin-bottom: 1rem;
+
+					.name {
+						color: orange;
+					}
+				}
+			}
+		}
+	}
+}
