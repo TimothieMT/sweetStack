@@ -8,7 +8,7 @@
     <mapping directory="$PROJECT_DIR$/templates/react_adminAuthentication/frontend" vcs="" />
     <mapping directory="$PROJECT_DIR$/templates/react_sqlite_CRUD/backend" vcs="" />
     <mapping directory="$PROJECT_DIR$/templates/react_sqlite_CRUD/frontend" vcs="" />
-    <mapping directory="$PROJECT_DIR$/test/test-frontend" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/test1/test1-frontend" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/test/test-frontend" vcs="" />
+    <mapping directory="$PROJECT_DIR$/test1/test1-frontend" vcs="" />
   </component>
 </project>

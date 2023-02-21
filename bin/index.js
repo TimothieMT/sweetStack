@@ -49,7 +49,7 @@ const questions = [
         choices: ['yes', 'no'],
         message: chalk.hex('#a08c95').bold('need a backend? '),
         when: function (answers) {
-            return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page(nextjs/usecontext)' && answers['menu'] === 'simple page' || answers['menu'] === 'menu(zustand)' || answers['menu'] === 'menu' || answers['framework'] === chalk.green('vue') || answers['framework'] === chalk.hex('#ff7247')('angular')
+            return answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page(nextjs/usecontext)' || answers['menu'] === 'simple page' && answers['hooks'] === 'noHook' || answers['menu'] === 'simple page' && answers['hooks'] === 'useRef' || answers['menu'] === 'simple page' && answers['hooks'] === 'useContext' || answers['menu'] === 'simple page' && answers['hooks'] === 'useReducer' || answers['menu'] === 'simple page' && answers['hooks'] === 'useState' || answers['menu'] === 'simple page' && answers['hooks'] === 'useEffect/Axios' || answers['menu'] === 'menu(zustand)' || answers['menu'] === 'menu' || answers['framework'] === chalk.green('vue') || answers['framework'] === chalk.hex('#ff7247')('angular')
         }
     },
     {

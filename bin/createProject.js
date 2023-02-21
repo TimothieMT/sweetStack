@@ -18,6 +18,7 @@ import * as sweet from "./sweet.js";
 import CRUDMemberAuthentication from "./CRUDMemberAuthentication.js";
 import CRUDMemberAuthenticationBackend from "./CRUDMemeberAuthenticationBackend.js";
 import reactFrontendNext from "./reactNextjsUsecontext.js";
+import path from "path";
 
 function createProject(answers, absolutePath, destPath) {
 
@@ -59,7 +60,7 @@ function createProject(answers, absolutePath, destPath) {
             expressBackend(answers, absolutePath, destPath)], 60)
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'simple page' && answers['backend'] === 'no') {
-        sweet.loader([reactFrontend(answers, absolutePath, destPath)], 60)
+        sweet.loader([reactFrontend(answers, absolutePath, path.resolve)], 60)
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu' && answers['backend'] === 'no') {
         sweet.loader([reactFrontendWithMenu(answers, absolutePath, destPath)], 60)
