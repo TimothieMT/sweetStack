@@ -11,6 +11,7 @@ function reactAuthenticationEmailReg(answers, from, to) {
     copyFiles(pathArrayAuthenticationEmailRegFrom, pathArrayAuthenticationEmailRegTo, from, to)
     sweet.renameFileSync(`${to}/${pathArrayAuthenticationEmailRegTo[0]}/gitignore`, `${to}/${pathArrayAuthenticationEmailRegTo[0]}/.gitignore`)
     sweet.renameFileSync(`${to}/${pathArrayAuthenticationEmailRegTo[0]}/prettierrc`, `${to}/${pathArrayAuthenticationEmailRegTo[0]}/.prettierrc`)
+    sweet.renameFileSync(`${to}/${pathArrayAuthenticationEmailRegTo[0]}/env`, `${to}/${pathArrayAuthenticationEmailRegTo[0]}/.env`)
     sweet.npmInstaller(`${to}/${pathArrayAuthenticationEmailRegTo[0]}`)
 }
 
