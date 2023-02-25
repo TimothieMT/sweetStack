@@ -1,0 +1,30 @@
+@url = http://localhost:3045
+
+### BASE ROUTE
+{{url}}
+
+### LOGIN HENDRICK
+POST {{url}}/login
+content-type: application/json
+ 
+{
+    "username": "hd",
+    "password": "hd123",
+    "safeOriginCode": "1234567"
+}
+
+### LOGIN ANDREA
+POST {{url}}/login
+content-type: application/json
+ 
+{
+    "username": "an",
+    "password": "an123",
+    "safeOriginCode": "1234567"
+}
+
+### GET CURRENT USER
+{{url}}/current-user
+
+### LOGOUT GET 
+{{url}}/logout

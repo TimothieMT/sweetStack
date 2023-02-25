@@ -15,7 +15,9 @@ const app = new Command();
 const name = 'sweetstack'
 const npmRoot = await sweet.getNpmRoot();
 const listHooks = ['useEffect/Axios', 'useState', 'useReducer', 'useContext', 'useRef', 'noHook']
-const listMenu = ['menu', 'menu(zustand)', 'simple page', 'simple page(nextjs/usecontext)', 'pin authentication(CRUD/Lowdb)', 'admin authentication', 'adds/edits/deletes data from a database(CRUD API)', 'authentication and mongodb(CRUD API)', 'member authentication(CRUD)']
+const listMenu = ['menu', 'menu(zustand)', 'simple page', 'simple page(nextjs/usecontext)', 'pin authentication(CRUD/Lowdb)', 'admin authentication', 'adds/edits/deletes data from a database(CRUD API)', 'authentication and mongodb(CRUD API)', 'member authentication(CRUD)', 'authentication and email registration']
+const listAngular = ['simple angular page', 'angular page with component, directives and pipes']
+
 const questions = [
     {type: "input", name: 'name', message: chalk.hex('#a08c95').bold('project name:')},
     {
@@ -23,6 +25,15 @@ const questions = [
         name: 'framework',
         choices: [chalk.hex('#A7C7E7')('react'), chalk.green('vue'), chalk.hex('#ff7247')('angular')],
         message: chalk.hex('#a08c95').bold('selected framework: ')
+    },
+    {
+        type: "list",
+        name: 'angularMenu',
+        choices: listAngular,
+        message: chalk.hex('#a08c95').bold('angular template with:  '),
+        when: function (answers) {
+            return answers['framework'] === chalk.hex('#ff7247')('angular')
+        }
     },
     {
         type: "list",

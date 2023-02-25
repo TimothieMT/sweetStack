@@ -1,0 +1,32 @@
+.card {
+	background-color: #444;
+	padding: 1rem;
+	border: 1px solid yellow;
+	border-radius: .4rem;
+	width: 20rem;
+	margin-bottom: 1rem;
+
+	.supertitle {
+		margin-bottom: -.5rem;
+		font-variant: small-caps;
+	}
+
+	.title {
+		font-size: 2rem;
+	}
+
+	.body {
+		font-style: italic;
+		color: #999;
+	}
+
+	.devInfo {
+		color: black;
+		font-family: monospace;
+		font-size: .8rem;
+	}
+}
+
+.highlighted {
+	box-shadow: 1px 1px 10px yellow;
+}

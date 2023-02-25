@@ -1,0 +1,23 @@
+ul.navbar-nav {
+	display: flex;
+	list-style-type: none;
+	margin-left: -2rem;
+	background-color: #222;
+	padding: 1rem 2rem;
+	gap: 1rem;
+
+	li {
+		a {
+			color: #888;
+			text-decoration: none;
+		}
+		a.active-link {
+			color: rgb(216, 165, 56);
+		}
+	}
+}
+
+.employeeInfo {
+	text-align: right;
+	margin-top: -3rem;
+}

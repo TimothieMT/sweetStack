@@ -1,0 +1,14 @@
+<div class="employeeInfo">{{employeeService.getSelectedEmployeesList()}}</div>
+<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+	<ul class="nav navbar-nav"
+		routerLinkActive="active">
+		<li class="nav-item"><a class="nav-link"
+			   routerLink="home" routerLinkActive="active-link">Home</a></li>
+		<li class="nav-item"><a class="nav-link"
+			   routerLink="info" routerLinkActive="active-link">Info</a></li>
+		<li class="nav-item"><a class="nav-link"
+			   routerLink="employees" routerLinkActive="active-link">Employees</a></li>
+	</ul>
+</nav>
+
+<router-outlet></router-outlet>

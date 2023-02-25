@@ -1,0 +1,22 @@
+
+<div class="card" [ngClass]="{'highlighted' : isHighlighted}"
+	 [ngStyle]="{'color': color, 'border': '1px solid ' + color}">
+	<div *ngIf="status === 'danger'"
+		 class="supertitle">please read</div>
+	<div class="title">{{title | numtoname | uppercase}}</div>
+	<div class="body">{{body}}</div>
+	<div><input
+  type="checkbox"
+  [checked]="!buttonIsDisabled"
+  (change)="buttonIsDisabled = !buttonIsDisabled"/>
+  <button (click)="handleDevInfoButtonClick()" [disabled]="buttonIsDisabled">Toggle dev info</button></div>
+	<div *ngIf="showDevInfo">
+		<hr />
+		<div [ngSwitch]="status"
+			 class="devInfo">
+			<span *ngSwitchCase="'danger'">This info-box warns a user.</span>
+			<span *ngSwitchCase="'success'">Success is displayed when no action is required.</span>
+			<span *ngSwitchDefault>Unknown status code: {{status}}</span>
+		</div>
+	</div>
+</div>

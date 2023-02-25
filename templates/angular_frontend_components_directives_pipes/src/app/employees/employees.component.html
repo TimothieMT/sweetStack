@@ -1,0 +1,23 @@
+<p *ngIf="searchText === ''">There are {{employeeService.getEmployees().length}} employees:</p>
+<p *ngIf="searchText !== ''">Searching for "{{searchText}}"...</p>
+<input type="text"
+	   [(ngModel)]="searchText"
+	   autofocus />
+<ng-container
+			  *ngFor="let emp of employeeService.getEmployees(); index as i; first as isFirst; last as isLast; odd as isOdd; even as isEven">
+	<div class="employee"
+		 *ngIf="employeeService.employeeHasSearchText(emp, searchText)"
+		 [ngStyle]="{'background-color': isOdd ? '#555' : '#444'}">
+		<div class="fullName">
+			<input type="checkbox"
+				   [checked]="emp.selected"
+				   (change)="emp.selected = !emp.selected" />
+			{{i + 1}}. {{emp.firstName}} {{emp.lastName}}
+			<span *ngIf="isFirst"
+				  style="color: lightgreen"> - the first one</span>
+			<span *ngIf="isLast"
+				  style="color: red"> - the last one</span>
+		</div>
+		<div class="notes">{{emp.notes}}</div>
+	</div>
+</ng-container>

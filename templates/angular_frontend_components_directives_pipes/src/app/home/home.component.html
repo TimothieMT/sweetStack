@@ -1,0 +1,13 @@
+<p>Welcome to this site.</p>
+
+<img src="assets/images/info.jpg"/>
+
+<p>Current time is {{now}}.</p>
+<hr/>
+<p>Today is {{now | date}}.</p>
+<p>Today is {{now | date | uppercase}}.</p>
+<p>Today is {{now | date : 'longDate' | uppercase}}.</p>
+<hr/>
+<p>The file name is <code>{{now | date: "'angular-log-'yyyy-MM-dd-HH-mm-ss.txt"}}</code>.</p>
+<hr/>
+<p>Heute ist der {{now | date : 'longDate' : '+02:00' : 'de'}}.</p>

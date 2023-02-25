@@ -19,6 +19,9 @@ import CRUDMemberAuthentication from "./CRUDMemberAuthentication.js";
 import CRUDMemberAuthenticationBackend from "./CRUDMemeberAuthenticationBackend.js";
 import reactFrontendNext from "./reactNextjsUsecontext.js";
 import path from "path";
+import reactAuthenticationEmailReg from "./reactAuthenticationEmailReg.js";
+import reactAuthenticationEmailRegBackend from "./reactAuthenticationEmailRegBackend.js";
+import angularComponentsDirectivesPipes from "./angularComponentsDirectivesPipes.js";
 
 function createProject(answers, absolutePath, destPath) {
 
@@ -65,6 +68,10 @@ function createProject(answers, absolutePath, destPath) {
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'menu' && answers['backend'] === 'no') {
         sweet.loader([reactFrontendWithMenu(answers, absolutePath, destPath)], 60)
     }
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'authentication and email registration') {
+        sweet.loader([reactAuthenticationEmailReg(answers, absolutePath, destPath),
+            reactAuthenticationEmailRegBackend(answers, absolutePath, destPath)], 140)
+    }
 
 
 //REACT END
@@ -80,11 +87,14 @@ function createProject(answers, absolutePath, destPath) {
 //VUE END
 
 //ANGULAR START
-    if (answers.name !== '' && answers['framework'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'yes') {
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#ff7247')('angular') && answers['angularMenu'] === 'simple angular page' && answers['backend'] === 'yes') {
         sweet.loader([angularBackend(absolutePath, destPath, answers)], 200)
     }
-    if (answers.name !== '' && answers['framework'] === chalk.hex('#ff7247')('angular') && answers['backend'] === 'no') {
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#ff7247')('angular') && answers['angularMenu'] === 'simple angular page' && answers['backend'] === 'no') {
         sweet.loader([angularFrontend(absolutePath, destPath, answers)], 200)
+    }
+    if (answers.name !== '' && answers['framework'] === chalk.hex('#ff7247')('angular') && answers['angularMenu'] === 'angular page with component, directives and pipes' && answers['backend'] === 'no') {
+        sweet.loader([angularComponentsDirectivesPipes(absolutePath, destPath, answers)], 200)
     }
 //ANGULAR END
 
