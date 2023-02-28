@@ -13,11 +13,6 @@ function reactAuthenticationEmailReg(answers, from, to) {
     sweet.renameFileSync(`${to}/${pathArrayAuthenticationEmailRegTo[0]}/prettierrc`, `${to}/${pathArrayAuthenticationEmailRegTo[0]}/.prettierrc`)
     sweet.renameFileSync(`${to}/${pathArrayAuthenticationEmailRegTo[0]}/env`, `${to}/${pathArrayAuthenticationEmailRegTo[0]}/.env`)
     sweet.npmInstaller(`${to}/${pathArrayAuthenticationEmailRegTo[0]}`)
-    sweet.createDB(answers['connectionString'], answers.name, 'users')
-    sweet.dataImportCollection(`${answers['connectionString']}/${answers.name}`, answers.name, 'users', `${to}/${pathArrayAuthenticationEmailRegTo[0]}/dev/_users.json`)
-    sweet.replaceData('@connectionString', `${answers['connectionString']}/${answers.name}`, `${to}/${pathArrayAuthenticationEmailRegTo[0]}/.env`)
-    sweet.replaceData('@email', `${answers['email']}`, `${to}/${pathArrayAuthenticationEmailRegTo[0]}/.env`)
-    sweet.replaceData('@emailpassword', `${answers['emailpassword']}`, `${to}/${pathArrayAuthenticationEmailRegTo[0]}/.env`)
 }
 
 export default reactAuthenticationEmailReg
