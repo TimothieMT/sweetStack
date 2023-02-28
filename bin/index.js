@@ -68,7 +68,23 @@ const questions = [
         name: 'connectionString',
         message: chalk.hex('#a08c95').bold('MongoDB connection string: '),
         when: function (answers) {
-            return answers['menu'] === 'member authentication(CRUD)' || answers['menu'] === 'authentication and mongodb(CRUD API)'
+            return answers['menu'] === 'member authentication(CRUD)' || answers['menu'] === 'authentication and mongodb(CRUD API)' || answers['menu'] === 'authentication and email registration'
+        }
+    },
+    {
+        type: "input",
+        name: 'email',
+        message: chalk.hex('#a08c95').bold('email address: '),
+        when: function (answers) {
+            return answers['menu'] === 'authentication and email registration'
+        }
+    },
+    {
+        type: "password",
+        name: 'emailpassword',
+        message: chalk.hex('#a08c95').bold('email password: '),
+        when: function (answers) {
+            return answers['menu'] === 'authentication and email registration'
         }
     }
 ]

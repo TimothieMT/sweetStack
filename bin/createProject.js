@@ -70,7 +70,7 @@ function createProject(answers, absolutePath, destPath) {
     }
     if (answers.name !== '' && answers['framework'] === chalk.hex('#A7C7E7')('react') && answers['menu'] === 'authentication and email registration') {
         sweet.loader([reactAuthenticationEmailReg(answers, absolutePath, destPath),
-            reactAuthenticationEmailRegBackend(answers, absolutePath, destPath)], 140)
+            reactAuthenticationEmailRegBackend(answers, absolutePath, destPath)], 160)
     }
 
 
